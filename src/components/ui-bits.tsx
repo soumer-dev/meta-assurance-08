@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 
 export function Eyebrow({ children }: { children: ReactNode }) {
@@ -84,15 +84,15 @@ export function CtaButton({
     </>
   );
 
-  if (to) {
+  if (to || href) {
     return (
-      <Link to={to as string} className={`${base} ${styles[variant]}`}>
+      <Link href={(to || href) as string} className={`${base} ${styles[variant]}`}>
         {inner}
       </Link>
     );
   }
   return (
-    <a href={href} className={`${base} ${styles[variant]}`}>
+    <a className={`${base} ${styles[variant]}`}>
       {inner}
     </a>
   );
@@ -176,7 +176,7 @@ export function PageHero({
             {subtitle}
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <CtaButton to={cta.to} href={cta.href}>
+            <CtaButton href={cta.href} to={cta.to}>
               {cta.label}
             </CtaButton>
             <PhoneButton>+212 (0) 524 406 972</PhoneButton>
