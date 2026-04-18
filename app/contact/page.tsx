@@ -55,10 +55,44 @@ const SUBJECTS = [
 function ContactPage() {
   const [subject, setSubject] = useState(SUBJECTS[0]);
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError(null);
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      subject,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Erreur lors de l\'envoi');
+      }
+
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Erreur lors de l\'envoi');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -159,9 +193,25 @@ function ContactPage() {
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-semibold">Message envoyé !</h3>
                 <p className="mt-2 text-muted-foreground">Merci, nous revenons vers vous sous 24h ouvrées.</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSent(false);
+                    setError(null);
+                  }}
+                  className="mt-4 text-sm text-sky hover:underline"
+                >
+                  Envoyer un autre message
+                </button>
               </div>
             ) : (
               <div className="grid gap-5">
+                {error && (
+                  <div className="rounded-2xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
+                    {error}
+                  </div>
+                )}
+                
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field label="Nom complet *" name="name" placeholder="Ahmed Zakaria" required />
                   <Field label="Téléphone *" name="phone" placeholder="06 23 45 67 89" required type="tel" />
@@ -191,6 +241,7 @@ function ContactPage() {
                 <div>
                   <label className="text-sm font-medium text-foreground">Votre message</label>
                   <textarea
+                    name="message"
                     rows={5}
                     className="mt-2 w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15"
                     placeholder="Décrivez votre demande avec le plus de détails possible..."
@@ -199,9 +250,10 @@ function ContactPage() {
 
                 <button
                   type="submit"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-6 py-3.5 text-sm font-semibold text-cta-foreground shadow-cta transition-transform hover:-translate-y-0.5"
+                  disabled={loading}
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-6 py-3.5 text-sm font-semibold text-cta-foreground shadow-cta transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
                 >
-                  Envoyer le message
+                  {loading ? 'Envoi en cours...' : 'Envoyer le message'}
                   <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>
