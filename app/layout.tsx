@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 
-const siteUrl = "https://metassur.com";
+const siteUrl = process.env.APP_URL ||  "https://metassur.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -31,6 +31,8 @@ const STEPS = ["Type d'assurance", "Vos informations", "Contact"];
 function DevisPage() {
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<FormState>({
     product: null,
     name: "",
@@ -47,9 +49,36 @@ function DevisPage() {
     (step === 1 && data.name && data.phone && data.city) ||
     (step === 2 && /^\S+@\S+\.\S+$/.test(data.email));
 
-  const next = () => {
-    if (step < 2) setStep((current) => current + 1);
-    else setDone(true);
+  const next = async () => {
+    if (step < 2) {
+      setStep((current) => current + 1);
+    } else {
+      // Submit the form
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await fetch('/api/devis', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Erreur lors de l\'envoi');
+        }
+
+        setDone(true);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Erreur lors de l\'envoi');
+      } finally {
+        setLoading(false);
+      }
+    }
   };
 
   const back = () => setStep((current) => Math.max(0, current - 1));
@@ -57,6 +86,7 @@ function DevisPage() {
   const reset = () => {
     setDone(false);
     setStep(0);
+    setError(null);
     setData({ product: null, name: "", phone: "", city: "", callback: true, email: "" });
   };
 
@@ -106,10 +136,17 @@ function DevisPage() {
 
             {!done && (
               <div className="mt-10 flex items-center justify-between gap-3">
+                {error && (
+                  <div className="absolute -top-16 left-0 right-0 rounded-2xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
+                    {error}
+                  </div>
+                )}
+                
                 {step > 0 ? (
                   <button
                     onClick={back}
-                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
+                    disabled={loading}
+                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted disabled:opacity-50"
                   >
                     <ArrowLeft className="size-4" /> Retour
                   </button>
@@ -120,10 +157,10 @@ function DevisPage() {
                 )}
                 <button
                   onClick={next}
-                  disabled={!canContinue}
+                  disabled={!canContinue || loading}
                   className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-7 py-3 text-sm font-semibold text-cta-foreground shadow-cta transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0"
                 >
-                  {step === 2 ? "Recevoir mon devis gratuit" : "Continuer"}
+                  {loading ? 'Envoi en cours...' : step === 2 ? "Recevoir mon devis gratuit" : "Continuer"}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>
@@ -330,19 +367,23 @@ function SuccessStep({ name, onReset }: { name: string; onReset: () => void }) {
       </div>
       <h2 className="mt-7 font-display text-3xl font-semibold text-foreground">Demande reçue avec succès !</h2>
       <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-        Bonjour <span className="font-semibold text-foreground">{name || "{nom_complet}"}</span>, votre devis personnalisé a été envoyé. Un conseiller vous contactera sous 24h.
+        Bonjour <span className="font-semibold text-foreground">{name || "{nom_complet}"}</span>, votre demande de devis a été transmise à notre équipe. Un conseiller vous contactera sous 2 heures.
       </p>
       <div className="mt-7 flex flex-wrap justify-center gap-3 text-sm text-muted-foreground">
         <span className="inline-flex items-center gap-2 rounded-full bg-sky/15 px-4 py-1.5 font-medium text-sky">
-          <Check className="size-4" /> Réponse sous 2h
+          <Check className="size-4" /> Demande transmise
         </span>
         <span className="inline-flex items-center gap-2 rounded-full bg-sky/15 px-4 py-1.5 font-medium text-sky">
           <Check className="size-4" /> Conseiller dédié
         </span>
       </div>
+      <div className="mt-6 rounded-2xl border border-sky/20 bg-sky/5 p-4 text-sm text-sky">
+        <p className="font-medium">📞 Contact imminent</p>
+        <p className="mt-1 text-sky/80">Notre équipe a reçu votre demande et vous contactera très rapidement.</p>
+      </div>
       <button
         onClick={onReset}
-        className="mt-10 inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted"
+        className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted"
       >
         Faire une autre demande
       </button>
