@@ -47,6 +47,10 @@ export const metadata: Metadata = {
     },
   },
   themeColor: "#0f172a",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  }
 };
 
 const structuredData = {
