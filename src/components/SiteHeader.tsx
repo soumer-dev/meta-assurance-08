@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "@tanstack/react-router";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
 
 const NAV = [
-  { to: "/", label: "Accueil" },
-  { to: "/assurance-auto", label: "Assurance Auto" },
-  { to: "/assurance-habitation", label: "Assurance Habitation" },
-  { to: "/pourquoi-nous", label: "Pourquoi nous" },
-  { to: "/contact", label: "Contact" },
+  { href: "/", label: "Accueil" },
+  { href: "/assurance-auto", label: "Assurance Auto" },
+  { href: "/assurance-habitation", label: "Assurance Habitation" },
+  { href: "/pourquoi-nous", label: "Pourquoi nous" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { pathname } = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -36,17 +37,20 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 lg:px-8">
-        <Link to="/" className="flex items-center" aria-label="Accueil">
+        <Link href="/" className="flex items-center" aria-label="Accueil">
           <Logo className="h-8 w-auto lg:h-9" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map((item) => (
             <Link
-              key={item.to}
-              to={item.to}
-              activeOptions={{ exact: item.to === "/" }}
-              className="rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:text-white data-[status=active]:text-white data-[status=active]:bg-white/10"
+              key={item.href}
+              href={item.href}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-white ${
+                pathname === item.href || (item.href === "/" && pathname === "/")
+                  ? "text-white bg-white/10"
+                  : "text-white/75"
+              }`}
             >
               {item.label}
             </Link>
@@ -55,7 +59,7 @@ export function SiteHeader() {
 
         <div className="hidden lg:block">
           <Link
-            to="/devis"
+            href="/devis"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-semibold text-cta-foreground shadow-cta transition-transform hover:-translate-y-0.5"
           >
             Obtenir un devis
@@ -78,16 +82,19 @@ export function SiteHeader() {
           <div className="flex flex-col gap-1 px-5 py-4">
             {NAV.map((item) => (
               <Link
-                key={item.to}
-                to={item.to}
-                activeOptions={{ exact: item.to === "/" }}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/10 data-[status=active]:bg-white/10 data-[status=active]:text-white"
+                key={item.href}
+                href={item.href}
+                className={`rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-white/10 ${
+                  pathname === item.href || (item.href === "/" && pathname === "/")
+                    ? "bg-white/10 text-white"
+                    : "text-white/80"
+                }`}
               >
                 {item.label}
               </Link>
             ))}
             <Link
-              to="/devis"
+              href="/devis"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-5 py-3 text-sm font-semibold text-cta-foreground shadow-cta"
             >
               Obtenir un devis

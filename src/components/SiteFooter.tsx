@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { Phone, Mail, MapPin, ShieldAlert } from "lucide-react";
 
 function SocialIcon({ kind }: { kind: "facebook" | "linkedin" | "instagram" }) {
@@ -46,9 +46,9 @@ export function SiteFooter() {
             Nos offres
           </h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link to="/assurance-auto" className="hover:text-white">Assurance Auto</Link></li>
-            <li><Link to="/assurance-habitation" className="hover:text-white">Assurance Habitation</Link></li>
-            <li><Link to="/devis" className="hover:text-white">Obtenir un devis</Link></li>
+            <li><Link href="/assurance-auto" className="hover:text-white">Assurance Auto</Link></li>
+            <li><Link href="/assurance-habitation" className="hover:text-white">Assurance Habitation</Link></li>
+            <li><Link href="/devis" className="hover:text-white">Obtenir un devis</Link></li>
           </ul>
         </div>
 
@@ -57,7 +57,7 @@ export function SiteFooter() {
             Entreprise
           </h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link to="/pourquoi-nous" className="hover:text-white">Pourquoi nous choisir</Link></li>
+            <li><Link href="/pourquoi-nous" className="hover:text-white">Pourquoi nous choisir</Link></li>
             <li><a href="#" className="hover:text-white">À propos</a></li>
             <li><a href="#" className="hover:text-white">Mentions légales</a></li>
             <li><a href="#" className="hover:text-white">Politique de confidentialité</a></li>
