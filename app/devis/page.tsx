@@ -367,19 +367,19 @@ function SuccessStep({ name, onReset }: { name: string; onReset: () => void }) {
       </div>
       <h2 className="mt-7 font-display text-3xl font-semibold text-foreground">Demande reçue avec succès !</h2>
       <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-        Bonjour <span className="font-semibold text-foreground">{name || "{nom_complet}"}</span>, votre devis personnalisé a été envoyé par email. Un conseiller vous contactera sous 2 heures.
+        Bonjour <span className="font-semibold text-foreground">{name || "{nom_complet}"}</span>, votre demande de devis a été transmise à notre équipe. Un conseiller vous contactera sous 2 heures.
       </p>
       <div className="mt-7 flex flex-wrap justify-center gap-3 text-sm text-muted-foreground">
         <span className="inline-flex items-center gap-2 rounded-full bg-sky/15 px-4 py-1.5 font-medium text-sky">
-          <Check className="size-4" /> Email de confirmation envoyé
+          <Check className="size-4" /> Demande transmise
         </span>
         <span className="inline-flex items-center gap-2 rounded-full bg-sky/15 px-4 py-1.5 font-medium text-sky">
           <Check className="size-4" /> Conseiller dédié
         </span>
       </div>
       <div className="mt-6 rounded-2xl border border-sky/20 bg-sky/5 p-4 text-sm text-sky">
-        <p className="font-medium">📧 Vérifiez votre boîte email</p>
-        <p className="mt-1 text-sky/80">Un email de confirmation avec les détails de votre demande vous a été envoyé.</p>
+        <p className="font-medium">📞 Contact imminent</p>
+        <p className="mt-1 text-sky/80">Notre équipe a reçu votre demande et vous contactera très rapidement.</p>
       </div>
       <button
         onClick={onReset}
