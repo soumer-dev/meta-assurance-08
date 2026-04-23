@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 
 const siteUrl = process.env.APP_URL ||  "https://metassur.com";
@@ -46,11 +46,14 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  themeColor: "#0f172a",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
 };
 
 const structuredData = {
