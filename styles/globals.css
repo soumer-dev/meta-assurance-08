@@ -1,7 +1,8 @@
 @import "tailwindcss" source(none);
+@import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap");
 @source "../app";
 @source "../components";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -198,5 +199,3 @@
     linear-gradient(to bottom, oklch(0.78 0.12 225 / 0.07) 1px, transparent 1px);
   background-size: 48px 48px;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap");
