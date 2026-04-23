@@ -56,7 +56,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.04 255);
 
-  --primary: oklch(0.21 0.07 258);            /* deep navy */
+  --primary: oklch(0.21 0.07 258); /* deep navy */
   --primary-foreground: oklch(0.985 0.005 250);
 
   --secondary: oklch(0.97 0.012 250);
@@ -77,19 +77,26 @@
 
   --navy: oklch(0.21 0.07 258);
   --navy-foreground: oklch(0.985 0.005 250);
-  --sky: oklch(0.78 0.12 225);                /* logo accent #76C5EF */
+  --sky: oklch(0.78 0.12 225); /* logo accent #76C5EF */
   --sky-foreground: oklch(0.18 0.04 255);
-  --cta: oklch(0.72 0.17 55);                 /* warm amber CTA */
+  --cta: oklch(0.72 0.17 55); /* warm amber CTA */
   --cta-foreground: oklch(0.18 0.04 255);
   --success: oklch(0.7 0.15 160);
   --surface: oklch(0.98 0.008 240);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.18 0.05 258) 0%, oklch(0.28 0.09 245) 60%, oklch(0.42 0.13 230) 100%);
+  --gradient-hero: linear-gradient(
+    135deg,
+    oklch(0.18 0.05 258) 0%,
+    oklch(0.28 0.09 245) 60%,
+    oklch(0.42 0.13 230) 100%
+  );
   --gradient-sky: linear-gradient(135deg, oklch(0.78 0.12 225) 0%, oklch(0.68 0.14 215) 100%);
   --gradient-cta: linear-gradient(135deg, oklch(0.78 0.16 65) 0%, oklch(0.7 0.18 45) 100%);
   --shadow-soft: 0 1px 2px oklch(0.21 0.07 258 / 0.04), 0 8px 24px -8px oklch(0.21 0.07 258 / 0.08);
-  --shadow-card: 0 1px 2px oklch(0.21 0.07 258 / 0.05), 0 12px 32px -12px oklch(0.21 0.07 258 / 0.12);
-  --shadow-elevated: 0 2px 4px oklch(0.21 0.07 258 / 0.06), 0 24px 48px -16px oklch(0.21 0.07 258 / 0.18);
+  --shadow-card:
+    0 1px 2px oklch(0.21 0.07 258 / 0.05), 0 12px 32px -12px oklch(0.21 0.07 258 / 0.12);
+  --shadow-elevated:
+    0 2px 4px oklch(0.21 0.07 258 / 0.06), 0 24px 48px -16px oklch(0.21 0.07 258 / 0.18);
   --shadow-cta: 0 8px 24px -6px oklch(0.72 0.17 55 / 0.45);
 }
 
@@ -111,7 +118,8 @@
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;
-    src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2") format("woff2");
+    src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2")
+      format("woff2");
   }
 
   * {
@@ -132,23 +140,44 @@
     font-feature-settings: "ss01", "cv11";
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: "Fraunces", "Playfair Display", ui-serif, Georgia, serif;
     letter-spacing: -0.02em;
   }
 }
 
 /* Reusable utilities */
-.bg-gradient-hero { background-image: var(--gradient-hero); }
-.bg-gradient-sky { background-image: var(--gradient-sky); }
-.bg-gradient-cta { background-image: var(--gradient-cta); }
-.shadow-soft { box-shadow: var(--shadow-soft); }
-.shadow-card { box-shadow: var(--shadow-card); }
-.shadow-elevated { box-shadow: var(--shadow-elevated); }
-.shadow-cta { box-shadow: var(--shadow-cta); }
+.bg-gradient-hero {
+  background-image: var(--gradient-hero);
+}
+.bg-gradient-sky {
+  background-image: var(--gradient-sky);
+}
+.bg-gradient-cta {
+  background-image: var(--gradient-cta);
+}
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+.shadow-cta {
+  box-shadow: var(--shadow-cta);
+}
 
-.text-balance { text-wrap: balance; }
-.text-pretty { text-wrap: pretty; }
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
 
 /* Sky-dot pattern (used as decorative texture, evokes logo accent) */
 .bg-dot-pattern {

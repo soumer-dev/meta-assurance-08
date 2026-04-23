@@ -3,7 +3,17 @@
 import { useState, type FormEvent } from "react";
 import { SiteLayout } from "../../components/SiteLayout";
 import { PageHero, SectionHeading } from "../../components/ui-bits";
-import { Phone, PhoneCall, Mail, MapPin, Clock, ShieldAlert, MessageSquare, Send, Lock } from "lucide-react";
+import {
+  Phone,
+  PhoneCall,
+  Mail,
+  MapPin,
+  Clock,
+  ShieldAlert,
+  MessageSquare,
+  Send,
+  Lock,
+} from "lucide-react";
 
 const OPTIONS = [
   {
@@ -33,15 +43,30 @@ const OPTIONS = [
 ];
 
 const COORDONNEES = [
-  { icon: Phone, label: "Téléphone", value: "+212 (0) 524 406 972", sub: "Du lundi au vendredi, 9h – 18h" },
-  { icon: Mail, label: "Email", value: "contact@metassur.com", sub: "Réponse garantie sous 24h ouvrées" },
+  {
+    icon: Phone,
+    label: "Téléphone",
+    value: "+212 (0) 524 406 972",
+    sub: "Du lundi au vendredi, 9h – 18h",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "contact@metassur.com",
+    sub: "Réponse garantie sous 24h ouvrées",
+  },
   {
     icon: MapPin,
     label: "Adresse",
     value: "Av. Al Golf, Rés. Rabii 1, 1er Étg, Appt N°4",
     sub: "Sidi Youssef Ben Ali – Marrakech",
   },
-  { icon: Clock, label: "Horaires d'ouverture", value: "Lun – Ven : 9h00 – 18h00", sub: "Assistance urgence 24h/7j" },
+  {
+    icon: Clock,
+    label: "Horaires d'ouverture",
+    value: "Lun – Ven : 9h00 – 18h00",
+    sub: "Assistance urgence 24h/7j",
+  },
 ];
 
 const SUBJECTS = [
@@ -65,18 +90,18 @@ function ContactPage() {
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
-      name: formData.get('name') as string,
-      phone: formData.get('phone') as string,
-      email: formData.get('email') as string,
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      email: formData.get("email") as string,
       subject,
-      message: formData.get('message') as string,
+      message: formData.get("message") as string,
     };
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -84,12 +109,12 @@ function ContactPage() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Erreur lors de l\'envoi');
+        throw new Error(result.error || "Erreur lors de l'envoi");
       }
 
       setSent(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erreur lors de l\'envoi');
+      setError(err instanceof Error ? err.message : "Erreur lors de l'envoi");
     } finally {
       setLoading(false);
     }
@@ -123,8 +148,13 @@ function ContactPage() {
                   </span>
                 </div>
                 <h3 className="mt-6 text-xl font-semibold text-foreground">{option.title}</h3>
-                <p className="mt-2 grow text-sm leading-relaxed text-muted-foreground">{option.desc}</p>
-                <a href={option.href} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy hover:text-sky">
+                <p className="mt-2 grow text-sm leading-relaxed text-muted-foreground">
+                  {option.desc}
+                </p>
+                <a
+                  href={option.href}
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy hover:text-sky"
+                >
                   {option.cta} →
                 </a>
               </div>
@@ -142,11 +172,16 @@ function ContactPage() {
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {COORDONNEES.map((item) => (
-              <div key={item.label} className="rounded-3xl border border-border bg-white p-6 shadow-soft">
+              <div
+                key={item.label}
+                className="rounded-3xl border border-border bg-white p-6 shadow-soft"
+              >
                 <div className="inline-flex size-11 items-center justify-center rounded-xl bg-sky/15 text-sky">
                   <item.icon className="size-5" />
                 </div>
-                <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{item.label}</p>
+                <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                  {item.label}
+                </p>
                 <p className="mt-1 font-semibold text-foreground">{item.value}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{item.sub}</p>
               </div>
@@ -158,11 +193,17 @@ function ContactPage() {
                 <ShieldAlert className="size-6" />
               </div>
               <div>
-                <p className="font-display text-lg font-semibold text-foreground">Urgence sinistre — 24h/7j</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  En cas de sinistre grave en dehors des horaires, notre permanence est disponible à toute heure.
+                <p className="font-display text-lg font-semibold text-foreground">
+                  Urgence sinistre — 24h/7j
                 </p>
-                <a href="tel:+212661390788" className="mt-3 inline-flex items-center gap-2 text-base font-semibold text-navy">
+                <p className="mt-1 text-sm text-muted-foreground">
+                  En cas de sinistre grave en dehors des horaires, notre permanence est disponible à
+                  toute heure.
+                </p>
+                <a
+                  href="tel:+212661390788"
+                  className="mt-3 inline-flex items-center gap-2 text-base font-semibold text-navy"
+                >
                   <Phone className="size-4 text-cta" /> +212 661 390 788
                 </a>
               </div>
@@ -178,21 +219,28 @@ function ContactPage() {
             <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-balance sm:text-4xl">
               Envoyez-nous un message
             </h2>
-            <p className="mt-4 text-muted-foreground">Nous vous répondons dans les 24 heures ouvrées.</p>
+            <p className="mt-4 text-muted-foreground">
+              Nous vous répondons dans les 24 heures ouvrées.
+            </p>
             <div className="mt-8 flex items-start gap-3 rounded-2xl border border-border bg-white p-5 text-sm text-muted-foreground shadow-soft">
               <Lock className="mt-0.5 size-4 shrink-0 text-sky" />
               Vos données sont protégées et ne seront jamais partagées à des tiers.
             </div>
           </div>
 
-          <form onSubmit={onSubmit} className="rounded-3xl border border-border bg-white p-7 shadow-card lg:col-span-7 lg:p-9">
+          <form
+            onSubmit={onSubmit}
+            className="rounded-3xl border border-border bg-white p-7 shadow-card lg:col-span-7 lg:p-9"
+          >
             {sent ? (
               <div className="flex flex-col items-center py-12 text-center">
                 <div className="inline-flex size-14 items-center justify-center rounded-full bg-success/15 text-success">
                   <Send className="size-6" />
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-semibold">Message envoyé !</h3>
-                <p className="mt-2 text-muted-foreground">Merci, nous revenons vers vous sous 24h ouvrées.</p>
+                <p className="mt-2 text-muted-foreground">
+                  Merci, nous revenons vers vous sous 24h ouvrées.
+                </p>
                 <button
                   type="button"
                   onClick={() => {
@@ -211,15 +259,28 @@ function ContactPage() {
                     {error}
                   </div>
                 )}
-                
+
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field label="Nom complet *" name="name" placeholder="Ahmed Zakaria" required />
-                  <Field label="Téléphone *" name="phone" placeholder="06 23 45 67 89" required type="tel" />
+                  <Field
+                    label="Téléphone *"
+                    name="phone"
+                    placeholder="06 23 45 67 89"
+                    required
+                    type="tel"
+                  />
                 </div>
-                <Field label="Adresse email" name="email" placeholder="ahmed.zakaria@email.com" type="email" />
+                <Field
+                  label="Adresse email"
+                  name="email"
+                  placeholder="ahmed.zakaria@email.com"
+                  type="email"
+                />
 
                 <div>
-                  <label className="text-sm font-medium text-foreground">Objet de votre demande *</label>
+                  <label className="text-sm font-medium text-foreground">
+                    Objet de votre demande *
+                  </label>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {SUBJECTS.map((s) => (
                       <button
@@ -253,7 +314,7 @@ function ContactPage() {
                   disabled={loading}
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-6 py-3.5 text-sm font-semibold text-cta-foreground shadow-cta transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
                 >
-                  {loading ? 'Envoi en cours...' : 'Envoyer le message'}
+                  {loading ? "Envoi en cours..." : "Envoyer le message"}
                   <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>

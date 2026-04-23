@@ -14,28 +14,44 @@ const PILLARS = [
     icon: UserCheck,
     title: "Conseil personnalisé",
     desc: "Nous prenons le temps d'analyser votre situation en profondeur : profil, patrimoine, besoins et contraintes, pour vous garantir une protection réellement efficace. Pas de solution générique.",
-    points: ["Analyse précise de votre profil", "Recommandations adaptées à vos besoins", "Solutions sur mesure, sans standardisation"],
+    points: [
+      "Analyse précise de votre profil",
+      "Recommandations adaptées à vos besoins",
+      "Solutions sur mesure, sans standardisation",
+    ],
   },
   {
     n: "02",
     icon: Workflow,
     title: "Gestion simplifiée",
     desc: "Nous facilitons toutes vos démarches pour vous faire gagner du temps au quotidien. Chaque étape est simplifiée, expliquée et suivie par votre conseiller.",
-    points: ["Un interlocuteur unique", "Démarches rapides et fluides", "Suivi clair de vos contrats"],
+    points: [
+      "Un interlocuteur unique",
+      "Démarches rapides et fluides",
+      "Suivi clair de vos contrats",
+    ],
   },
   {
     n: "03",
     icon: HeartHandshake,
     title: "Accompagnement complet",
     desc: "De la souscription à la gestion des sinistres, nous restons à vos côtés. Votre conseiller vous guide à chaque étape, sans vous laisser naviguer seul dans les démarches administratives.",
-    points: ["Gestion complète des sinistres", "Conseiller dédié et joignable", "Suivi proactif de votre dossier"],
+    points: [
+      "Gestion complète des sinistres",
+      "Conseiller dédié et joignable",
+      "Suivi proactif de votre dossier",
+    ],
   },
   {
     n: "04",
     icon: Ear,
     title: "Écoute et proximité",
     desc: "Chaque client bénéficie d'une attention personnalisée. Nous écoutons vos besoins, anticipons vos questions et vous accompagnons avec disponibilité et bienveillance.",
-    points: ["Écoute active de vos besoins", "Conseillers disponibles et réactifs", "Relation humaine et de confiance"],
+    points: [
+      "Écoute active de vos besoins",
+      "Conseillers disponibles et réactifs",
+      "Relation humaine et de confiance",
+    ],
   },
 ];
 
@@ -73,7 +89,9 @@ function PourquoiPage() {
                 <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-sky/15 text-sky">
                   <pillar.icon className="size-6" />
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-semibold text-foreground">{pillar.title}</h3>
+                <h3 className="mt-5 font-display text-2xl font-semibold text-foreground">
+                  {pillar.title}
+                </h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{pillar.desc}</p>
                 <ul className="mt-6 space-y-2.5">
                   {pillar.points.map((point) => (
@@ -92,12 +110,15 @@ function PourquoiPage() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">Nos chiffres clés</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">
+                Nos chiffres clés
+              </p>
               <h2 className="mt-4 font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
                 Ce qui nous fait avancer
               </h2>
               <p className="mt-5 text-white/75 leading-relaxed">
-                Se protéger et prévoir l'avenir est fondamental. Notre mission est de vous soutenir aujourd'hui comme demain avec des solutions fiables et adaptées à votre vie.
+                Se protéger et prévoir l'avenir est fondamental. Notre mission est de vous soutenir
+                aujourd'hui comme demain avec des solutions fiables et adaptées à votre vie.
               </p>
               <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm text-white/80">
                 <span className="size-2 rounded-full bg-sky" />
@@ -106,8 +127,13 @@ function PourquoiPage() {
             </div>
             <div className="grid grid-cols-2 gap-5 lg:col-span-7">
               {STATS.map((stat) => (
-                <div key={stat.label} className="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur">
-                  <div className="font-display text-4xl font-semibold text-sky sm:text-5xl">{stat.value}</div>
+                <div
+                  key={stat.label}
+                  className="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur"
+                >
+                  <div className="font-display text-4xl font-semibold text-sky sm:text-5xl">
+                    {stat.value}
+                  </div>
                   <div className="mt-2 text-sm text-white/75">{stat.label}</div>
                 </div>
               ))}

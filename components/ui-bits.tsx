@@ -99,7 +99,13 @@ export function CtaButton({
   );
 }
 
-export function PhoneButton({ children, phone = "+212524406972" }: { children: ReactNode; phone?: string }) {
+export function PhoneButton({
+  children,
+  phone = "+212524406972",
+}: {
+  children: ReactNode;
+  phone?: string;
+}) {
   return (
     <a
       href={`tel:${phone}`}
@@ -111,7 +117,13 @@ export function PhoneButton({ children, phone = "+212524406972" }: { children: R
   );
 }
 
-export function GlassCard({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function GlassCard({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <div
       className={`rounded-3xl border border-border bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated ${className}`}

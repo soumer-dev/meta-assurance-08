@@ -4,7 +4,18 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { SiteLayout } from "./SiteLayout";
-import { Car, Home, ShieldCheck, Lock, Sparkles, Mail, PhoneCall, Check, ArrowRight, ArrowLeft } from "lucide-react";
+import {
+  Car,
+  Home,
+  ShieldCheck,
+  Lock,
+  Sparkles,
+  Mail,
+  PhoneCall,
+  Check,
+  ArrowRight,
+  ArrowLeft,
+} from "lucide-react";
 
 type Product = "auto" | "habitation";
 
@@ -68,7 +79,8 @@ export default function DevisPage() {
               Votre devis personnalisé <span className="italic text-sky">en 2 minutes</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Répondez à quelques questions. Un expert vous contacte rapidement pour affiner votre couverture.
+              Répondez à quelques questions. Un expert vous contacte rapidement pour affiner votre
+              couverture.
             </p>
           </div>
 
@@ -87,7 +99,9 @@ export default function DevisPage() {
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.25 }}
                   >
-                    {step === 0 && <Step1 product={data.product} onSelect={(product) => update({ product })} />}
+                    {step === 0 && (
+                      <Step1 product={data.product} onSelect={(product) => update({ product })} />
+                    )}
                     {step === 1 && <Step2 data={data} update={update} />}
                     {step === 2 && <Step3 data={data} update={update} />}
                   </motion.div>
@@ -105,7 +119,10 @@ export default function DevisPage() {
                     <ArrowLeft className="size-4" /> Retour
                   </button>
                 ) : (
-                  <Link href="/" className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground">
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+                  >
                     <ArrowLeft className="size-4" /> Annuler
                   </Link>
                 )}
@@ -132,7 +149,13 @@ export default function DevisPage() {
   );
 }
 
-function Reassure({ icon: Icon, children }: { icon: typeof ShieldCheck; children: React.ReactNode }) {
+function Reassure({
+  icon: Icon,
+  children,
+}: {
+  icon: typeof ShieldCheck;
+  children: React.ReactNode;
+}) {
   return (
     <li className="inline-flex items-center gap-2">
       <Icon className="size-4 text-sky" />
@@ -155,13 +178,15 @@ function Progress({ step }: { step: number }) {
                   complete
                     ? "bg-sky text-navy"
                     : active
-                    ? "bg-navy text-white ring-4 ring-sky/25"
-                    : "bg-muted text-muted-foreground"
+                      ? "bg-navy text-white ring-4 ring-sky/25"
+                      : "bg-muted text-muted-foreground"
                 }`}
               >
                 {complete ? <Check className="size-4" /> : index + 1}
               </div>
-              <span className={`mt-2 hidden text-xs font-medium sm:block ${active ? "text-foreground" : "text-muted-foreground"}`}>
+              <span
+                className={`mt-2 hidden text-xs font-medium sm:block ${active ? "text-foreground" : "text-muted-foreground"}`}
+              >
                 {label}
               </span>
             </div>
@@ -180,16 +205,36 @@ function Progress({ step }: { step: number }) {
   );
 }
 
-function Step1({ product, onSelect }: { product: Product | null; onSelect: (product: Product) => void }) {
+function Step1({
+  product,
+  onSelect,
+}: {
+  product: Product | null;
+  onSelect: (product: Product) => void;
+}) {
   const opts: { id: Product; icon: typeof Car; title: string; sub: string }[] = [
-    { id: "auto", icon: Car, title: "Assurance Auto", sub: "Voiture, moto, véhicule de collection" },
-    { id: "habitation", icon: Home, title: "Assurance Habitation", sub: "Maison, appartement, résidence" },
+    {
+      id: "auto",
+      icon: Car,
+      title: "Assurance Auto",
+      sub: "Voiture, moto, véhicule de collection",
+    },
+    {
+      id: "habitation",
+      icon: Home,
+      title: "Assurance Habitation",
+      sub: "Maison, appartement, résidence",
+    },
   ];
 
   return (
     <div>
-      <h2 className="font-display text-2xl font-semibold text-foreground">Quel type d'assurance souhaitez-vous ?</h2>
-      <p className="mt-1 text-sm text-muted-foreground">Sélectionnez le produit qui vous intéresse.</p>
+      <h2 className="font-display text-2xl font-semibold text-foreground">
+        Quel type d'assurance souhaitez-vous ?
+      </h2>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Sélectionnez le produit qui vous intéresse.
+      </p>
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
         {opts.map((item) => {
           const active = product === item.id;
@@ -204,12 +249,22 @@ function Step1({ product, onSelect }: { product: Product | null; onSelect: (prod
                   : "border-border bg-white hover:border-sky hover:-translate-y-0.5 hover:shadow-card"
               }`}
             >
-              <div className={`inline-flex size-12 items-center justify-center rounded-xl ${active ? "bg-sky text-navy" : "bg-sky/15 text-sky"}`}>
+              <div
+                className={`inline-flex size-12 items-center justify-center rounded-xl ${active ? "bg-sky text-navy" : "bg-sky/15 text-sky"}`}
+              >
                 <item.icon className="size-6" />
               </div>
               <div>
-                <div className={`text-lg font-semibold ${active ? "text-white" : "text-foreground"}`}>{item.title}</div>
-                <div className={`mt-1 text-sm ${active ? "text-white/75" : "text-muted-foreground"}`}>{item.sub}</div>
+                <div
+                  className={`text-lg font-semibold ${active ? "text-white" : "text-foreground"}`}
+                >
+                  {item.title}
+                </div>
+                <div
+                  className={`mt-1 text-sm ${active ? "text-white/75" : "text-muted-foreground"}`}
+                >
+                  {item.sub}
+                </div>
               </div>
               {active && (
                 <span className="absolute right-4 top-4 inline-flex size-7 items-center justify-center rounded-full bg-sky text-navy">
@@ -229,7 +284,8 @@ function Step2({ data, update }: { data: FormState; update: (patch: Partial<Form
     <div>
       <h2 className="font-display text-2xl font-semibold text-foreground">Vos informations</h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Pour {data.product === "auto" ? "Assurance Auto" : "Assurance Habitation"} — restons en contact.
+        Pour {data.product === "auto" ? "Assurance Auto" : "Assurance Habitation"} — restons en
+        contact.
       </p>
       <div className="mt-7 grid gap-5">
         <Input
@@ -278,11 +334,17 @@ function Step2({ data, update }: { data: FormState; update: (patch: Partial<Form
 function Step3({ data, update }: { data: FormState; update: (patch: Partial<FormState>) => void }) {
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky">Presque terminé !</p>
-      <h2 className="mt-2 font-display text-2xl font-semibold text-foreground">Renseignez votre email pour recevoir votre devis.</h2>
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky">
+        Presque terminé !
+      </p>
+      <h2 className="mt-2 font-display text-2xl font-semibold text-foreground">
+        Renseignez votre email pour recevoir votre devis.
+      </h2>
 
       <div className="mt-7 rounded-2xl border border-border bg-surface p-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Devis pour</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          Devis pour
+        </p>
         <p className="mt-1 font-semibold text-foreground">
           {data.product === "auto" ? "Assurance Auto" : "Assurance Habitation"} — {data.name}
         </p>
@@ -297,7 +359,9 @@ function Step3({ data, update }: { data: FormState; update: (patch: Partial<Form
           onChange={(value) => update({ email: value })}
           placeholder="sara.idrissi@email.com"
         />
-        <p className="mt-2 text-xs text-muted-foreground">Votre devis sera envoyé à cette adresse.</p>
+        <p className="mt-2 text-xs text-muted-foreground">
+          Votre devis sera envoyé à cette adresse.
+        </p>
       </div>
     </div>
   );
@@ -317,9 +381,12 @@ function SuccessStep({ name, onReset }: { name: string; onReset: () => void }) {
           <Check className="size-9" />
         </div>
       </div>
-      <h2 className="mt-7 font-display text-3xl font-semibold text-foreground">Demande reçue avec succès !</h2>
+      <h2 className="mt-7 font-display text-3xl font-semibold text-foreground">
+        Demande reçue avec succès !
+      </h2>
       <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-        Bonjour <span className="font-semibold text-foreground">{name || "{nom_complet}"}</span>, votre devis personnalisé a été envoyé. Un conseiller vous contactera sous 24h.
+        Bonjour <span className="font-semibold text-foreground">{name || "{nom_complet}"}</span>,
+        votre devis personnalisé a été envoyé. Un conseiller vous contactera sous 24h.
       </p>
       <div className="mt-7 flex flex-wrap justify-center gap-3 text-sm text-muted-foreground">
         <span className="inline-flex items-center gap-2 rounded-full bg-sky/15 px-4 py-1.5 font-medium text-sky">
@@ -358,7 +425,9 @@ function Input({
     <div>
       <label className="text-sm font-medium text-foreground">{label}</label>
       <div className="relative mt-2">
-        {Icon && <Icon className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />}
+        {Icon && (
+          <Icon className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        )}
         <input
           type={type}
           value={value}

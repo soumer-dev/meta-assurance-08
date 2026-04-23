@@ -46,9 +46,21 @@ export function SiteFooter() {
             Nos offres
           </h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link href="/assurance-auto" className="hover:text-white">Assurance Auto</Link></li>
-            <li><Link href="/assurance-habitation" className="hover:text-white">Assurance Habitation</Link></li>
-            <li><Link href="/devis" className="hover:text-white">Obtenir un devis</Link></li>
+            <li>
+              <Link href="/assurance-auto" className="hover:text-white">
+                Assurance Auto
+              </Link>
+            </li>
+            <li>
+              <Link href="/assurance-habitation" className="hover:text-white">
+                Assurance Habitation
+              </Link>
+            </li>
+            <li>
+              <Link href="/devis" className="hover:text-white">
+                Obtenir un devis
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -57,10 +69,26 @@ export function SiteFooter() {
             Entreprise
           </h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link href="/pourquoi-nous" className="hover:text-white">Pourquoi nous choisir</Link></li>
-            <li><a href="#" className="hover:text-white">À propos</a></li>
-            <li><a href="#" className="hover:text-white">Mentions légales</a></li>
-            <li><a href="#" className="hover:text-white">Politique de confidentialité</a></li>
+            <li>
+              <Link href="/pourquoi-nous" className="hover:text-white">
+                Pourquoi nous choisir
+              </Link>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                À propos
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Mentions légales
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Politique de confidentialité
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -71,15 +99,21 @@ export function SiteFooter() {
           <ul className="mt-5 space-y-3 text-sm">
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 size-4 shrink-0 text-sky" />
-              <a href="tel:+212524406972" className="hover:text-white">+212 (0) 524 406 972</a>
+              <a href="tel:+212524406972" className="hover:text-white">
+                +212 (0) 524 406 972
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="mt-0.5 size-4 shrink-0 text-sky" />
-              <a href="mailto:contact@metassur.com" className="hover:text-white">contact@metassur.com</a>
+              <a href="mailto:contact@metassur.com" className="hover:text-white">
+                contact@metassur.com
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-sky" />
-              <span>Av. Al Golf, Rés. Rabii 1, 1er Étg, Appt N°4, Sidi Youssef Ben Ali – Marrakech</span>
+              <span>
+                Av. Al Golf, Rés. Rabii 1, 1er Étg, Appt N°4, Sidi Youssef Ben Ali – Marrakech
+              </span>
             </li>
           </ul>
           <div className="mt-5 rounded-xl border border-white/15 bg-white/5 p-4">

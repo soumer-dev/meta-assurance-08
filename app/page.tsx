@@ -1,6 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Car, Home, UserCheck, Heart, TrendingUp, Clock, ShieldCheck, Tag, EyeOff, Headphones } from "lucide-react";
+import {
+  Car,
+  Home,
+  UserCheck,
+  Heart,
+  TrendingUp,
+  Clock,
+  ShieldCheck,
+  Tag,
+  EyeOff,
+  Headphones,
+} from "lucide-react";
 import { SiteLayout } from "../components/SiteLayout";
 import {
   CtaButton,
@@ -136,10 +147,12 @@ function HomePage() {
               Agence Allianz · Marrakech
             </span>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.02] text-balance sm:text-5xl lg:text-7xl">
-              La tranquillité d'esprit, <span className="font-display italic text-sky">assurée au quotidien</span>
+              La tranquillité d'esprit,{" "}
+              <span className="font-display italic text-sky">assurée au quotidien</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg text-pretty">
-              Avec votre agent Allianz, bénéficiez d'un accompagnement personnalisé et de garanties auto et habitation sur mesure, au meilleur prix.
+              Avec votre agent Allianz, bénéficiez d'un accompagnement personnalisé et de garanties
+              auto et habitation sur mesure, au meilleur prix.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CtaButton to="/devis">Obtenez votre devis auto en 2 minutes</CtaButton>
@@ -212,10 +225,12 @@ function HomePage() {
           <div className="lg:col-span-5">
             <Eyebrow>Notre différence</Eyebrow>
             <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-balance sm:text-4xl lg:text-5xl">
-              Un agent à vos côtés, <span className="font-display italic text-sky">pas une machine.</span>
+              Un agent à vos côtés,{" "}
+              <span className="font-display italic text-sky">pas une machine.</span>
             </h2>
             <p className="mt-5 text-white/75 leading-relaxed text-pretty">
-              Nous vous guidons avec expertise et proximité vers les solutions d'assurance les mieux adaptées à votre situation, en toute clarté.
+              Nous vous guidons avec expertise et proximité vers les solutions d'assurance les mieux
+              adaptées à votre situation, en toute clarté.
             </p>
             <div className="mt-8">
               <Link
@@ -245,13 +260,13 @@ function HomePage() {
 
       <section className="py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            eyebrow="Confiance"
-            title="Votre sérénité est notre engagement"
-          />
+          <SectionHeading eyebrow="Confiance" title="Votre sérénité est notre engagement" />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TRUST.map((item) => (
-              <div key={item.label} className="rounded-3xl border border-border bg-white p-6 shadow-soft">
+              <div
+                key={item.label}
+                className="rounded-3xl border border-border bg-white p-6 shadow-soft"
+              >
                 <div className="inline-flex size-11 items-center justify-center rounded-xl bg-sky/15 text-sky">
                   <item.icon className="size-5" />
                 </div>
@@ -264,13 +279,13 @@ function HomePage() {
 
       <section className="bg-surface py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            eyebrow="Témoignages"
-            title="Ce que disent nos clients"
-          />
+          <SectionHeading eyebrow="Témoignages" title="Ce que disent nos clients" />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {TESTIMONIALS.map((testimonial) => (
-              <div key={testimonial.name} className="rounded-3xl border border-border bg-white p-8 shadow-card">
+              <div
+                key={testimonial.name}
+                className="rounded-3xl border border-border bg-white p-8 shadow-card"
+              >
                 <p className="text-foreground">“{testimonial.quote}”</p>
                 <p className="mt-6 font-semibold text-foreground">{testimonial.name}</p>
                 <p className="text-sm text-muted-foreground">{testimonial.role}</p>

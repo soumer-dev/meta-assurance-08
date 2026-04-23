@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 
-const siteUrl = process.env.APP_URL ||  "https://metassur.com";
+const siteUrl = process.env.APP_URL || "https://metassur.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
-  }
+  },
 };
 
 export const viewport: Viewport = {
@@ -71,15 +71,7 @@ const structuredData = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       opens: "00:00",
       closes: "23:59",
     },

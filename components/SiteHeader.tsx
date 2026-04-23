@@ -33,9 +33,7 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-navy/95 backdrop-blur-md shadow-soft border-b border-white/5"
-          : "bg-navy"
+        scrolled ? "bg-navy/95 backdrop-blur-md shadow-soft border-b border-white/5" : "bg-navy"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 lg:px-8">

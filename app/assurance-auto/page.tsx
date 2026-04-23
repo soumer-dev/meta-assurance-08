@@ -142,17 +142,23 @@ function AutoPage() {
           <div className="overflow-hidden rounded-3xl bg-navy p-10 text-white shadow-elevated lg:p-14">
             <div className="grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">Notre solution</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">
+                  Notre solution
+                </p>
                 <h3 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
                   Une couverture optimisée, un prix juste
                 </h3>
                 <p className="mt-4 text-white/75 leading-relaxed">
-                  Nos agents d'assurance vous accompagnent à chaque étape pour protéger votre véhicule, sans compromis entre qualité et budget.
+                  Nos agents d'assurance vous accompagnent à chaque étape pour protéger votre
+                  véhicule, sans compromis entre qualité et budget.
                 </p>
               </div>
               <ul className="space-y-4 lg:col-span-7">
                 {SOLUTION.map((item) => (
-                  <li key={item} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <li
+                    key={item}
+                    className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
                     <div className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-sky text-navy">
                       <ShieldCheck className="size-4" />
                     </div>
@@ -195,7 +201,9 @@ function AutoPage() {
 
       <section className="bg-navy py-24 text-white sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">Notre méthode</p>
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
+            Notre méthode
+          </p>
           <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Votre assurance en 4 étapes simples
           </h2>
