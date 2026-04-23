@@ -181,13 +181,14 @@ function HomePage() {
       </section>
 
       <section className="relative isolate overflow-hidden py-24 sm:py-28">
-        <div className="absolute left-0 top-0 -z-10 h-1/2 w-1/2 opacity-10"
-              style={{
-                backgroundImage: "url('/offers-bg.webp')",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "top left",
-                backgroundSize: "auto",
-              }}
+        <div
+          className="absolute left-0 top-0 -z-10 h-1/2 w-1/2 opacity-10"
+          style={{
+            backgroundImage: "url('/offers-bg.webp')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top left",
+            backgroundSize: "auto",
+          }}
         />
         <div className="absolute -right-20 bottom-20 -z-10 size-72 rounded-full bg-cta/10 blur-3xl" />
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -228,15 +229,15 @@ function HomePage() {
       <section className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-28">
         <div className="absolute inset-0 bg-grid-pattern opacity-30" />
         <div className="absolute -left-40 top-1/3 size-[420px] rounded-full bg-sky/15 blur-3xl" />
-        <div 
-             className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10"
-             style={{
-              backgroundImage: "url('/differentiators-bg.png')",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "bottom left",
-              backgroundSize: "100% 100%",
-            }}
-             />
+        <div
+          className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10"
+          style={{
+            backgroundImage: "url('/differentiators-bg.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "bottom left",
+            backgroundSize: "100% 100%",
+          }}
+        />
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <Eyebrow>Notre différence</Eyebrow>

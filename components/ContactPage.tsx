@@ -193,7 +193,7 @@ export default function ContactPage() {
               Vos données sont protégées et ne seront jamais partagées à des tiers.
             </div>
           </div>
-            
+
           <form
             onSubmit={onSubmit}
             className="rounded-3xl border border-border bg-white p-7 shadow-card lg:col-span-7 lg:p-9"

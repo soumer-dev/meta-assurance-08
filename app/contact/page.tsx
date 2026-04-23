@@ -332,7 +332,6 @@ function ContactPage() {
           </form>
         </div>
       </section>
-
     </SiteLayout>
   );
 }
