@@ -159,11 +159,12 @@
 }
 
 .bg-gradient-cta {
-  background-image: var(--gradient-cta);
+  background-color: #00C9D2;
+  background-image: none;
 }
 
-.shadow-soft {
-  box-shadow: var(--shadow-soft);
+.shadow-cta {
+  box-shadow: none;
 }
 
 .shadow-card {

@@ -70,7 +70,7 @@ function PourquoiPage() {
         title="Pourquoi choisir Meta assurances et conseils ?"
         italicWords="Meta"
         subtitle="Parce que votre protection mérite plus qu'une offre standard, nous créons avec vous une couverture sur mesure, pensée pour vous."
-        image="/hero-pourquoi.jpg"
+        image="/hero-pourquoi.webp"
         cta={{ label: "Obtenir mon devis", to: "/devis" }}
       />
 
@@ -106,8 +106,17 @@ function PourquoiPage() {
         </div>
       </section>
 
-      <section className="bg-navy py-24 text-white sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <section className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-28">
+        <div
+          className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10"
+          style={{
+            backgroundImage: "url('/methode-bg.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "bottom left",
+            backgroundSize: "auto",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">

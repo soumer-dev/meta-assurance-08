@@ -34,7 +34,7 @@ export const metadata = {
     locale: "fr-FR",
     images: [
       {
-        url: "/hero-home.jpg",
+        url: "/hero-home.webp",
         width: 1200,
         height: 630,
         alt: "Assurance auto et habitation à Marrakech",
@@ -46,7 +46,7 @@ export const metadata = {
     title: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
     description:
       "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
-    images: ["/hero-home.jpg"],
+    images: ["/hero-home.webp"],
   },
 };
 
@@ -131,7 +131,7 @@ function HomePage() {
           <div className="relative h-full w-full">
             <Image
               priority
-              src="/hero-home.jpg"
+              src="/hero-home.webp"
               alt="Famille marchant ensemble au coucher du soleil"
               fill
               className="object-cover object-center opacity-65"
@@ -181,8 +181,15 @@ function HomePage() {
       </section>
 
       <section className="relative isolate overflow-hidden py-24 sm:py-28">
-        <div className="absolute -left-20 top-20 size-72 rounded-full bg-sky/10 blur-3xl" />
-        <div className="absolute -right-20 bottom-20 size-72 rounded-full bg-cta/10 blur-3xl" />
+        <div className="absolute left-0 top-0 -z-10 h-1/2 w-1/2 opacity-10"
+              style={{
+                backgroundImage: "url('/offers-bg.webp')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "top left",
+                backgroundSize: "auto",
+              }}
+        />
+        <div className="absolute -right-20 bottom-20 -z-10 size-72 rounded-full bg-cta/10 blur-3xl" />
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             eyebrow="Nos offres"
@@ -221,6 +228,15 @@ function HomePage() {
       <section className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-28">
         <div className="absolute inset-0 bg-grid-pattern opacity-30" />
         <div className="absolute -left-40 top-1/3 size-[420px] rounded-full bg-sky/15 blur-3xl" />
+        <div 
+             className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10"
+             style={{
+              backgroundImage: "url('/differentiators-bg.png')",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "bottom left",
+              backgroundSize: "100% 100%",
+            }}
+             />
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <Eyebrow>Notre différence</Eyebrow>

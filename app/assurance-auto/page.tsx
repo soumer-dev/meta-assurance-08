@@ -110,7 +110,7 @@ function AutoPage() {
         title="Votre assurance auto, enfin optimisée."
         italicWords="enfin optimisée."
         subtitle="Un accompagnement clair et personnalisé pour conduire l'esprit tranquille."
-        image="/hero-auto.jpg"
+        image="/hero-auto.webp"
         cta={{ label: "Protégez mon véhicule", to: "/devis" }}
       />
 
@@ -199,8 +199,17 @@ function AutoPage() {
         </div>
       </section>
 
-      <section className="bg-navy py-24 text-white sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <section className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-28">
+        <div
+          className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10"
+          style={{
+            backgroundImage: "url('/methode-bg.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "bottom left",
+            backgroundSize: "auto",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
             Notre méthode
           </p>

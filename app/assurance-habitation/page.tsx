@@ -147,7 +147,7 @@ function HabitationPage() {
         title="Protégez votre logement, protégez votre vie."
         italicWords="protégez votre vie."
         subtitle="Votre logement est votre patrimoine. Nous construisons une couverture complète pour protéger chaque aspect de votre foyer."
-        image="/hero-habitation.jpg"
+        image="/hero-habitation.webp"
         cta={{ label: "Protégez votre logement", to: "/devis" }}
       />
 
@@ -198,8 +198,17 @@ function HabitationPage() {
         </div>
       </section>
 
-      <section className="bg-navy py-24 text-white sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <section className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-28">
+        <div
+          className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10"
+          style={{
+            backgroundImage: "url('/methode-bg.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "bottom left",
+            backgroundSize: "auto",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
             Gestion des sinistres
           </p>
@@ -228,8 +237,17 @@ function HabitationPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <section className="relative isolate overflow-hidden py-24 sm:py-28">
+        <div
+          className="absolute left-0 top-0 z-0 h-1/2 w-1/2 opacity-50"
+          style={{
+            backgroundImage: "url('/valeursbg.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top right",
+            backgroundSize: "auto",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading eyebrow="Nos valeurs" title="Ce qui nous guide au quotidien" />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {VALUES.map((value) => (

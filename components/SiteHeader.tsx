@@ -49,8 +49,10 @@ export function SiteHeader() {
                 key={item.to}
                 href={item.to}
                 aria-current={isActive ? "page" : undefined}
-                className={`rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:text-white ${
-                  isActive ? "text-white bg-white/10" : ""
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-white ${
+                  isActive
+                    ? "bg-white/10 text-[#F59E0B]"
+                    : "text-white/75"
                 }`}
               >
                 {item.label}
@@ -62,7 +64,8 @@ export function SiteHeader() {
         <div className="hidden lg:block">
           <Link
             href="/devis"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-semibold text-cta-foreground shadow-cta transition-transform hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            style={{ backgroundColor: "#00C9D2" }}
           >
             Obtenir un devis
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -89,8 +92,10 @@ export function SiteHeader() {
                 <Link
                   key={item.to}
                   href={item.to}
-                  className={`rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/10 ${
-                    isActive ? "bg-white/10 text-white" : ""
+                  className={`rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-white/10 ${
+                    isActive
+                      ? "bg-white/10 text-[#F59E0B]"
+                      : "text-white/80"
                   }`}
                 >
                   {item.label}
@@ -99,7 +104,8 @@ export function SiteHeader() {
             })}
             <Link
               href="/devis"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-5 py-3 text-sm font-semibold text-cta-foreground shadow-cta"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-5 py-3 text-sm font-semibold text-white"
+              style={{ backgroundColor: "#00C9D2" }}
             >
               Obtenir un devis
               <ArrowRight className="size-4" />

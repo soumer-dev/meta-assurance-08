@@ -127,7 +127,7 @@ function ContactPage() {
         title="Parlons de votre protection"
         italicWords="votre protection"
         subtitle="Une question, un sinistre, une demande de devis ? Notre équipe de conseillers est disponible et vous répond rapidement."
-        image="/hero-contact.jpg"
+        image="/hero-contact.webp"
         cta={{ label: "Demander un rappel", href: "#contact-form" }}
       />
 
@@ -226,6 +226,16 @@ function ContactPage() {
               <Lock className="mt-0.5 size-4 shrink-0 text-sky" />
               Vos données sont protégées et ne seront jamais partagées à des tiers.
             </div>
+            <div className="mt-6 overflow-hidden rounded-3xl border border-border shadow-card">
+              <iframe
+                title="Localisation Meta Assurances et Conseils"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.5!2d-7.9709532!3d31.6237903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafefc7e959ad65%3A0x8f604c783e10cc44!2sSidi%20Youssef%20Ben%20Ali%20Assurances!5e0!3m2!1sfr!2sma!4v1"
+                className="h-[420px] w-full"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
 
           <form
@@ -312,7 +322,7 @@ function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-6 py-3.5 text-sm font-semibold text-cta-foreground shadow-cta transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-6 py-3.5 text-sm font-semibold text-cta-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
                 >
                   {loading ? "Envoi en cours..." : "Envoyer le message"}
                   <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -323,18 +333,6 @@ function ContactPage() {
         </div>
       </section>
 
-      <section className="pb-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="overflow-hidden rounded-3xl border border-border shadow-card">
-            <iframe
-              title="Localisation Meta Assurances et Conseils"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-7.97%2C31.60%2C-7.94%2C31.63&amp;layer=mapnik&amp;marker=31.6125%2C-7.9520"
-              className="h-[420px] w-full"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
     </SiteLayout>
   );
 }

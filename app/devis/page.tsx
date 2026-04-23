@@ -85,7 +85,11 @@ function DevisPage() {
   return (
     <SiteLayout>
       <section className="relative isolate min-h-[calc(100vh-80px)] overflow-hidden bg-surface py-16 sm:py-24">
-        <div className="absolute inset-0 bg-dot-pattern opacity-60" />
+        <div
+          className="absolute inset-0 bg-center bg-no-repeat bg-cover"
+          style={{ backgroundImage: "url('/devis-bg.png')" }}
+        />
+        <div className="absolute inset-0 bg-dot-pattern opacity-20" />
         <div className="absolute -left-40 top-20 size-[420px] rounded-full bg-sky/15 blur-3xl" />
         <div className="absolute -right-40 bottom-20 size-[420px] rounded-full bg-cta/15 blur-3xl" />
 
@@ -156,7 +160,7 @@ function DevisPage() {
                 <button
                   onClick={next}
                   disabled={!canContinue || loading}
-                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-7 py-3 text-sm font-semibold text-cta-foreground shadow-cta transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-7 py-3 text-sm font-semibold text-cta-foreground transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0"
                 >
                   {loading
                     ? "Envoi en cours..."

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     locale: "fr-FR",
     images: [
       {
-        url: "/hero-home.jpg",
+        url: "/hero-home.webp",
         width: 1200,
         height: 630,
         alt: "Assurance auto et habitation à Marrakech",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
     description:
       "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
-    images: ["/hero-home.jpg"],
+    images: ["/hero-home.webp"],
   },
   robots: {
     index: true,

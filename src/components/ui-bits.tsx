@@ -64,7 +64,7 @@ export function CtaButton({
 }: {
   to?: string;
   href?: string;
-  variant?: "primary" | "ghost" | "outline" | "navy";
+  variant?: "primary" | "ghost" | "outline" | "navy" | "finalCtaPrimary";
   children: ReactNode;
   icon?: boolean;
 }) {
@@ -73,6 +73,7 @@ export function CtaButton({
   const styles = {
     primary: "bg-gradient-cta text-cta-foreground shadow-cta hover:-translate-y-0.5",
     navy: "bg-navy text-white hover:bg-navy/90 shadow-soft",
+    finalCtaPrimary: "bg-[#021737] text-white hover:bg-[#021737]/90",
     ghost: "text-foreground hover:bg-muted",
     outline: "border border-border bg-white text-foreground hover:bg-muted",
   } as const;
@@ -211,9 +212,16 @@ export function FinalCta({
   secondary?: { label: string };
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-navy py-20 text-white sm:py-24">
-      <div className="absolute inset-0 bg-grid-pattern opacity-40" />
-      <div className="absolute -right-32 top-1/2 size-[420px] -translate-y-1/2 rounded-full bg-sky/15 blur-3xl" />
+    <section className="relative isolate overflow-hidden bg-[#00C9D2] py-20 text-white sm:py-24">
+      <div
+        className="absolute inset-0 bg-no-repeat bg-right"
+        style={{
+          backgroundImage: "url('/bgImage.png')",
+          backgroundPosition: "center right",
+          backgroundSize: "contain",
+        }}
+      />
+      <div className="absolute inset-0 bg-[#00C9D2]/20" />
       <div className="relative mx-auto max-w-4xl px-5 text-center lg:px-8">
         {eyebrow && (
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">{eyebrow}</p>
@@ -233,7 +241,9 @@ export function FinalCta({
           {subtitle}
         </p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">
-          <CtaButton to={primary.to}>{primary.label}</CtaButton>
+          <CtaButton to={primary.to} variant="finalCtaPrimary">
+            {primary.label}
+          </CtaButton>
           {secondary && <PhoneButton>{secondary.label}</PhoneButton>}
         </div>
       </div>
