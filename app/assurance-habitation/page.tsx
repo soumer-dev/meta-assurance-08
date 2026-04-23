@@ -239,12 +239,12 @@ function HabitationPage() {
 
       <section className="relative isolate overflow-hidden py-24 sm:py-28">
         <div
-          className="absolute left-0 top-0 z-0 h-1/2 w-1/2 opacity-50"
+          className="absolute left-0 top-0 z-0 h-full w-1/2 opacity-50"
           style={{
             backgroundImage: "url('/valeursbg.png')",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "top right",
-            backgroundSize: "auto",
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
           }}
         />
         <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
