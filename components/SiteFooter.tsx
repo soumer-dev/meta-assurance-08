@@ -28,10 +28,24 @@ export function SiteFooter() {
             Votre agence d'assurance au Maroc, pour une couverture optimale et une sérénité totale.
           </p>
           <div className="mt-6 flex gap-3">
-            {(["facebook", "linkedin", "instagram"] as const).map((kind) => (
+            {(
+              [
+                { kind: "facebook", href: "https://www.facebook.com/share/1bk3nfP8zy/" },
+                {
+                  kind: "linkedin",
+                  href: "https://www.linkedin.com/company/meta-assurances-et-conseils/?viewAsMember=true",
+                },
+                {
+                  kind: "instagram",
+                  href: "https://www.instagram.com/meta_assurances_et_conseils?igsh=MW15b3p6M25udXVhcA==",
+                },
+              ] as const
+            ).map(({ kind, href }) => (
               <a
                 key={kind}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={kind}
                 className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
               >
