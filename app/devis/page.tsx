@@ -100,7 +100,7 @@ function DevisPage() {
               Devis gratuit — Sans engagement
             </span>
             <h1 className="mt-5 font-display text-3xl font-semibold leading-[1.1] text-balance sm:text-4xl lg:text-5xl">
-              Votre devis personnalisé <span className="italic text-sky">en 2 minutes</span>
+              Votre devis personnalisé <span className="italic text-sky"> <p> sans frais</p> </span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
               Répondez à quelques questions. Un expert vous contacte rapidement pour affiner votre

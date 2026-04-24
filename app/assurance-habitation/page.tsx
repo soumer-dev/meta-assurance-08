@@ -1,6 +1,7 @@
 import { SiteLayout } from "../../components/SiteLayout";
 import {
   CtaButton,
+  Eyebrow,
   FinalCta,
   PageHero,
   PhoneButton,
@@ -25,6 +26,10 @@ import {
   ShieldCheck,
   HandHeart,
   Clock,
+  Microwave,
+  Cable,
+  MirrorRectangular,
+  TruckIcon,
 } from "lucide-react";
 
 export const metadata = {
@@ -45,11 +50,6 @@ const PROFILES = [
     desc: "Couverture obligatoire dès l'entrée dans les lieux, avec des garanties étendues.",
   },
   {
-    icon: Building2,
-    title: "Propriétaire bailleur",
-    desc: "Garanties loyers impayés, vacance locative et recours des locataires.",
-  },
-  {
     icon: TreePalm,
     title: "Résidence secondaire",
     desc: "Protection adaptée aux logements inoccupés temporairement.",
@@ -65,11 +65,11 @@ const RISKS = [
   {
     icon: Droplets,
     title: "Dégâts des eaux",
-    desc: "Votre logement reste protégé contre les fuites, les infiltrations et les débordements.",
+    desc: "Remboursement de vos biens et frais de remise en état après effraction.",
   },
   {
     icon: ShieldAlert,
-    title: "Vol",
+    title: "Vol & tentative de vol",
     desc: "Remboursement de vos biens et frais de remise en état après effraction.",
   },
   {
@@ -78,14 +78,29 @@ const RISKS = [
     desc: "Prise en charge face aux tempêtes, aux inondations et aux tremblements de terre.",
   },
   {
-    icon: HeartHandshake,
-    title: "Responsabilité civile",
+    icon: Microwave,
+    title: "Dommages aux appareils électroménagers",
     desc: "Protection si un tiers est victime d'un accident survenu dans votre logement.",
   },
   {
-    icon: Wrench,
-    title: "Bris d'équipements",
-    desc: "Remplacement de vos équipements et installations endommagés.",
+    icon: Cable,
+    title: "Dommages aux équipements électriques",
+    desc: "Couverture contre les surtensions, courts-circuits et pannes d’origine électrique.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Responsabilité civile - chef de famille",
+    desc: "Couverture des dommages corporels, matériels ou immatériels causés à des tiers par accident.",
+  },
+  {
+    icon: MirrorRectangular,
+    title: "Bris de glaces et de miroirs",
+    desc: "Prise en charge des vitres, baies vitrées et miroirs cassés accidentellement.",
+  },
+  {
+    icon: TruckIcon,
+    title: "Relogement et déplacement du mobilier",
+    desc: "Couverture des coûts de déplacement et de stockage de votre mobilier après sinistre.",
   },
 ];
 
@@ -154,7 +169,7 @@ function HabitationPage() {
       <section className="py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading eyebrow="Votre profil" title="Une solution pour chaque situation" />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-6 sm:grid-cols-3 lg:grid-cols-3">
             {PROFILES.map((profile) => (
               <div
                 key={profile.title}
@@ -210,7 +225,7 @@ function HabitationPage() {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-            Gestion des sinistres
+            <Eyebrow> Gestion des sinistres </Eyebrow>
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Un accompagnement de bout en bout
@@ -268,8 +283,9 @@ function HabitationPage() {
 
       <FinalCta
         title="Garantissez la sécurité de votre domicile"
-        subtitle="Gratuit, sans engagement. Notre expert analyse votre situation et vous propose la meilleure couverture."
+        subtitle="Un devis gratuit et sans engagement en quelques clics."
         primary={{ label: "Démarrer mon devis", to: "/devis" }}
+        secondary={{ label: "Rappel immédiat" }}
       />
     </SiteLayout>
   );

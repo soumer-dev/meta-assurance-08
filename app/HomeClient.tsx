@@ -19,9 +19,9 @@ import { CtaButton, Eyebrow, FinalCta, GlassCard, SectionHeading } from "../comp
 import { StatCounter } from "../components/StatCounter";
 
 const STATS = [
-  { target: 12000, suffix: "+", label: "Clients protégés" },
+  { target: 25000, suffix: "+", label: "Clients protégés" },
   { target: 98, suffix: "%", label: "De satisfaction" },
-  { target: 15, suffix: " ans", label: "D'expertise" },
+  { target: 25, suffix: " ans", label: "D'expertise" },
   { target: 24, suffix: "h/7j", label: "D'assistance" },
 ];
 
@@ -29,15 +29,15 @@ const OFFERS = [
   {
     icon: Car,
     title: "Assurance Auto",
-    desc: "Responsabilité civile, tous risques, assistance 24h/7j. Nous trouvons la formule parfaite pour votre véhicule.",
-    points: ["Tous risques & tiers", "Assistance 24h/7j", "Véhicule de remplacement"],
+    desc: "Une protection adaptée à chaque conducteur pour vous trouver la formule parfaite pour votre usage.",
+    points: ["Responsabilité civile", "Assistance automobile", "Véhicule de remplacement"],
     to: "/assurance-auto",
   },
   {
     icon: Home,
     title: "Assurance Habitation",
     desc: "Protégez votre patrimoine avec une couverture adaptée à votre logement et à vos besoins réels.",
-    points: ["Dommages & vol", "Relogement d'urgence", "Suivi de sinistre dédié"],
+    points: ["Responsabilité civile", "Suivi de sinistre dédié", "Remboursement  des dommages "],
     to: "/assurance-habitation",
   },
 ];
@@ -67,9 +67,9 @@ const DIFFERENTIATORS = [
 
 const TRUST = [
   { icon: ShieldCheck, label: "Sinistre simplifié" },
-  { icon: Tag, label: "Tarifs exclusifs" },
+  { icon: Tag, label: "Bon rapport qualité/prix" },
   { icon: EyeOff, label: "Zéro frais cachés" },
-  { icon: Headphones, label: "Assistance 24h/7j" },
+  { icon: Headphones, label: "Assistance sinistre 24h/7j" },
 ];
 
 const TESTIMONIALS = [
@@ -112,18 +112,17 @@ export function HomeClient() {
           <div className="lg:col-span-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/85 backdrop-blur">
               <span className="size-1.5 rounded-full bg-sky" />
-              Agence Allianz · Marrakech
+              Meta Assurances et Conseils
             </span>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.02] text-balance sm:text-5xl lg:text-7xl">
               La tranquillité d'esprit,{" "}
               <span className="font-display italic text-sky">assurée au quotidien</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg text-pretty">
-              Avec votre agent Allianz, bénéficiez d'un accompagnement personnalisé et de garanties
-              auto et habitation sur mesure, au meilleur prix.
+            Avec votre agent d’assurance à Marrakech, bénéficiez d’un accompagnement dédié et de garanties auto et habitation sur mesure, au meilleur prix.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <CtaButton to="/devis">Obtenez votre devis auto en 2 minutes</CtaButton>
+              <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>
               <Link
                 href="/pourquoi-nous"
                 className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
@@ -282,10 +281,10 @@ export function HomeClient() {
       </section>
 
       <FinalCta
-        title="Anticipez les imprévus sur la route"
-        subtitle="Un devis gratuit et sans engagement en quelques clics."
-        primary={{ label: "Démarrer mon devis", to: "/devis" }}
-        secondary={{ label: "Rappel immédiat" }}
+        title="Prêt à être mieux protégé ?"
+        subtitle="Obtenez votre devis personnalisé en quelques clics. Simple, clair, efficace."
+        primary={{ label: "Demander mon devis", to: "/devis" }}
+        secondary={{ label: "Demander un conseil" }}
       />
     </SiteLayout>
   );

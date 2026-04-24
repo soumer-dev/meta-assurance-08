@@ -1,17 +1,17 @@
 import { SiteLayout } from "../../components/SiteLayout";
 import {
   CtaButton,
+  Eyebrow,
   FinalCta,
   PageHero,
   PhoneButton,
   SectionHeading,
 } from "../../components/ui-bits";
 import {
-  Car,
-  Home,
   ShieldCheck,
-  Wrench,
-  PhoneCall,
+  Hammer,
+  TrafficCone,
+  Repeat,
   HeartHandshake,
   AlertTriangle,
   TrendingUp,
@@ -20,6 +20,11 @@ import {
   Search,
   ListChecks,
   FileCheck,
+  User,
+  Users,
+  Flame,
+  Scale,
+  PhoneCall,
 } from "lucide-react";
 
 export const metadata = {
@@ -37,8 +42,8 @@ const PAINS = [
 
 const SOLUTION = [
   "Analyse complète de votre profil et de vos besoins",
+  "Expert en assurance dédié à votre écoute",
   "Garanties adaptées à votre usage réel",
-  "Conseiller dédié joignable en moins de 15 min",
   "Gestion complète de vos sinistres",
 ];
 
@@ -49,29 +54,44 @@ const GUARANTEES = [
     desc: "Couverture obligatoire des dommages causés aux tiers : corporels, matériels et immatériels.",
   },
   {
-    icon: Car,
-    title: "Tous risques",
-    desc: "Protection maximale pour votre véhicule, qu'il s'agisse d'un accident responsable ou non.",
-  },
-  {
-    icon: PhoneCall,
-    title: "Assistance 0 km",
-    desc: "En panne devant chez vous ? Nous intervenons immédiatement, sans franchise de distance.",
-  },
-  {
-    icon: Wrench,
-    title: "Véhicule de remplacement",
-    desc: "Véhicule de substitution disponible dès le premier jour en cas de sinistre.",
-  },
-  {
-    icon: HeartHandshake,
+    icon: User,
     title: "Protection du conducteur",
-    desc: "Indemnisation de vos préjudices corporels en cas d'accident, même responsable.",
+    desc: "Prise en charge des dommages corporels subis par le conducteur en cas d’accident.",
   },
   {
-    icon: PhoneCall,
+    icon: Users,
+    title: "Protection des personnes transportées",
+    desc: "Indemnisation des passagers en cas de dommages corporels lors d’un sinistre.",
+  },
+  {
+    icon: Flame,
+    title: "Incendie & vol",
+    desc: "Protection de votre véhicule contre les risques d’incendie, de vol et de tentative de vol.",
+  },
+  {
+    icon: Hammer,
     title: "Bris de glace",
     desc: "Remplacement rapide de votre pare-brise sans impact sur votre bonus-malus.",
+  },
+  {
+    icon: TrafficCone,
+    title: "Panne & accident",
+    desc: "Prise en charge rapide des dommages matériels suite à une panne ou un accident.",
+  },
+  {
+    icon: Scale,
+    title: "Protection juridique",
+    desc: "Assistance et prise en charge des frais juridiques en cas de litige lié à votre véhicule.",
+  },
+  {
+    icon: PhoneCall,
+    title: "Assistance en cas de sinistre",
+    desc: "Assistance rapide et accompagnement en cas de sinistre couvert par votre contrat.",
+  },
+  {
+    icon: Repeat,
+    title: "Véhicule de remplacement",
+    desc: "Mise à disposition d’un véhicule temporaire en cas d’immobilisation du vôtre.",
   },
 ];
 
@@ -142,9 +162,7 @@ function AutoPage() {
           <div className="overflow-hidden rounded-3xl bg-navy p-10 text-white shadow-elevated lg:p-14">
             <div className="grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-                  Notre solution
-                </p>
+                <Eyebrow>Notre solution</Eyebrow>
                 <h3 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
                   Une couverture optimisée, un prix juste
                 </h3>
@@ -169,7 +187,7 @@ function AutoPage() {
             </div>
             <div className="mt-10 flex flex-wrap gap-3">
               <CtaButton to="/devis">Protéger mon véhicule</CtaButton>
-              <PhoneButton>+212 (0) 524 406 972</PhoneButton>
+              <PhoneButton>Demander un conseil</PhoneButton>
             </div>
           </div>
         </div>
@@ -211,7 +229,7 @@ function AutoPage() {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-            Notre méthode
+            <Eyebrow>Notre méthode</Eyebrow>
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Votre assurance en 4 étapes simples

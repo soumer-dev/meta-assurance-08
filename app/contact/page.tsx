@@ -28,7 +28,7 @@ const OPTIONS = [
     icon: PhoneCall,
     pill: "< 10 min",
     title: "Rappel immédiat",
-    desc: "Un conseiller vous rappelle en moins de 10 minutes, du lundi au vendredi de 9h à 18h.",
+    desc: "Un conseiller vous rappelle rapidement pour répondre à vos questions.",
     cta: "Demander un rappel",
     href: "#contact-form",
   },
@@ -46,8 +46,8 @@ const COORDONNEES = [
   {
     icon: Phone,
     label: "Téléphone",
-    value: "+212 (0) 524 406 972",
-    sub: "Du lundi au vendredi, 9h – 18h",
+    value: "+212 661 403 452",
+    sub: "Nos conseillers à votre écoute, sans attente",
   },
   {
     icon: Mail,
@@ -64,8 +64,13 @@ const COORDONNEES = [
   {
     icon: Clock,
     label: "Horaires d'ouverture",
-    value: "Lun – Ven : 9h00 – 18h00",
-    sub: "Assistance urgence 24h/7j",
+    value: (
+      <>
+        Lun – Ven : 9h00 – 18h00 <br />
+        Sam : 9h00 - 14h00
+      </>
+    ),
+    sub: "À votre service",
   },
 ];
 
@@ -327,7 +332,11 @@ function ContactPage() {
                   {loading ? "Envoi en cours..." : "Envoyer le message"}
                   <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
+                <p className="mt-4 text-muted-foreground  text-[12px] text-center">
+                  Nous vous répondons dans les 24 heures ouvrées.
+                </p>
               </div>
+              
             )}
           </form>
         </div>

@@ -71,9 +71,9 @@ export function CtaButton({
   const base =
     "group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200";
   const styles = {
-    primary: "bg-gradient-cta text-white hover:-translate-y-0.5",
+    primary: "bg-gradient-cta text-[#051223] hover:-translate-y-0.5",
     navy: "bg-navy text-white hover:bg-navy/90 shadow-soft",
-    finalCtaPrimary: "bg-[#021737] text-white hover:bg-[#021737]/90",
+    finalCtaPrimary: "bg-[#F59E0B] text-[#051223] hover:bg-[#F59E0B]/90",
     ghost: "text-foreground hover:bg-muted",
     outline: "border border-border bg-white text-foreground hover:bg-muted",
   } as const;
@@ -195,7 +195,7 @@ export function PageHero({
             <CtaButton to={cta.to} href={cta.href}>
               {cta.label}
             </CtaButton>
-            <PhoneButton>+212 (0) 524 406 972</PhoneButton>
+            <PhoneButton>+212 661 403 452</PhoneButton>
           </div>
         </div>
       </div>

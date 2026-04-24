@@ -53,9 +53,9 @@ const PILLARS = [
 ];
 
 const STATS = [
-  { target: 12000, suffix: "+", label: "Clients protégés" },
+  { target: 25000, suffix: "+", label: "Clients protégés" },
   { target: 98, suffix: "%", label: "Satisfaction client" },
-  { target: 15, suffix: " ans", label: "D'expertise" },
+  { target: 25, suffix: " ans", label: "D'expertise" },
   { target: 30, suffix: "+", label: "Assureurs partenaires" },
 ];
 
@@ -63,7 +63,7 @@ export function PourquoiClient() {
   return (
     <SiteLayout>
       <PageHero
-        badge="Allianz Maroc"
+        badge="Assuré en toute tranquillité"
         title="Pourquoi choisir Meta assurances et conseils ?"
         italicWords="Meta"
         subtitle="Parce que votre protection mérite plus qu'une offre standard, nous créons avec vous une couverture sur mesure, pensée pour vous."
@@ -128,7 +128,7 @@ export function PourquoiClient() {
               </p>
               <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm text-white/80">
                 <span className="size-2 rounded-full bg-sky" />
-                Agence Meta assurances et conseils — Allianz Maroc
+                Agence Meta assurances et conseils 
               </div>
             </div>
             <div className="grid grid-cols-2 gap-5 lg:col-span-7">
@@ -148,8 +148,9 @@ export function PourquoiClient() {
 
       <FinalCta
         title="Commencez votre protection aujourd'hui"
-        subtitle="Rejoignez les 12 000 clients qui nous font confiance. Devis gratuit et sans engagement en 2 minutes."
+        subtitle="Rejoignez les 25 000 clients qui nous font confiance. Devis gratuit et sans."
         primary={{ label: "Obtenir mon devis gratuit", to: "/devis" }}
+        secondary={{ label: "Rappel immédiat" }}
       />
     </SiteLayout>
   );

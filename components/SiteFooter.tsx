@@ -113,8 +113,8 @@ export function SiteFooter() {
           <ul className="mt-5 space-y-3 text-sm">
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 size-4 shrink-0 text-sky" />
-              <a href="tel:+212524406972" className="hover:text-white">
-                +212 (0) 524 406 972
+              <a href="tel:+212661403452" className="hover:text-white">
+                +212 661 403 452
               </a>
             </li>
             <li className="flex items-start gap-3">
@@ -134,8 +134,8 @@ export function SiteFooter() {
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky">
               <ShieldAlert className="size-4" /> Assistance 24h/7j
             </div>
-            <a href="tel:+212661390788" className="mt-1 block text-base font-semibold text-white">
-              +212 (0) 661 390 788
+            <a href="tel:+212802057057" className="mt-1 block text-base font-semibold text-white">
+              +212 802 057 057
             </a>
           </div>
         </div>
