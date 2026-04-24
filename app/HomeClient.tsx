@@ -119,7 +119,8 @@ export function HomeClient() {
               <span className="font-display italic text-sky">assurée au quotidien</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg text-pretty">
-            Avec votre agent d’assurance à Marrakech, bénéficiez d’un accompagnement dédié et de garanties auto et habitation sur mesure, au meilleur prix.
+              Avec votre agent d’assurance à Marrakech, bénéficiez d’un accompagnement dédié et de
+              garanties auto et habitation sur mesure, au meilleur prix.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>

@@ -128,7 +128,7 @@ export function PourquoiClient() {
               </p>
               <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm text-white/80">
                 <span className="size-2 rounded-full bg-sky" />
-                Agence Meta assurances et conseils 
+                Agence Meta assurances et conseils
               </div>
             </div>
             <div className="grid grid-cols-2 gap-5 lg:col-span-7">

@@ -336,7 +336,6 @@ function ContactPage() {
                   Nous vous répondons dans les 24 heures ouvrées.
                 </p>
               </div>
-              
             )}
           </form>
         </div>
