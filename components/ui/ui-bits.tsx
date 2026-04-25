@@ -168,7 +168,14 @@ export function PageHero({
     <section className="relative isolate overflow-hidden bg-navy">
       <div className="absolute inset-0">
         <div className="relative h-full w-full">
-          <Image src={image} alt="" fill className="object-cover opacity-55" />
+          <Image
+            src={image}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-55"
+          />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/30" />
         <div className="absolute inset-0 bg-grid-pattern opacity-30" />

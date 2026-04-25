@@ -1,16 +1,39 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Fraunces } from "next/font/google";
 import "../styles/globals.css";
+
+// ─── Fonts ────────────────────────────────────────────────────────────────────
+// next/font self-hosts fonts — zero external network requests, no render-blocking
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: true,
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-fraunces",
+  weight: "variable",
+  style: ["normal", "italic"],
+  preload: true,
+});
+
+// ─── Site metadata ────────────────────────────────────────────────────────────
 
 const siteUrl = process.env.APP_URL || "https://metassur.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Meta Assurances et Conseils",
-  description:
-    "Agence Allianz à Marrakech. Auto, habitation, conseil personnalisé et assistance 24h/7j. Obtenez votre devis gratuit en 2 minutes.",
-  alternates: {
-    canonical: "/",
+  title: {
+    default: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
+    template: "%s | Meta Assurances",
   },
+  description:
+    "Agence Allianz à Marrakech. Assurance auto et habitation sur mesure, conseil personnalisé et assistance 24h/7j. Devis gratuit en 2 minutes.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
     description:
@@ -24,7 +47,7 @@ export const metadata: Metadata = {
         url: "/hero-home.webp",
         width: 1200,
         height: 630,
-        alt: "Assurance auto et habitation à Marrakech",
+        alt: "Assurance auto et habitation à Marrakech — Meta Assurances",
       },
     ],
   },
@@ -54,15 +77,19 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#0f172a",
+  width: "device-width",
+  initialScale: 1,
 };
+
+// ─── Structured data (JSON-LD) ────────────────────────────────────────────────
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "InsuranceAgency",
   name: "Meta Assurances et Conseils",
   url: siteUrl,
-  logo: `https://metassur.com/logo.svg`,
-  image: `https://metassur.com/hero-home.webp`,
+  logo: `${siteUrl}/logo.svg`,
+  image: `${siteUrl}/hero-home.webp`,
   telephone: "+212661403452",
   email: "contact@metassur.com",
   inLanguage: "fr-MA",
@@ -104,17 +131,33 @@ const structuredData = {
     "@type": "OfferCatalog",
     name: "Produits d'assurance",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Assurance Auto" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Assurance Habitation" } },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Assurance Auto",
+          url: `${siteUrl}/particuliers/assurance-auto`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Assurance Habitation",
+          url: `${siteUrl}/particuliers/assurance-habitation`,
+        },
+      },
     ],
   },
   description:
     "Agence d'assurance Allianz à Marrakech spécialisée en assurance auto et habitation avec assistance 24h/7j.",
 };
 
+// ─── Root layout ──────────────────────────────────────────────────────────────
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr-MA">
+    <html lang="fr" className={`${inter.variable} ${fraunces.variable}`}>
       <body>
         <script
           type="application/ld+json"

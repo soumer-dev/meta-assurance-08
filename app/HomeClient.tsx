@@ -102,6 +102,7 @@ export function HomeClient() {
               src="/hero-home.webp"
               alt="Famille marchant ensemble au coucher du soleil"
               fill
+              sizes="100vw"
               className="object-cover object-center opacity-65"
             />
           </div>
