@@ -1,12 +1,5 @@
-import { SiteLayout } from "../../components/SiteLayout";
-import {
-  CtaButton,
-  Eyebrow,
-  FinalCta,
-  PageHero,
-  PhoneButton,
-  SectionHeading,
-} from "../../components/ui-bits";
+import { SiteLayout } from "../SiteLayout";
+import { CtaButton, Eyebrow, FinalCta, PageHero, PhoneButton, SectionHeading } from "../ui-bits";
 import {
   ShieldCheck,
   Hammer,
@@ -26,20 +19,6 @@ import {
   Scale,
   PhoneCall,
 } from "lucide-react";
-
-export const metadata = {
-  title: "Assurance Auto à Marrakech — Devis Gratuit | Meta Assurances",
-  description:
-    "Assurance auto RC, tous risques, assistance 0 km à Marrakech. Agent Allianz dédié, gestion des sinistres incluse. Devis gratuit et sans engagement en 2 minutes.",
-  alternates: { canonical: "/assurance-auto" },
-  openGraph: {
-    title: "Assurance Auto à Marrakech — Devis Gratuit | Meta Assurances",
-    description:
-      "Assurance auto RC, tous risques, assistance 0 km à Marrakech. Devis gratuit en 2 minutes.",
-    url: "/assurance-auto",
-    images: [{ url: "/hero-auto.webp", width: 1200, height: 630, alt: "Assurance auto Marrakech" }],
-  },
-};
 
 const PAINS = [
   { icon: TrendingUp, text: "Votre prime augmente chaque année sans explication claire" },
@@ -64,17 +43,17 @@ const GUARANTEES = [
   {
     icon: User,
     title: "Protection du conducteur",
-    desc: "Prise en charge des dommages corporels subis par le conducteur en cas d’accident.",
+    desc: "Prise en charge des dommages corporels subis par le conducteur en cas d'accident.",
   },
   {
     icon: Users,
     title: "Protection des personnes transportées",
-    desc: "Indemnisation des passagers en cas de dommages corporels lors d’un sinistre.",
+    desc: "Indemnisation des passagers en cas de dommages corporels lors d'un sinistre.",
   },
   {
     icon: Flame,
     title: "Incendie & vol",
-    desc: "Protection de votre véhicule contre les risques d’incendie, de vol et de tentative de vol.",
+    desc: "Protection de votre véhicule contre les risques d'incendie, de vol et de tentative de vol.",
   },
   {
     icon: Hammer,
@@ -99,7 +78,7 @@ const GUARANTEES = [
   {
     icon: Repeat,
     title: "Véhicule de remplacement",
-    desc: "Mise à disposition d’un véhicule temporaire en cas d’immobilisation du vôtre.",
+    desc: "Mise à disposition d'un véhicule temporaire en cas d'immobilisation du vôtre.",
   },
 ];
 
@@ -130,7 +109,7 @@ const STEPS = [
   },
 ];
 
-function AutoPage() {
+export function AssuranceAutoPage() {
   return (
     <SiteLayout>
       <PageHero
@@ -174,7 +153,7 @@ function AutoPage() {
                 <h3 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
                   Une couverture optimisée, un prix juste
                 </h3>
-                <p className="mt-4 text-white/75 leading-relaxed">
+                <p className="mt-4 leading-relaxed text-white/75">
                   Nos agents d'assurance vous accompagnent à chaque étape pour protéger votre
                   véhicule, sans compromis entre qualité et budget.
                 </p>
@@ -269,5 +248,3 @@ function AutoPage() {
     </SiteLayout>
   );
 }
-
-export default AutoPage;

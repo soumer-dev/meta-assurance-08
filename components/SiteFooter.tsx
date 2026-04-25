@@ -61,12 +61,12 @@ export function SiteFooter() {
           </h4>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
-              <Link href="/assurance-auto" className="hover:text-white">
+              <Link href="/particuliers/assurance-auto" className="hover:text-white">
                 Assurance Auto
               </Link>
             </li>
             <li>
-              <Link href="/assurance-habitation" className="hover:text-white">
+              <Link href="/particuliers/assurance-habitation" className="hover:text-white">
                 Assurance Habitation
               </Link>
             </li>

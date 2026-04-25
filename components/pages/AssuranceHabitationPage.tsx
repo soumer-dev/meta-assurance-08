@@ -1,16 +1,8 @@
-import { SiteLayout } from "../../components/SiteLayout";
-import {
-  CtaButton,
-  Eyebrow,
-  FinalCta,
-  PageHero,
-  PhoneButton,
-  SectionHeading,
-} from "../../components/ui-bits";
+import { SiteLayout } from "../SiteLayout";
+import { CtaButton, Eyebrow, FinalCta, PageHero, PhoneButton, SectionHeading } from "../ui-bits";
 import {
   Home,
   Key,
-  Building2,
   TreePalm,
   Flame,
   Droplets,
@@ -31,26 +23,6 @@ import {
   MirrorRectangular,
   TruckIcon,
 } from "lucide-react";
-
-export const metadata = {
-  title: "Assurance Habitation à Marrakech — Devis Gratuit | Meta Assurances",
-  description:
-    "Assurance habitation pour propriétaires et locataires à Marrakech. Couverture incendie, dégâts des eaux, vol, catastrophes naturelles. Devis gratuit en 2 minutes.",
-  alternates: { canonical: "/assurance-habitation" },
-  openGraph: {
-    title: "Assurance Habitation à Marrakech — Devis Gratuit | Meta Assurances",
-    description: "Protection complète de votre logement à Marrakech. Devis gratuit en 2 minutes.",
-    url: "/assurance-habitation",
-    images: [
-      {
-        url: "/hero-habitation.webp",
-        width: 1200,
-        height: 630,
-        alt: "Assurance habitation Marrakech",
-      },
-    ],
-  },
-};
 
 const PROFILES = [
   {
@@ -99,7 +71,7 @@ const RISKS = [
   {
     icon: Cable,
     title: "Dommages aux équipements électriques",
-    desc: "Couverture contre les surtensions, courts-circuits et pannes d’origine électrique.",
+    desc: "Couverture contre les surtensions, courts-circuits et pannes d'origine électrique.",
   },
   {
     icon: HeartHandshake,
@@ -168,7 +140,7 @@ const VALUES = [
   },
 ];
 
-function HabitationPage() {
+export function AssuranceHabitationPage() {
   return (
     <SiteLayout>
       <PageHero
@@ -239,12 +211,12 @@ function HabitationPage() {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-            <Eyebrow> Gestion des sinistres </Eyebrow>
+            <Eyebrow>Gestion des sinistres</Eyebrow>
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Un accompagnement de bout en bout
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-white/75 leading-relaxed">
+          <p className="mx-auto mt-5 max-w-2xl text-center leading-relaxed text-white/75">
             En cas de sinistre, vous n'êtes jamais seul. Notre équipe prend en charge l'intégralité
             du processus.
           </p>
@@ -304,5 +276,3 @@ function HabitationPage() {
     </SiteLayout>
   );
 }
-
-export default HabitationPage;

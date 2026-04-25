@@ -31,14 +31,14 @@ const OFFERS = [
     title: "Assurance Auto",
     desc: "Une protection adaptée à chaque conducteur pour vous trouver la formule parfaite pour votre usage.",
     points: ["Responsabilité civile", "Assistance automobile", "Véhicule de remplacement"],
-    to: "/assurance-auto",
+    to: "/particuliers/assurance-auto",
   },
   {
     icon: Home,
     title: "Assurance Habitation",
     desc: "Protégez votre patrimoine avec une couverture adaptée à votre logement et à vos besoins réels.",
     points: ["Responsabilité civile", "Suivi de sinistre dédié", "Remboursement  des dommages "],
-    to: "/assurance-habitation",
+    to: "/particuliers/assurance-habitation",
   },
 ];
 
