@@ -107,7 +107,7 @@ function DesktopDropdown({
                 }`}
                 onClick={() => setOpen(false)}
               >
-                <div className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-sky/20 text-sky">
+                <div className="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-sky/20 text-sky">
                   <sub.icon className="size-4" />
                 </div>
                 <div>
@@ -116,7 +116,6 @@ function DesktopDropdown({
                   >
                     {sub.label}
                   </p>
-                  <p className="mt-0.5 text-xs leading-relaxed text-white/60">{sub.desc}</p>
                 </div>
               </Link>
             );
