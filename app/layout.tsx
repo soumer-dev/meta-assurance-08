@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import "../styles/globals.css";
+import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 
 // ─── Fonts ────────────────────────────────────────────────────────────────────
 // next/font self-hosts fonts — zero external network requests, no render-blocking
@@ -163,6 +164,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <WhatsAppButton />
         {children}
       </body>
     </html>
