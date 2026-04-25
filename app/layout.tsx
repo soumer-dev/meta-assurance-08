@@ -125,7 +125,7 @@ const structuredData = {
   sameAs: [
     "https://www.facebook.com/share/1bk3nfP8zy/",
     "https://www.linkedin.com/company/meta-assurances-et-conseils/?viewAsMember=true",
-    "https://www.instagram.com/meta_assurances_et_conseils?igsh=MW15b3p6M25udXVhcA==",
+    "https://www.instagram.com/meta_assurances_et_conseils",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
