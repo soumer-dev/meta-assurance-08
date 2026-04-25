@@ -1,15 +1,15 @@
 import { HomeClient } from "./HomeClient";
 
 export const metadata = {
-  title: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
+  title: "Assurance Auto & Habitation à Marrakech — Meta Assurances et Conseils",
   description:
-    "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
+    "Agent Allianz à Marrakech. Assurance auto tous risques, assurance habitation sur mesure, devis gratuit en 2 minutes. Conseiller dédié, assistance 24h/7j.",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
+    title: "Assurance Auto & Habitation à Marrakech — Meta Assurances et Conseils",
     description:
-      "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
-    type: "website",
-    locale: "fr-FR",
+      "Agent Allianz à Marrakech. Assurance auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
+    url: "/",
     images: [
       {
         url: "/hero-home.webp",

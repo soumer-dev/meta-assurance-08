@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Meta Assurances et Conseils",
     type: "website",
-    locale: "fr-FR",
+    locale: "fr_MA",
     images: [
       {
         url: "/hero-home.webp",
@@ -61,28 +61,60 @@ const structuredData = {
   "@type": "InsuranceAgency",
   name: "Meta Assurances et Conseils",
   url: siteUrl,
-  telephone: "+212524406972",
+  logo: `https://metassur.com/logo.svg`,
+  image: `https://metassur.com/hero-home.webp`,
+  telephone: "+212661403452",
+  email: "contact@metassur.com",
+  inLanguage: "fr-MA",
+  priceRange: "MAD",
+  currenciesAccepted: "MAD",
+  paymentAccepted: "Cash, Chèque, Virement",
+  areaServed: {
+    "@type": "City",
+    name: "Marrakech",
+    sameAs: "https://www.wikidata.org/wiki/Q101625",
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Al Golf, Rés. Rabii 1, 1er Étg, Appt N°4",
     addressLocality: "Marrakech",
+    postalCode: "40000",
+    addressRegion: "Marrakech-Safi",
     addressCountry: "MA",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 31.6237903,
+    longitude: -7.9709532,
   },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "00:00",
-      closes: "23:59",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "18:00",
     },
   ],
+  sameAs: [
+    "https://www.facebook.com/share/1bk3nfP8zy/",
+    "https://www.linkedin.com/company/meta-assurances-et-conseils/?viewAsMember=true",
+    "https://www.instagram.com/meta_assurances_et_conseils?igsh=MW15b3p6M25udXVhcA==",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Produits d'assurance",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Assurance Auto" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Assurance Habitation" } },
+    ],
+  },
   description:
     "Agence d'assurance Allianz à Marrakech spécialisée en assurance auto et habitation avec assistance 24h/7j.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr-MA">
       <body>
         <script
           type="application/ld+json"

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /devis
+
+Sitemap: https://metassur.com/sitemap.xml
