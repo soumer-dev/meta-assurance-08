@@ -14,9 +14,9 @@ import {
   EyeOff,
   Headphones,
 } from "lucide-react";
-import { SiteLayout } from "../components/SiteLayout";
-import { CtaButton, Eyebrow, FinalCta, GlassCard, SectionHeading } from "../components/ui-bits";
-import { StatCounter } from "../components/StatCounter";
+import { SiteLayout } from "../components/layout/SiteLayout";
+import { CtaButton, Eyebrow, FinalCta, GlassCard, SectionHeading } from "../components/ui/ui-bits";
+import { StatCounter } from "../components/ui/StatCounter";
 
 const STATS = [
   { target: 25000, suffix: "+", label: "Clients protégés" },

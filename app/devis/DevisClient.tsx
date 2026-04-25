@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { SiteLayout } from "../../components/SiteLayout";
+import { SiteLayout } from "../../components/layout/SiteLayout";
 import { Car, Home, ShieldCheck } from "lucide-react";
 import { ArrowRight, ArrowLeft, Check, Lock, Sparkles, Mail, PhoneCall } from "lucide-react";
 

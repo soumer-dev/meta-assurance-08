@@ -1,5 +1,5 @@
-import { SiteLayout } from "../SiteLayout";
-import { CtaButton, Eyebrow, FinalCta, PageHero, PhoneButton, SectionHeading } from "../ui-bits";
+import { SiteLayout } from "../layout/SiteLayout";
+import { CtaButton, Eyebrow, FinalCta, PageHero, PhoneButton, SectionHeading } from "../ui/ui-bits";
 import {
   Home,
   Key,

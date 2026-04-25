@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { SiteLayout } from "../../components/SiteLayout";
-import { PageHero, SectionHeading } from "../../components/ui-bits";
+import { SiteLayout } from "../../components/layout/SiteLayout";
+import { PageHero, SectionHeading } from "../../components/ui/ui-bits";
 import {
   Phone,
   PhoneCall,

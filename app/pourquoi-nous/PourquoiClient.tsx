@@ -1,8 +1,8 @@
 "use client";
 
-import { SiteLayout } from "../../components/SiteLayout";
-import { FinalCta, PageHero, SectionHeading } from "../../components/ui-bits";
-import { StatCounter } from "../../components/StatCounter";
+import { SiteLayout } from "../../components/layout/SiteLayout";
+import { FinalCta, PageHero, SectionHeading } from "../../components/ui/ui-bits";
+import { StatCounter } from "../../components/ui/StatCounter";
 import { UserCheck, Workflow, HeartHandshake, Ear, Check } from "lucide-react";
 
 const PILLARS = [

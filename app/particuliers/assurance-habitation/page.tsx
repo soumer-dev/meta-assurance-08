@@ -1,4 +1,4 @@
-import { AssuranceHabitationPage } from "../../../components/pages/AssuranceHabitationPage";
+import { AssuranceHabitationPage } from "../../../components/sections/AssuranceHabitationPage";
 
 export const metadata = {
   title: "Assurance Habitation à Marrakech — Devis Gratuit | Meta Assurances",

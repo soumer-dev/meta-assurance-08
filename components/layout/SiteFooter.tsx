@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, ShieldAlert } from "lucide-react";
-import { Logo } from "./Logo";
+import { Logo } from "../ui/Logo";
 
 function SocialIcon({ kind }: { kind: "facebook" | "linkedin" | "instagram" }) {
   const paths: Record<string, string> = {

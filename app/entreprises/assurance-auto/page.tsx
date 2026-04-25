@@ -1,4 +1,4 @@
-import { AssuranceAutoPage } from "../../../components/pages/AssuranceAutoPage";
+import { AssuranceAutoPage } from "../../../components/sections/AssuranceAutoPage";
 
 export const metadata = {
   title: "Assurance Auto Entreprises à Marrakech — Devis Gratuit | Meta Assurances",

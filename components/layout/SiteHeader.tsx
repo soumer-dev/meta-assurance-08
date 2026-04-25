@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight, ChevronDown, Car, Home } from "lucide-react";
-import { Logo } from "./Logo";
+import { Logo } from "../ui/Logo";
 
 // ─── Nav structure ────────────────────────────────────────────────────────────
 
