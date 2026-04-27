@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+async function verifyRecaptcha(token: string | null): Promise<boolean> {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret || !token) return true; // skip if not configured
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${secret}&response=${token}`,
+  });
+  const data = await res.json();
+  return data.success === true && (data.score ?? 1) >= 0.5;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
@@ -11,14 +23,19 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
     const body = await request.json();
-    const { name, phone, email, subject, message } = body;
+    const { name, phone, email, subject, message, recaptchaToken } = body;
 
     // Validate required fields
     if (!name || !phone || !subject) {
       return NextResponse.json({ error: "Nom, téléphone et objet sont requis" }, { status: 400 });
     }
 
-    // Send email to admin
+    // reCAPTCHA verification
+    const isHuman = await verifyRecaptcha(recaptchaToken ?? null);
+    if (!isHuman) {
+      return NextResponse.json({ error: "Vérification anti-spam échouée." }, { status: 400 });
+    }
+
     const { data, error } = await resend.emails.send({
       from: "Meta Assurances <noreply@metassur.com>",
       to: [process.env.RECIPIENT_EMAIL || "admin@metassur.com"],
@@ -28,7 +45,6 @@ export async function POST(request: NextRequest) {
           <h2 style="color: #1e293b; border-bottom: 2px solid #0ea5e9; padding-bottom: 10px;">
             Nouveau message de contact
           </h2>
-          
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #334155; margin-top: 0;">Informations du contact</h3>
             <p><strong>Nom :</strong> ${name}</p>
@@ -36,18 +52,14 @@ export async function POST(request: NextRequest) {
             ${email ? `<p><strong>Email :</strong> ${email}</p>` : ""}
             <p><strong>Objet :</strong> ${subject}</p>
           </div>
-          
           ${
             message
-              ? `
-            <div style="background-color: #ffffff; padding: 20px; border-left: 4px solid #0ea5e9; margin: 20px 0;">
+              ? `<div style="background-color: #ffffff; padding: 20px; border-left: 4px solid #0ea5e9; margin: 20px 0;">
               <h3 style="color: #334155; margin-top: 0;">Message</h3>
               <p style="white-space: pre-wrap;">${message}</p>
-            </div>
-          `
+            </div>`
               : ""
           }
-          
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
             <p>Ce message a été envoyé depuis le formulaire de contact du site Meta Assurances.</p>
           </div>

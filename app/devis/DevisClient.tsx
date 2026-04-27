@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { SiteLayout } from "../../components/layout/SiteLayout";
+import { useRecaptcha } from "../../lib/useRecaptcha";
 import { Car, Home, ShieldCheck } from "lucide-react";
 import { ArrowRight, ArrowLeft, Check, Lock, Sparkles, Mail, PhoneCall } from "lucide-react";
 
@@ -35,6 +36,7 @@ export function DevisClient() {
   });
 
   const update = (patch: Partial<FormState>) => setData((prev) => ({ ...prev, ...patch }));
+  const { getToken } = useRecaptcha();
 
   const canContinue =
     (step === 0 && data.product !== null) ||
@@ -48,10 +50,11 @@ export function DevisClient() {
       setLoading(true);
       setError(null);
       try {
+        const recaptchaToken = await getToken("devis_form");
         const response = await fetch("/api/devis", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ ...data, recaptchaToken }),
         });
         const result = await response.json();
         if (!response.ok) throw new Error(result.error || "Erreur lors de l'envoi");

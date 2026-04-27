@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+async function verifyRecaptcha(token: string | null): Promise<boolean> {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret || !token) return true; // skip if not configured
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${secret}&response=${token}`,
+  });
+  const data = await res.json();
+  return data.success === true && (data.score ?? 1) >= 0.5;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
@@ -11,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
     const body = await request.json();
-    const { product, name, phone, city, callback, email } = body;
+    const { product, name, phone, city, callback, email, recaptchaToken } = body;
 
     // Validate required fields
     if (!product || !name || !phone || !city || !email) {
@@ -21,9 +33,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // reCAPTCHA verification
+    const isHuman = await verifyRecaptcha(recaptchaToken ?? null);
+    if (!isHuman) {
+      return NextResponse.json({ error: "Vérification anti-spam échouée." }, { status: 400 });
+    }
+
     const productName = product === "auto" ? "Assurance Auto" : "Assurance Habitation";
 
-    // Send notification email to admin only
     const adminEmail = await resend.emails.send({
       from: "Meta Assurances <noreply@metassur.com>",
       to: [process.env.RECIPIENT_EMAIL || "admin@metassur.com"],
@@ -33,7 +50,6 @@ export async function POST(request: NextRequest) {
           <h2 style="color: #1e293b; border-bottom: 2px solid #f59e0b; padding-bottom: 10px;">
             🎯 Nouvelle demande de devis
           </h2>
-          
           <div style="background-color: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
             <h3 style="color: #92400e; margin-top: 0;">Détails du prospect</h3>
             <p><strong>Produit :</strong> ${productName}</p>
@@ -43,19 +59,15 @@ export async function POST(request: NextRequest) {
             <p><strong>Ville :</strong> ${city}</p>
             <p><strong>Rappel demandé :</strong> ${callback ? "✅ Oui, dans les 10 minutes" : "❌ Non"}</p>
           </div>
-          
           ${
             callback
-              ? `
-            <div style="background-color: #fee2e2; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ef4444;">
+              ? `<div style="background-color: #fee2e2; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ef4444;">
               <p style="color: #991b1b; margin: 0; font-weight: bold;">
                 ⚡ RAPPEL URGENT DEMANDÉ - Contacter dans les 10 minutes
               </p>
-            </div>
-          `
+            </div>`
               : ""
           }
-          
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
             <p>Demande reçue le ${new Date().toLocaleString("fr-FR", {
               timeZone: "Africa/Casablanca",
@@ -75,10 +87,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Erreur lors de l'envoi de l'email" }, { status: 500 });
     }
 
-    return NextResponse.json({
-      success: true,
-      adminMessageId: adminEmail.data?.id,
-    });
+    return NextResponse.json({ success: true, adminMessageId: adminEmail.data?.id });
   } catch (error) {
     console.error("Quote form error:", error);
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });

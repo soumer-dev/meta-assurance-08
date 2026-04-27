@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SiteLayout } from "../../components/layout/SiteLayout";
 import { PageHero, SectionHeading } from "../../components/ui/ui-bits";
+import { useRecaptcha } from "../../lib/useRecaptcha";
 import {
   Phone,
   PhoneCall,
@@ -88,6 +89,7 @@ export function ContactClient() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { getToken } = useRecaptcha();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -95,12 +97,14 @@ export function ContactClient() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
+    const recaptchaToken = await getToken("contact_form");
     const data = {
       name: formData.get("name") as string,
       phone: formData.get("phone") as string,
       email: formData.get("email") as string,
       subject,
       message: formData.get("message") as string,
+      recaptchaToken,
     };
 
     try {
