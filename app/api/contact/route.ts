@@ -36,9 +36,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Vérification anti-spam échouée." }, { status: 400 });
     }
 
+    const recipients = (process.env.RECIPIENT_EMAIL || "admin@metassur.com")
+      .split(",")
+      .map((e) => e.trim())
+      .filter(Boolean);
+
     const { data, error } = await resend.emails.send({
       from: "Meta Assurances <noreply@metassur.com>",
-      to: [process.env.RECIPIENT_EMAIL || "admin@metassur.com"],
+      to: recipients,
       subject: `Nouveau message de contact - ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

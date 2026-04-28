@@ -41,9 +41,14 @@ export async function POST(request: NextRequest) {
 
     const productName = product === "auto" ? "Assurance Auto" : "Assurance Habitation";
 
+    const recipients = (process.env.RECIPIENT_EMAIL || "admin@metassur.com")
+      .split(",")
+      .map((e) => e.trim())
+      .filter(Boolean);
+
     const adminEmail = await resend.emails.send({
       from: "Meta Assurances <noreply@metassur.com>",
-      to: [process.env.RECIPIENT_EMAIL || "admin@metassur.com"],
+      to: recipients,
       subject: `Nouvelle demande de devis ${productName} - ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
