@@ -139,7 +139,7 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-2 px-5 py-6 text-xs text-white/55 sm:flex-row sm:items-center lg:px-8">
           <p>
-            © {new Date().getFullYear()}{" "} Meta assurances et conseils, appuyé par{" "}
+            © {new Date().getFullYear()} Meta assurances et conseils, appuyé par
             <a
               href="https://monarkit.net"
               target="_blank"
