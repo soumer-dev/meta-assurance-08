@@ -90,7 +90,7 @@ const structuredData = {
   "@type": "InsuranceAgency",
   name: "Meta Assurances et Conseils",
   url: siteUrl,
-  logo: `${siteUrl}/logo.svg`,
+  logo: `${siteUrl}/LOGO Meta assurance.svg`,
   image: `${siteUrl}/hero-home.webp`,
   telephone: "+212661403452",
   email: "contact@metassur.com",

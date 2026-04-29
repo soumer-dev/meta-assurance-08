@@ -80,18 +80,13 @@ export function SiteFooter() {
 
         <div className="lg:col-span-2">
           <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-            Entreprise
+            Liens utiles
           </h4>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
               <Link href="/pourquoi-nous" className="hover:text-white">
                 Pourquoi nous choisir
               </Link>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                À propos
-              </a>
             </li>
             <li>
               <a href="#" className="hover:text-white">
@@ -143,7 +138,18 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-2 px-5 py-6 text-xs text-white/55 sm:flex-row sm:items-center lg:px-8">
-          <p>© 2026 Meta assurances et conseils. Tous droits réservés.</p>
+          <p>
+            © {new Date().getFullYear()}{" "} Meta assurances et conseils, appuyé par{" "}
+            <a
+              href="https://monarkit.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-white hover:text-primary transition-colors"
+            >
+              MONARK IT
+            </a>
+            . Tous droits réservés.
+          </p>
           <p className="italic">Conçu pour votre tranquillité d'esprit.</p>
         </div>
       </div>
