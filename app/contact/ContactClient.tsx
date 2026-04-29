@@ -56,7 +56,7 @@ const COORDONNEES = [
     label: "Email",
     value: "contact@metassur.com",
     sub: "Réponse garantie sous 24h ouvrées",
-    href: "mailto:contact@metassur.com"
+    href: "mailto:contact@metassur.com",
   },
   {
     icon: MapPin,
