@@ -23,7 +23,7 @@ const OPTIONS = [
     title: "Assistance urgence",
     desc: "Sinistre en dehors des heures ouvrées ? Notre équipe d'urgence est disponible 24h/7j.",
     cta: "Parlez à un expert",
-    href: "tel:+212661390788",
+    href: "tel:+212802057057",
   },
   {
     icon: PhoneCall,
@@ -31,7 +31,7 @@ const OPTIONS = [
     title: "Rappel immédiat",
     desc: "Un conseiller vous rappelle rapidement pour répondre à vos questions.",
     cta: "Demander un rappel",
-    href: "#contact-form",
+    href: "tel:+212661390788",
   },
   {
     icon: MessageSquare,
@@ -49,18 +49,21 @@ const COORDONNEES = [
     label: "Téléphone",
     value: "+212 661 403 452",
     sub: "Nos conseillers à votre écoute, sans attente",
+    href: "tel:+212661403452",
   },
   {
     icon: Mail,
     label: "Email",
     value: "contact@metassur.com",
     sub: "Réponse garantie sous 24h ouvrées",
+    href: "mailto:contact@metassur.com"
   },
   {
     icon: MapPin,
     label: "Adresse",
     value: "Av. Al Golf, Rés. Rabii 1, 1er Étg, Appt N°4",
     sub: "Sidi Youssef Ben Ali – Marrakech",
+    href: "https://www.google.com/maps/dir//Sidi+Youssef+Ben+Ali+Assurances,+1er+%C3%A9tage,+Avenue+Al+golf+r%C3%A9sidence+rabii+1+Appartement+4,+Marrakech+40000/@31.6346214,-8.0078531,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0xdafefc7e959ad65:0x8f604c783e10cc44!2m2!1d-7.9709532!2d31.6237903!5m2!1e2!1e4?hl=en-GB&authuser=0&entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     icon: Clock,
@@ -73,6 +76,7 @@ const COORDONNEES = [
       </>
     ),
     sub: "À votre service",
+    href: "https://www.google.com/maps/dir//Sidi+Youssef+Ben+Ali+Assurances,+1er+%C3%A9tage,+Avenue+Al+golf+r%C3%A9sidence+rabii+1+Appartement+4,+Marrakech+40000/@31.6346214,-8.0078531,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0xdafefc7e959ad65:0x8f604c783e10cc44!2m2!1d-7.9709532!2d31.6237903!5m2!1e2!1e4?hl=en-GB&authuser=0&entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D",
   },
 ];
 
@@ -175,9 +179,14 @@ export function ContactClient() {
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {COORDONNEES.map((item) => (
-              <div
+              <a
                 key={item.label}
-                className="rounded-3xl border border-border bg-white p-6 shadow-soft"
+                href={item.href}
+                aria-label={item.label}
+                {...(item.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="group rounded-3xl border border-border bg-white p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-elevated"
               >
                 <div className="inline-flex size-11 items-center justify-center rounded-xl bg-sky/15 text-sky">
                   <item.icon className="size-5" />
@@ -187,7 +196,7 @@ export function ContactClient() {
                 </p>
                 <p className="mt-1 font-semibold text-foreground">{item.value}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{item.sub}</p>
-              </div>
+              </a>
             ))}
           </div>
           <div className="mt-8 overflow-hidden rounded-3xl border border-cta/20 bg-gradient-to-r from-cta/10 to-transparent p-6 sm:p-8">
@@ -204,10 +213,10 @@ export function ContactClient() {
                   toute heure.
                 </p>
                 <a
-                  href="tel:+212661390788"
+                  href="tel:+212802057057"
                   className="mt-3 inline-flex items-center gap-2 text-base font-semibold text-navy"
                 >
-                  <Phone className="size-4 text-cta" /> +212 661 390 788
+                  <Phone className="size-4 text-cta" /> +212 802 057 057
                 </a>
               </div>
             </div>
