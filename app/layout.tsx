@@ -160,6 +160,11 @@ const structuredData = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${fraunces.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preload" as="image" href="/hero-home.webp" fetchPriority="high" />
+      </head>
       <body>
         <GoogleTagManager />
         <script
@@ -169,6 +174,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WhatsAppButton />
         {children}
       </body>
+    
     </html>
+    
   );
 }
