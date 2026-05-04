@@ -144,7 +144,7 @@ export function SiteFooter() {
               href="https://monarkit.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-white transition-colors"
+              className="font-semibold text-white/55 transition-colors"
             >
               MONARK IT
             </a>
