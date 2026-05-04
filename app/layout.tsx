@@ -174,8 +174,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WhatsAppButton />
         {children}
       </body>
-    
     </html>
-    
   );
 }
