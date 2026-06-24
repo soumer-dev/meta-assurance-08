@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { SiteLayout } from "../../components/layout/SiteLayout";
 import { useRecaptcha } from "../../lib/useRecaptcha";
@@ -22,8 +23,8 @@ interface FormState {
 const STEPS = ["Type d'assurance", "Vos informations", "Contact"];
 
 export function DevisClient() {
+  const router = useRouter();
   const [step, setStep] = useState(0);
-  const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<FormState>({
@@ -58,7 +59,7 @@ export function DevisClient() {
         });
         const result = await response.json();
         if (!response.ok) throw new Error(result.error || "Erreur lors de l'envoi");
-        setDone(true);
+        router.push("/confirmation-demande");
       } catch (err) {
         setError(err instanceof Error ? err.message : "Erreur lors de l'envoi");
       } finally {
@@ -68,13 +69,6 @@ export function DevisClient() {
   };
 
   const back = () => setStep((current) => Math.max(0, current - 1));
-
-  const reset = () => {
-    setDone(false);
-    setStep(0);
-    setError(null);
-    setData({ product: null, name: "", phone: "", city: "", callback: true, email: "" });
-  };
 
   return (
     <SiteLayout>
@@ -103,67 +97,59 @@ export function DevisClient() {
           </div>
 
           <div className="relative mt-10 rounded-[28px] border border-border bg-white p-7 shadow-elevated sm:p-10">
-            {!done && <Progress step={step} />}
+            <Progress step={step} />
 
             <div className="mt-8">
-              <AnimatePresence mode="wait">
-                {done ? (
-                  <SuccessStep key="done" name={data.name} onReset={reset} />
-                ) : (
-                  <motion.div
-                    key={step}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    {step === 0 && (
-                      <Step1 product={data.product} onSelect={(product) => update({ product })} />
-                    )}
-                    {step === 1 && <Step2 data={data} update={update} />}
-                    {step === 2 && <Step3 data={data} update={update} />}
-                  </motion.div>
+              <motion.div
+                key={step}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.25 }}
+              >
+                {step === 0 && (
+                  <Step1 product={data.product} onSelect={(product) => update({ product })} />
                 )}
-              </AnimatePresence>
+                {step === 1 && <Step2 data={data} update={update} />}
+                {step === 2 && <Step3 data={data} update={update} />}
+              </motion.div>
             </div>
 
-            {!done && (
-              <div className="mt-10 flex items-center justify-between gap-3">
-                {error && (
-                  <div className="absolute -top-16 left-0 right-0 rounded-2xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
-                    {error}
-                  </div>
-                )}
-                {step > 0 ? (
-                  <button
-                    onClick={back}
-                    disabled={loading}
-                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted disabled:opacity-50"
-                  >
-                    <ArrowLeft className="size-4" /> Retour
-                  </button>
-                ) : (
-                  <Link
-                    href="/"
-                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground"
-                  >
-                    <ArrowLeft className="size-4" /> Annuler
-                  </Link>
-                )}
+            <div className="mt-10 flex items-center justify-between gap-3">
+              {error && (
+                <div className="absolute -top-16 left-0 right-0 rounded-2xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
+                  {error}
+                </div>
+              )}
+              {step > 0 ? (
                 <button
-                  onClick={next}
-                  disabled={!canContinue || loading}
-                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-7 py-3 text-sm font-semibold text-cta-foreground transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0"
+                  onClick={back}
+                  disabled={loading}
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted disabled:opacity-50"
                 >
-                  {loading
-                    ? "Envoi en cours..."
-                    : step === 2
-                      ? "Recevoir mon devis gratuit"
-                      : "Continuer"}
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowLeft className="size-4" /> Retour
                 </button>
-              </div>
-            )}
+              ) : (
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+                >
+                  <ArrowLeft className="size-4" /> Annuler
+                </Link>
+              )}
+              <button
+                onClick={next}
+                disabled={!canContinue || loading}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-7 py-3 text-sm font-semibold text-cta-foreground transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0"
+              >
+                {loading
+                  ? "Envoi en cours..."
+                  : step === 2
+                    ? "Recevoir mon devis gratuit"
+                    : "Continuer"}
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+            </div>
           </div>
 
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs font-medium text-muted-foreground">
@@ -393,51 +379,6 @@ function Step3({ data, update }: { data: FormState; update: (patch: Partial<Form
   );
 }
 
-function SuccessStep({ name, onReset }: { name: string; onReset: () => void }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.4 }}
-      className="flex flex-col items-center py-6 text-center"
-    >
-      <div className="relative">
-        <div className="absolute inset-0 -z-10 animate-ping rounded-full bg-success/20" />
-        <div className="inline-flex size-20 items-center justify-center rounded-full bg-success/15 text-success">
-          <Check className="size-9" />
-        </div>
-      </div>
-      <h2 className="mt-7 font-display text-3xl font-semibold text-foreground">
-        Demande reçue avec succès !
-      </h2>
-      <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-        Bonjour <span className="font-semibold text-foreground">{name || "{nom_complet}"}</span>,
-        votre demande de devis a été transmise à notre équipe. Un conseiller vous contactera sous 2
-        heures.
-      </p>
-      <div className="mt-7 flex flex-wrap justify-center gap-3 text-sm text-muted-foreground">
-        <span className="inline-flex items-center gap-2 rounded-full bg-sky/15 px-4 py-1.5 font-medium text-sky">
-          <Check className="size-4" /> Demande transmise
-        </span>
-        <span className="inline-flex items-center gap-2 rounded-full bg-sky/15 px-4 py-1.5 font-medium text-sky">
-          <Check className="size-4" /> Conseiller dédié
-        </span>
-      </div>
-      <div className="mt-6 rounded-2xl border border-sky/20 bg-sky/5 p-4 text-sm text-sky">
-        <p className="font-medium">📞 Contact imminent</p>
-        <p className="mt-1 text-sky/80">
-          Notre équipe a reçu votre demande et vous contactera très rapidement.
-        </p>
-      </div>
-      <button
-        onClick={onReset}
-        className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted"
-      >
-        Faire une autre demande
-      </button>
-    </motion.div>
-  );
-}
 
 function Input({
   label,

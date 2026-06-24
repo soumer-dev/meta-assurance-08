@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { SiteLayout } from "../../components/layout/SiteLayout";
 import { PageHero, SectionHeading } from "../../components/ui/ui-bits";
 import { useRecaptcha } from "../../lib/useRecaptcha";
@@ -89,8 +90,8 @@ const SUBJECTS = [
 ];
 
 export function ContactClient() {
+  const router = useRouter();
   const [subject, setSubject] = useState(SUBJECTS[0]);
-  const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { getToken } = useRecaptcha();
@@ -119,7 +120,7 @@ export function ContactClient() {
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Erreur lors de l'envoi");
-      setSent(true);
+      router.push("/confirmation-demande");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur lors de l'envoi");
     } finally {
@@ -254,92 +255,70 @@ export function ContactClient() {
             onSubmit={onSubmit}
             className="rounded-3xl border border-border bg-white p-7 shadow-card lg:col-span-7 lg:p-9"
           >
-            {sent ? (
-              <div className="flex flex-col items-center py-12 text-center">
-                <div className="inline-flex size-14 items-center justify-center rounded-full bg-success/15 text-success">
-                  <Send className="size-6" />
+            <div className="grid gap-5">
+              {error && (
+                <div className="rounded-2xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
+                  {error}
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-semibold">Message envoyé !</h3>
-                <p className="mt-2 text-muted-foreground">
-                  Merci, nous revenons vers vous sous 24h ouvrées.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSent(false);
-                    setError(null);
-                  }}
-                  className="mt-4 text-sm text-sky hover:underline"
-                >
-                  Envoyer un autre message
-                </button>
-              </div>
-            ) : (
-              <div className="grid gap-5">
-                {error && (
-                  <div className="rounded-2xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
-                    {error}
-                  </div>
-                )}
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Nom complet *" name="name" placeholder="Ahmed Zakaria" required />
-                  <Field
-                    label="Téléphone *"
-                    name="phone"
-                    placeholder="06 23 45 67 89"
-                    required
-                    type="tel"
-                  />
-                </div>
+              )}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field label="Nom complet *" name="name" placeholder="Ahmed Zakaria" required />
                 <Field
-                  label="Adresse email"
-                  name="email"
-                  placeholder="ahmed.zakaria@email.com"
-                  type="email"
+                  label="Téléphone *"
+                  name="phone"
+                  placeholder="06 23 45 67 89"
+                  required
+                  type="tel"
                 />
-                <div>
-                  <label className="text-sm font-medium text-foreground">
-                    Objet de votre demande *
-                  </label>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {SUBJECTS.map((s) => (
-                      <button
-                        key={s}
-                        type="button"
-                        onClick={() => setSubject(s)}
-                        className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
-                          subject === s
-                            ? "border-navy bg-navy text-white"
-                            : "border-border bg-white text-foreground hover:border-sky hover:text-sky"
-                        }`}
-                      >
-                        {s}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-foreground">Votre message</label>
-                  <textarea
-                    name="message"
-                    rows={5}
-                    className="mt-2 w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15"
-                    placeholder="Décrivez votre demande avec le plus de détails possible..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-6 py-3.5 text-sm font-semibold text-cta-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
-                >
-                  {loading ? "Envoi en cours..." : "Envoyer le message"}
-                  <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
-                </button>
-                <p className="mt-4 text-center text-[12px] text-muted-foreground">
-                  Nous vous répondons dans les 24 heures ouvrées.
-                </p>
               </div>
-            )}
+              <Field
+                label="Adresse email"
+                name="email"
+                placeholder="ahmed.zakaria@email.com"
+                type="email"
+              />
+              <div>
+                <label className="text-sm font-medium text-foreground">
+                  Objet de votre demande *
+                </label>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {SUBJECTS.map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => setSubject(s)}
+                      className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
+                        subject === s
+                          ? "border-navy bg-navy text-white"
+                          : "border-border bg-white text-foreground hover:border-sky hover:text-sky"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-foreground">Votre message</label>
+                <textarea
+                  name="message"
+                  rows={5}
+                  className="mt-2 w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15"
+                  placeholder="Décrivez votre demande avec le plus de détails possible..."
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-6 py-3.5 text-sm font-semibold text-cta-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+              >
+                {loading ? "Envoi en cours..." : "Envoyer le message"}
+                <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+              <p className="mt-4 text-center text-[12px] text-muted-foreground">
+                Nous vous répondons dans les 24 heures ouvrées.
+              </p>
+            </div>
           </form>
         </div>
       </section>

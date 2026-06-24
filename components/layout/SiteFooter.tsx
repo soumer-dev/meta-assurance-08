@@ -139,16 +139,16 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-2 px-5 py-6 text-xs text-white/55 sm:flex-row sm:items-center lg:px-8">
           <p>
-            © {new Date().getFullYear()} Meta assurances et conseils, appuyé par{" "}
+            © {new Date().getFullYear()} Meta assurances et conseils · Tous droits réservés · Créé par{" "}
             <a
               href="https://monarkit.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-white/55 transition-colors"
+              className="font-semibold text-white transition-colors"
             >
-              MONARK IT
+              MonarkIT
             </a>
-            . Tous droits réservés.
+             {" "}· Agence digitale · Web, Mobile et IA · Marrakech, Maroc · Doha, Qatar.
           </p>
           <p className="italic">Conçu pour votre tranquillité d'esprit.</p>
         </div>

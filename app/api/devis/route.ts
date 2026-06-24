@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 async function verifyRecaptcha(token: string | null): Promise<boolean> {
+  if (process.env.NODE_ENV === "development") return true;
   const secret = process.env.RECAPTCHA_SECRET_KEY;
   if (!secret || !token) return true; // skip if not configured
   const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
