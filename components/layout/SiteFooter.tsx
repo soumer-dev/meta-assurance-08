@@ -139,7 +139,8 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-2 px-5 py-6 text-xs text-white/55 sm:flex-row sm:items-center lg:px-8">
           <p>
-            © {new Date().getFullYear()} Meta assurances et conseils · Tous droits réservés · Créé par{" "}
+            © {new Date().getFullYear()} Meta assurances et conseils · Tous droits réservés · Créé
+            par{" "}
             <a
               href="https://monarkit.net"
               target="_blank"
@@ -147,8 +148,8 @@ export function SiteFooter() {
               className="font-semibold text-white transition-colors"
             >
               MonarkIT
-            </a>
-             {" "}· Agence digitale · Web, Mobile et IA · Marrakech, Maroc · Doha, Qatar.
+            </a>{" "}
+            · Agence digitale · Web, Mobile et IA · Marrakech, Maroc · Doha, Qatar.
           </p>
           <p className="italic">Conçu pour votre tranquillité d'esprit.</p>
         </div>

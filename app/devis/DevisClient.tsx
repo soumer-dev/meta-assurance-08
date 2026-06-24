@@ -379,7 +379,6 @@ function Step3({ data, update }: { data: FormState; update: (patch: Partial<Form
   );
 }
 
-
 function Input({
   label,
   value,
