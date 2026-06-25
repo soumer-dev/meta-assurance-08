@@ -30,14 +30,14 @@ const siteUrl = process.env.APP_URL || "https://metassur.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
-    template: "%s | Meta Assurances",
+    default: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",
+    template: "%s | Meta Assurances et Conseils",
   },
   description:
-    "Agence Allianz à Marrakech. Assurance auto et habitation sur mesure, conseil personnalisé et assistance 24h/7j. Devis gratuit en 2 minutes.",
+    "Meta Assurances et Conseils à Marrakech. Assurance auto et habitation sur mesure, conseil personnalisé et assistance 24h/7j. Devis gratuit en 2 minutes.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
+    title: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",
     description:
       "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
     url: siteUrl,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Meta Assurances et Conseils — Agent Allianz à Marrakech",
+    title: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",
     description:
       "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
     images: ["/hero-home.webp"],
@@ -152,7 +152,7 @@ const structuredData = {
     ],
   },
   description:
-    "Agence d'assurance Allianz à Marrakech spécialisée en assurance auto et habitation avec assistance 24h/7j.",
+    "Meta Assurances et Conseils à Marrakech, spécialisée en assurance auto et habitation avec assistance 24h/7j.",
 };
 
 // ─── Root layout ──────────────────────────────────────────────────────────────

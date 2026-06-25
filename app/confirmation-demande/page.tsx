@@ -3,7 +3,7 @@ import { SiteLayout } from "../../components/layout/SiteLayout";
 import { Check, Phone, Mail, ArrowRight, Home } from "lucide-react";
 
 export const metadata = {
-  title: "Merci pour votre demande | Meta Assurance et Conseils",
+  title: "Merci pour votre demande",
   description:
     "Votre demande a bien été reçue. Un conseiller vous contactera prochainement pour vous accompagner.",
   alternates: { canonical: "/confirmation-demande" },
