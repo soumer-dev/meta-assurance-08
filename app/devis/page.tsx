@@ -3,13 +3,29 @@ import { DevisClient } from "./DevisClient";
 export const metadata = {
   title: "Devis Assurance Gratuit sans frais",
   description:
-    "Obtenez votre devis assurance auto ou habitation gratuit et sans engagement en 2 minutes. Meta Assurances et Conseils à Marrakech, réponse rapide garantie.",
+    "Obtenez votre devis assurance auto ou habitation gratuit et sans engagement. Meta Assurances et Conseils à Marrakech, réponse rapide garantie.",
   alternates: { canonical: "/devis" },
-  robots: { index: false },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "Devis Assurance Gratuit à Marrakech",
-    description: "Devis assurance auto ou habitation en 2 minutes. Gratuit et sans engagement.",
+    title: "Devis Assurance Gratuit sans frais",
+    description:
+      "Devis assurance auto ou habitation gratuit, sans engagement. Réponse rapide garantie à Marrakech.",
     url: "/devis",
+    images: [
+      {
+        url: "/hero-home.webp",
+        width: 1200,
+        height: 630,
+        alt: "Devis assurance gratuit à Marrakech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Devis Assurance Gratuit sans frais",
+    description:
+      "Devis assurance auto ou habitation gratuit, sans engagement. Réponse rapide garantie.",
+    images: ["/hero-home.webp"],
   },
 };
 

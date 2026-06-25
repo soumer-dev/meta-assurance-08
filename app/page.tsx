@@ -2,7 +2,7 @@ import { HomeClient } from "./HomeClient";
 
 export const metadata = {
   description:
-    "Meta Assurances et Conseils à Marrakech. Assurance auto tous risques, assurance habitation sur mesure, devis gratuit en 2 minutes. Conseiller dédié, assistance 24h/7j.",
+    "Meta Assurances et Conseils à Marrakech. Assurance auto tous risques, assurance habitation sur mesure, devis gratuit sans engagement. Conseiller dédié, assistance 24h/7j.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Assurance Auto & Habitation à Marrakech — Meta Assurances et Conseils",

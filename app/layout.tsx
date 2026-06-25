@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | Meta Assurances et Conseils",
   },
   description:
-    "Meta Assurances et Conseils à Marrakech. Assurance auto et habitation sur mesure, conseil personnalisé et assistance 24h/7j. Devis gratuit en 2 minutes.",
+    "Meta Assurances et Conseils à Marrakech. Assurance auto et habitation sur mesure, conseil personnalisé et assistance 24h/7j. Devis gratuit sans engagement.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",

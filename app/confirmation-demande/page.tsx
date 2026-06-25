@@ -5,9 +5,14 @@ import { Check, Phone, Mail, ArrowRight, Home } from "lucide-react";
 export const metadata = {
   title: "Merci pour votre demande",
   description:
-    "Votre demande a bien été reçue. Un conseiller vous contactera prochainement pour vous accompagner.",
+    "Votre demande a bien été reçue. Un conseiller Meta Assurances et Conseils vous contactera sous 24h pour vous proposer une solution d'assurance adaptée à votre situation.",
   alternates: { canonical: "/confirmation-demande" },
   robots: { index: false, follow: true },
+  openGraph: {
+    title: "Demande bien reçue",
+    description: "Votre demande a bien été reçue. Un conseiller vous contactera prochainement.",
+    url: "/confirmation-demande",
+  },
 };
 
 const STEPS = [
