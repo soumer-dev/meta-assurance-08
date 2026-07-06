@@ -211,7 +211,7 @@ export function AssuranceHabitationPage() {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-            <Eyebrow>Gestion des sinistres</Eyebrow>
+            <Eyebrow tone="onDark">Gestion des sinistres</Eyebrow>
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Un accompagnement de bout en bout

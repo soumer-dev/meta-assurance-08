@@ -3,9 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+export function Eyebrow({
+  children,
+  tone = "onLight",
+}: {
+  children: ReactNode;
+  tone?: "onLight" | "onDark";
+}) {
   return (
-    <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky">
+    <span
+      className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] ${
+        tone === "onDark" ? "text-sky" : "text-sky-ink"
+      }`}
+    >
       <span className="size-1.5 rounded-full bg-sky" />
       {children}
     </span>
@@ -227,14 +237,15 @@ export function FinalCta({
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-[#00C9D2] py-20 text-white sm:py-24">
-      <div
-        className="absolute inset-0 bg-no-repeat bg-right"
-        style={{
-          backgroundImage: "url('/bgImage.png')",
-          backgroundPosition: "center right",
-          backgroundSize: "contain",
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src="/bgImage.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-contain object-right"
+        />
+      </div>
       <div className="absolute inset-0 bg-[#00C9D2]/20" />
       <div className="relative mx-auto max-w-4xl px-5 text-center lg:px-8">
         {eyebrow && (

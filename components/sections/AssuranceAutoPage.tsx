@@ -149,7 +149,7 @@ export function AssuranceAutoPage() {
           <div className="overflow-hidden rounded-3xl bg-navy p-10 text-white shadow-elevated lg:p-14">
             <div className="grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-5">
-                <Eyebrow>Notre solution</Eyebrow>
+                <Eyebrow tone="onDark">Notre solution</Eyebrow>
                 <h3 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
                   Une couverture optimisée, un prix juste
                 </h3>
@@ -216,7 +216,7 @@ export function AssuranceAutoPage() {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-            <Eyebrow>Notre méthode</Eyebrow>
+            <Eyebrow tone="onDark">Notre méthode</Eyebrow>
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Votre assurance en 4 étapes simples

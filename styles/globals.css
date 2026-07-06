@@ -40,6 +40,7 @@
   --color-navy-foreground: var(--navy-foreground);
   --color-sky: var(--sky);
   --color-sky-foreground: var(--sky-foreground);
+  --color-sky-ink: var(--sky-ink);
   --color-cta: var(--cta);
   --color-cta-foreground: var(--cta-foreground);
   --color-success: var(--success);
@@ -80,6 +81,8 @@
   --navy-foreground: oklch(0.985 0.005 250);
   --sky: oklch(0.78 0.12 225);
   --sky-foreground: oklch(0.18 0.04 255);
+  /* Darker sky variant — meets 4.5:1 contrast on white/surface backgrounds (--sky itself only reaches ~1.9:1) */
+  --sky-ink: oklch(0.5 0.14 225);
   --cta: oklch(0.72 0.17 55);
   --cta-foreground: oklch(0.18 0.04 255);
   --success: oklch(0.7 0.15 160);

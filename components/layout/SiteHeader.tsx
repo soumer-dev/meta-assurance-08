@@ -234,7 +234,7 @@ export function SiteHeader() {
         <div className="hidden lg:block">
           <Link
             href="/devis"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-semibold text-[#021737] transition-transform hover:-translate-y-0.5"
             style={{ backgroundColor: "#00C9D2" }}
           >
             Obtenir un devis
@@ -284,7 +284,7 @@ export function SiteHeader() {
             })}
             <Link
               href="/devis"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-5 py-3 text-sm font-semibold text-white"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cta px-5 py-3 text-sm font-semibold text-[#021737]"
               style={{ backgroundColor: "#00C9D2" }}
             >
               Obtenir un devis

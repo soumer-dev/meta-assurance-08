@@ -56,9 +56,9 @@ export function SiteFooter() {
         </div>
 
         <div className="lg:col-span-2">
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
+          <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
             Nos offres
-          </h4>
+          </h3>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
               <Link href="/particuliers/assurance-auto" className="hover:text-white">
@@ -79,9 +79,9 @@ export function SiteFooter() {
         </div>
 
         <div className="lg:col-span-2">
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
+          <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
             Liens utiles
-          </h4>
+          </h3>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
               <Link href="/pourquoi-nous" className="hover:text-white">
@@ -102,9 +102,9 @@ export function SiteFooter() {
         </div>
 
         <div className="lg:col-span-4">
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
+          <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
             Contact
-          </h4>
+          </h3>
           <ul className="mt-5 space-y-3 text-sm">
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 size-4 shrink-0 text-sky" />

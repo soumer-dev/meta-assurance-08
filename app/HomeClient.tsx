@@ -185,6 +185,7 @@ export function HomeClient() {
                 <div className="mt-8">
                   <Link
                     href={offer.to}
+                    aria-label={`En savoir plus sur ${offer.title}`}
                     className="group inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5"
                   >
                     En savoir plus
@@ -199,18 +200,18 @@ export function HomeClient() {
       <section className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-28">
         <div className="absolute inset-0 bg-grid-pattern opacity-30" />
         <div className="absolute -left-40 top-1/3 size-[420px] rounded-full bg-sky/15 blur-3xl" />
-        <div
-          className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10"
-          style={{
-            backgroundImage: "url('/differentiators-bg.png')",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "bottom left",
-            backgroundSize: "100% 100%",
-          }}
-        />
+        <div className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10">
+          <Image
+            src="/differentiators-bg.png"
+            alt=""
+            fill
+            sizes="50vw"
+            className="object-fill object-bottom-left"
+          />
+        </div>
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
-            <Eyebrow>Notre différence</Eyebrow>
+            <Eyebrow tone="onDark">Notre différence</Eyebrow>
             <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-balance sm:text-4xl lg:text-5xl">
               Un agent à vos côtés,{" "}
               <span className="font-display italic text-sky">pas une machine.</span>
