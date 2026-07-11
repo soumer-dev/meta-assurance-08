@@ -48,9 +48,9 @@ const COORDONNEES = [
   {
     icon: Phone,
     label: "Téléphone",
-    value: "+212 661 403 452",
+    value: "+212 661-390788",
     sub: "Nos conseillers à votre écoute, sans attente",
-    href: "tel:+212661403452",
+    href: "tel:+212661390788",
   },
   {
     icon: Mail,

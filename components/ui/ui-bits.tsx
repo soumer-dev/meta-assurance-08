@@ -112,7 +112,7 @@ export function CtaButton({
 
 export function PhoneButton({
   children,
-  phone = "+212524406972",
+  phone = "+212661390788",
 }: {
   children: ReactNode;
   phone?: string;
@@ -212,7 +212,7 @@ export function PageHero({
             <CtaButton to={cta.to} href={cta.href}>
               {cta.label}
             </CtaButton>
-            <PhoneButton>+212 661 403 452</PhoneButton>
+            <PhoneButton>+212 661-390788</PhoneButton>
           </div>
         </div>
       </div>

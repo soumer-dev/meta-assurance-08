@@ -92,7 +92,7 @@ const structuredData = {
   url: siteUrl,
   logo: `${siteUrl}/LOGO Meta assurance.svg`,
   image: `${siteUrl}/hero-home.webp`,
-  telephone: "+212661403452",
+  telephone: "+212661390788",
   email: "contact@metassur.com",
   inLanguage: "fr-MA",
   priceRange: "MAD",
