@@ -56,6 +56,7 @@ export function SiteFooter() {
         </div>
 
         <div className="lg:col-span-2">
+          {/* H3 → "Nos offres" — appears on every page (SiteLayout → SiteFooter), after all page content, with no wrapping H2. */}
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
             Nos offres
           </h3>
@@ -79,6 +80,7 @@ export function SiteFooter() {
         </div>
 
         <div className="lg:col-span-2">
+          {/* H3 → "Liens utiles" — appears on every page (SiteLayout → SiteFooter), after all page content, with no wrapping H2. */}
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
             Liens utiles
           </h3>
@@ -102,6 +104,7 @@ export function SiteFooter() {
         </div>
 
         <div className="lg:col-span-4">
+          {/* H3 → "Contact" — appears on every page (SiteLayout → SiteFooter), after all page content, with no wrapping H2. */}
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
             Contact
           </h3>
@@ -125,14 +128,14 @@ export function SiteFooter() {
               </span>
             </li>
           </ul>
-          <div className="mt-5 rounded-xl border border-white/15 bg-white/5 p-4">
+          {/* <div className="mt-5 rounded-xl border border-white/15 bg-white/5 p-4">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky">
               <ShieldAlert className="size-4" /> Assistance 24h/7j
             </div>
             <a href="tel:+212802057057" className="mt-1 block text-base font-semibold text-white">
               +212 802 057 057
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -147,7 +150,7 @@ export function SiteFooter() {
               rel="noopener noreferrer"
               className="font-semibold text-white transition-colors"
             >
-              MonarkIT
+              MONARKIT
             </a>{" "}
             · Agence digitale · Web, Mobile et IA · Marrakech, Maroc · Doha, Qatar.
           </p>

@@ -62,6 +62,7 @@ const STATS = [
 export function PourquoiClient() {
   return (
     <SiteLayout>
+      {/* H1 → "Pourquoi choisir Meta assurances et conseils ?" */}
       <PageHero
         badge="Assuré en toute tranquillité"
         title="Pourquoi choisir Meta assurances et conseils ?"
@@ -73,8 +74,10 @@ export function PourquoiClient() {
 
       <section className="py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          {/* H2 → "4 engagements fondamentaux" */}
           <SectionHeading eyebrow="Nos piliers" title="4 engagements fondamentaux" />
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            {/* H3 → repeats per pillar: "Conseil personnalisé", "Gestion simplifiée", "Accompagnement complet", "Écoute et proximité" (4 items) */}
             {PILLARS.map((pillar) => (
               <article
                 key={pillar.title}
@@ -119,6 +122,7 @@ export function PourquoiClient() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">
                 Nos chiffres clés
               </p>
+              {/* H2 → "Ce qui nous fait avancer" */}
               <h2 className="mt-4 font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
                 Ce qui nous fait avancer
               </h2>
@@ -146,6 +150,7 @@ export function PourquoiClient() {
         </div>
       </section>
 
+      {/* H2 → "Commencez votre protection aujourd'hui" */}
       <FinalCta
         title="Commencez votre protection aujourd'hui"
         subtitle="Rejoignez les 25 000 clients qui nous font confiance. Devis gratuit et sans."

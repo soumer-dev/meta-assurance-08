@@ -87,6 +87,7 @@ export function DevisClient() {
               <Sparkles className="size-3.5" />
               Devis gratuit — Sans engagement
             </span>
+            {/* H1 → "Votre devis personnalisé sans frais" (hand-rolled hero, does not use PageHero) */}
             <h1 className="mt-5 font-display text-3xl font-semibold leading-[1.1] text-balance sm:text-4xl lg:text-5xl">
               Votre devis personnalisé <span className="italic text-sky">sans frais</span>
             </h1>
@@ -243,6 +244,7 @@ function Step1({
 
   return (
     <div>
+      {/* H2 → "Quel type d'assurance souhaitez-vous ?" (Step1 — shown by default, step === 0, present in initial DOM) */}
       <h2 className="font-display text-2xl font-semibold text-foreground">
         Quel type d'assurance souhaitez-vous ?
       </h2>
@@ -296,6 +298,7 @@ function Step1({
 function Step2({ data, update }: { data: FormState; update: (patch: Partial<FormState>) => void }) {
   return (
     <div>
+      {/* H2 → "Vos informations" (Step2 — only rendered once step === 1, not in initial DOM) */}
       <h2 className="font-display text-2xl font-semibold text-foreground">Vos informations</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Pour {data.product === "auto" ? "Assurance Auto" : "Assurance Habitation"} — restons en
@@ -351,6 +354,7 @@ function Step3({ data, update }: { data: FormState; update: (patch: Partial<Form
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky">
         Presque terminé !
       </p>
+      {/* H2 → "Renseignez votre email pour recevoir votre devis." (Step3 — only rendered once step === 2, not in initial DOM) */}
       <h2 className="mt-2 font-display text-2xl font-semibold text-foreground">
         Renseignez votre email pour recevoir votre devis.
       </h2>

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight, ChevronDown, Car, Home } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, Car, Home, HardHat } from "lucide-react";
 import { Logo } from "../ui/Logo";
 
 // ─── Nav structure ────────────────────────────────────────────────────────────
@@ -50,6 +50,12 @@ const NAV: NavItem[] = [
         label: "Assurance Auto",
         desc: "Flotte de véhicules professionnels couverte.",
         icon: Car,
+      },
+      {
+        to: "/entreprises/assurance-accidents-du-travail",
+        label: "Accidents du travail",
+        desc: "Protégez vos salariés et votre entreprise.",
+        icon: HardHat,
       },
     ],
   },

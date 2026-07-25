@@ -50,6 +50,7 @@ export default function ConfirmationDemandePage() {
                 <Check className="size-9" />
               </div>
             </div>
+            {/* H1 → "Merci pour votre demande" (hand-rolled page, does not use PageHero) */}
             <h1 className="mt-7 font-display text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
               Merci pour votre demande
             </h1>
@@ -62,6 +63,7 @@ export default function ConfirmationDemandePage() {
 
           {/* Étapes */}
           <div className="mt-10 rounded-[28px] border border-border bg-white p-8 shadow-card sm:p-10">
+            {/* H2 → "Que se passe-t-il maintenant ?" */}
             <h2 className="font-display text-2xl font-semibold text-foreground">
               Que se passe-t-il maintenant ?
             </h2>
@@ -82,6 +84,7 @@ export default function ConfirmationDemandePage() {
 
           {/* Assistance immédiate */}
           <div className="mt-8 rounded-[28px] border border-cta/20 bg-gradient-to-r from-cta/10 to-transparent p-8 sm:p-10">
+            {/* H2 → "Besoin d'une assistance immédiate ?" */}
             <h2 className="font-display text-xl font-semibold text-foreground">
               Besoin d'une assistance immédiate ?
             </h2>
@@ -106,6 +109,7 @@ export default function ConfirmationDemandePage() {
 
           {/* Pourquoi choisir Metassur */}
           <div className="mt-8 rounded-[28px] border border-border bg-white p-8 shadow-card sm:p-10">
+            {/* H2 → "Pourquoi choisir Metassur ?" */}
             <h2 className="font-display text-2xl font-semibold text-foreground">
               Pourquoi choisir Metassur ?
             </h2>

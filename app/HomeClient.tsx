@@ -115,9 +115,10 @@ export function HomeClient() {
               <span className="size-1.5 rounded-full bg-sky" />
               Meta Assurances et Conseils
             </span>
+            {/* H1 → "La tranquillité d'esprit, assurée au quotidien." */}
             <h1 className="mt-5 text-4xl font-semibold leading-[1.02] text-balance sm:text-5xl lg:text-7xl">
               La tranquillité d'esprit,{" "}
-              <span className="font-display italic text-sky">assurée au quotidien</span>
+              <span className="font-display italic text-sky">assurée au quotidien.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg text-pretty">
               Avec votre agent d’assurance à Marrakech, bénéficiez d’un accompagnement dédié et de
@@ -162,12 +163,14 @@ export function HomeClient() {
         />
         <div className="absolute -right-20 bottom-20 -z-10 size-72 rounded-full bg-cta/10 blur-3xl" />
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          {/* H2 → "Une protection complète pour ce qui compte" */}
           <SectionHeading
             eyebrow="Nos offres"
             title="Une protection complète pour ce qui compte"
             subtitle="Auto ou habitation, nous construisons votre couverture avec soin, sur mesure, au meilleur rapport qualité-prix."
           />
           <div className="mt-14 grid gap-7 lg:grid-cols-2">
+            {/* H3 → repeats per offer: "Assurance Auto", "Assurance Habitation" (2 items) */}
             {OFFERS.map((offer) => (
               <GlassCard key={offer.title} className="flex flex-col">
                 <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-sky/15 text-sky">
@@ -212,6 +215,7 @@ export function HomeClient() {
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <Eyebrow tone="onDark">Notre différence</Eyebrow>
+            {/* H2 → "Un agent à vos côtés, pas une machine." */}
             <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-balance sm:text-4xl lg:text-5xl">
               Un agent à vos côtés,{" "}
               <span className="font-display italic text-sky">pas une machine.</span>
@@ -230,6 +234,7 @@ export function HomeClient() {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
+            {/* H3 → repeats per item: "Conseil personnalisé", "Accompagnement humain", "Suivi précis et adapté", "Réactivité garantie" (4 items) */}
             {DIFFERENTIATORS.map((item) => (
               <div
                 key={item.title}
@@ -248,6 +253,7 @@ export function HomeClient() {
 
       <section className="py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          {/* H2 → "Votre sérénité est notre engagement" */}
           <SectionHeading eyebrow="Confiance" title="Votre sérénité est notre engagement" />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TRUST.map((item) => (
@@ -267,6 +273,7 @@ export function HomeClient() {
 
       <section className="bg-surface py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          {/* H2 → "Ce que disent nos clients" */}
           <SectionHeading eyebrow="Témoignages" title="Ce que disent nos clients" />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {TESTIMONIALS.map((testimonial) => (
@@ -283,6 +290,7 @@ export function HomeClient() {
         </div>
       </section>
 
+      {/* H2 → "Prêt à être mieux protégé ?" */}
       <FinalCta
         title="Prêt à être mieux protégé ?"
         subtitle="Obtenez votre devis personnalisé en quelques clics. Simple, clair, efficace."

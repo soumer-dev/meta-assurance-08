@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import "../styles/globals.css";
-import { WhatsAppButton } from "../components/ui/WhatsAppButton";
+import { PhoneCallButton, WhatsAppButton } from "../components/ui/FloatingContactButtons";
 import { GoogleTagManager } from "../components/analytics/GoogleTagManager";
 
 // ─── Fonts ────────────────────────────────────────────────────────────────────
@@ -171,6 +171,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <PhoneCallButton />
         <WhatsAppButton />
         {children}
       </body>

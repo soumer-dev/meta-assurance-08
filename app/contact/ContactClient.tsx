@@ -20,18 +20,18 @@ import {
 const OPTIONS = [
   {
     icon: ShieldAlert,
-    pill: "24h / 7j",
-    title: "Assistance urgence",
-    desc: "Sinistre en dehors des heures ouvrées ? Notre équipe d'urgence est disponible 24h/7j.",
-    cta: "Parlez à un expert",
-    href: "tel:+212802057057",
+    pill: "Première assurance",
+    title: "Vous débutez votre vie pro ?",
+    desc: "Un conseiller vous aide à comprendre vos besoins et à faire le bon choix.",
+    cta: "Parler à un conseiller",
+    href: "tel:+212661390788",
   },
   {
     icon: PhoneCall,
-    pill: "< 10 min",
+    pill: "< 24h",
     title: "Rappel immédiat",
     desc: "Un conseiller vous rappelle rapidement pour répondre à vos questions.",
-    cta: "Demander un rappel",
+    cta: "Demander une consultation",
     href: "tel:+212661390788",
   },
   {
@@ -130,17 +130,19 @@ export function ContactClient() {
 
   return (
     <SiteLayout>
+      {/* H1 → "Parlons de votre protection" */}
       <PageHero
         badge="Nous sommes là pour vous accompagner"
         title="Parlons de votre protection"
         italicWords="votre protection"
         subtitle="Une question, un sinistre, une demande de devis ? Notre équipe de conseillers est disponible et vous répond rapidement."
         image="/hero-contact.webp"
-        cta={{ label: "Demander un rappel", href: "#contact-form" }}
+        cta={{ label: "Demander une consultation", href: "#contact-form" }}
       />
 
       <section className="py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          {/* H3 → repeats per option: "Vous débutez votre vie pro ?", "Rappel immédiat", "Formulaire de contact" (3 items) */}
           <div className="grid gap-6 lg:grid-cols-3">
             {OPTIONS.map((option) => (
               <div
@@ -173,6 +175,7 @@ export function ContactClient() {
 
       <section className="bg-surface py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          {/* H2 → "Un conseiller dédié à chaque étape" */}
           <SectionHeading
             eyebrow="Nos coordonnées"
             title="Un conseiller dédié à chaque étape"
@@ -200,7 +203,7 @@ export function ContactClient() {
               </a>
             ))}
           </div>
-          <div className="mt-8 overflow-hidden rounded-3xl border border-cta/20 bg-gradient-to-r from-cta/10 to-transparent p-6 sm:p-8">
+          {/* <div className="mt-8 overflow-hidden rounded-3xl border border-cta/20 bg-gradient-to-r from-cta/10 to-transparent p-6 sm:p-8">
             <div className="flex items-start gap-4">
               <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-cta text-cta-foreground">
                 <ShieldAlert className="size-6" />
@@ -221,7 +224,7 @@ export function ContactClient() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -229,6 +232,7 @@ export function ContactClient() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">Formulaire</p>
+            {/* H2 → "Envoyez-nous un message" */}
             <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-balance sm:text-4xl">
               Envoyez-nous un message
             </h2>
