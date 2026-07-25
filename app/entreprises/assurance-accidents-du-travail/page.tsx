@@ -183,11 +183,11 @@ export default function Page() {
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             {/* H2 → "Une protection essentielle pour l'employeur et ses salariés" */}
             <div className="mb-14">
-            <SectionHeading
-              align="center"
-              eyebrow="Comprendre le risque"
-              title="Une protection essentielle pour l'employeur et ses salariés"
-            />
+              <SectionHeading
+                align="center"
+                eyebrow="Comprendre le risque"
+                title="Une protection essentielle pour l'employeur et ses salariés"
+              />
             </div>
             <div className="grid items-center gap-12 lg:grid-cols-12">
               <div className="lg:col-span-6">
@@ -202,7 +202,6 @@ export default function Page() {
                 </div>
               </div>
               <div className="lg:col-span-6">
-                
                 <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
                   <p>
                     Un accident du travail est un événement soudain survenu par le fait ou à

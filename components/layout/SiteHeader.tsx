@@ -3,7 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight, ChevronDown, Car, Home, HardHat, Building2, HeartPulse } from "lucide-react";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  ChevronDown,
+  Car,
+  Home,
+  HardHat,
+  Building2,
+  HeartPulse,
+} from "lucide-react";
 import { Logo } from "../ui/Logo";
 
 // ─── Nav structure ────────────────────────────────────────────────────────────
