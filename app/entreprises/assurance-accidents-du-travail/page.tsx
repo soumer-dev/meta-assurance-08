@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SiteLayout } from "../../../components/layout/SiteLayout";
 import {
   CtaButton,
@@ -179,28 +180,48 @@ export default function Page() {
 
         {/* Intro */}
         <section className="py-24 sm:py-28">
-          <div className="mx-auto max-w-4xl px-5 lg:px-8">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
             {/* H2 → "Une protection essentielle pour l'employeur et ses salariés" */}
+            <div className="mb-14">
             <SectionHeading
+              align="center"
               eyebrow="Comprendre le risque"
               title="Une protection essentielle pour l'employeur et ses salariés"
             />
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              <p>
-                Un accident du travail est un événement soudain survenu par le fait ou à l'occasion
-                du travail. Il peut se produire dans un bureau, un commerce, un atelier, un
-                chantier, un entrepôt ou pendant un déplacement professionnel. La couverture peut
-                également concerner le risque de trajet, notamment l'accident survenu sur le
-                parcours habituel entre le domicile du salarié et son lieu de travail, sous réserve
-                des conditions prévues par la réglementation et le contrat. Au-delà de ses
-                conséquences humaines, un accident peut entraîner des frais médicaux, une
-                interruption de travail et des obligations importantes pour l'employeur.
-              </p>
-              <p>
-                L'assurance accidents du travail permet d'organiser la prise en charge du salarié et
-                de limiter l'impact financier du sinistre, conformément aux garanties souscrites et
-                à la réglementation applicable.
-              </p>
+            </div>
+            <div className="grid items-center gap-12 lg:grid-cols-12">
+              <div className="lg:col-span-6">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
+                  <Image
+                    src="/protection-employeur-salaries.webp"
+                    alt="Une protection essentielle pour l'employeur et ses salariés"
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="lg:col-span-6">
+                
+                <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  <p>
+                    Un accident du travail est un événement soudain survenu par le fait ou à
+                    l'occasion du travail. Il peut se produire dans un bureau, un commerce, un
+                    atelier, un chantier, un entrepôt ou pendant un déplacement professionnel. La
+                    couverture peut également concerner le risque de trajet, notamment l'accident
+                    survenu sur le parcours habituel entre le domicile du salarié et son lieu de
+                    travail, sous réserve des conditions prévues par la réglementation et le
+                    contrat. Au-delà de ses conséquences humaines, un accident peut entraîner des
+                    frais médicaux, une interruption de travail et des obligations importantes pour
+                    l'employeur.
+                  </p>
+                  <p>
+                    L'assurance accidents du travail permet d'organiser la prise en charge du
+                    salarié et de limiter l'impact financier du sinistre, conformément aux garanties
+                    souscrites et à la réglementation applicable.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

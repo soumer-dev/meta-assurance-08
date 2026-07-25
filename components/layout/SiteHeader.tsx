@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight, ChevronDown, Car, Home, HardHat } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, Car, Home, HardHat, Building2, HeartPulse } from "lucide-react";
 import { Logo } from "../ui/Logo";
 
 // ─── Nav structure ────────────────────────────────────────────────────────────
@@ -56,6 +56,18 @@ const NAV: NavItem[] = [
         label: "Accidents du travail",
         desc: "Protégez vos salariés et votre entreprise.",
         icon: HardHat,
+      },
+      {
+        to: "/entreprises/assurance-multirisque-professionnelle",
+        label: "Multirisque professionnelle",
+        desc: "Locaux, équipements, stocks et responsabilité.",
+        icon: Building2,
+      },
+      {
+        to: "/entreprises/assurance-maladie-collective",
+        label: "Maladie collective",
+        desc: "Couverture santé pour vos salariés.",
+        icon: HeartPulse,
       },
     ],
   },
