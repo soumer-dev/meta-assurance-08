@@ -138,22 +138,28 @@ const jsonLd = {
 };
 
 export const metadata = {
-  title: "Assurance Auto à Marrakech — Devis Gratuit",
+  title: "Assurance Auto au Maroc : Devis gratuit et adapté",
   description:
-    "Assurance auto RC, tous risques, assistance 0 km à Marrakech. Meta Assurances et Conseils, gestion des sinistres incluse. Devis gratuit et sans engagement.",
+    "Protégez votre véhicule avec une assurance auto adaptée à vos besoins au Maroc. Profitez de garanties personnalisées et d’un accompagnement professionnel.",
+  keywords: [
+    "assurance voiture Maroc",
+    "assurance automobile Marrakech",
+    "contrat assurance auto",
+    "assurance auto pas chère Maroc",
+  ],
   alternates: { canonical: "/particuliers/assurance-auto" },
   openGraph: {
-    title: "Assurance Auto à Marrakech — Devis Gratuit",
+    title: "Assurance Auto au Maroc : Devis gratuit et adapté",
     description:
-      "Assurance auto RC, tous risques, assistance 0 km à Marrakech. Devis gratuit et sans engagement.",
+      "Protégez votre véhicule avec une assurance auto adaptée à vos besoins au Maroc. Profitez de garanties personnalisées et d’un accompagnement professionnel.",
     url: "/particuliers/assurance-auto",
     images: [{ url: "/hero-auto.webp", width: 1200, height: 630, alt: "Assurance auto Marrakech" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance Auto à Marrakech — Devis Gratuit",
+    title: "Assurance Auto au Maroc : Devis gratuit et adapté",
     description:
-      "Assurance auto RC, tous risques, assistance 0 km à Marrakech. Devis gratuit et sans engagement.",
+      "Protégez votre véhicule avec une assurance auto adaptée à vos besoins au Maroc. Profitez de garanties personnalisées et d’un accompagnement professionnel.",
     images: ["/hero-auto.webp"],
   },
 };

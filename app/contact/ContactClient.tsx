@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useForm, type FieldErrors, type UseFormRegister } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { SiteLayout } from "../../components/layout/SiteLayout";
 import { PageHero, SectionHeading } from "../../components/ui/ui-bits";
 import { useRecaptcha } from "../../lib/useRecaptcha";
+import { contactSchema, type ContactFormValues } from "../../lib/schemas/contact";
 import {
   Phone,
   PhoneCall,
@@ -91,32 +94,38 @@ const SUBJECTS = [
 
 export function ContactClient() {
   const router = useRouter();
-  const [subject, setSubject] = useState(SUBJECTS[0]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { getToken } = useRecaptcha();
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      subject: SUBJECTS[0],
+      message: "",
+    },
+  });
+
+  const subject = watch("subject");
+
+  const onSubmit = async (values: ContactFormValues) => {
     setLoading(true);
     setError(null);
-
-    const formData = new FormData(e.currentTarget);
-    const recaptchaToken = await getToken("contact_form");
-    const data = {
-      name: formData.get("name") as string,
-      phone: formData.get("phone") as string,
-      email: formData.get("email") as string,
-      subject,
-      message: formData.get("message") as string,
-      recaptchaToken,
-    };
-
     try {
+      const recaptchaToken = await getToken("contact_form");
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...values, recaptchaToken }),
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Erreur lors de l'envoi");
@@ -256,7 +265,7 @@ export function ContactClient() {
           </div>
 
           <form
-            onSubmit={onSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             className="rounded-3xl border border-border bg-white p-7 shadow-card lg:col-span-7 lg:p-9"
           >
             <div className="grid gap-5">
@@ -266,20 +275,26 @@ export function ContactClient() {
                 </div>
               )}
               <div className="grid gap-5 sm:grid-cols-2">
-                <Field label="Nom complet *" name="name" placeholder="Ahmed Zakaria" required />
+                <Field
+                  label="Nom complet *"
+                  placeholder="Ahmed Zakaria"
+                  error={errors.name?.message}
+                  {...register("name")}
+                />
                 <Field
                   label="Téléphone *"
-                  name="phone"
                   placeholder="06 23 45 67 89"
-                  required
                   type="tel"
+                  error={errors.phone?.message}
+                  {...register("phone")}
                 />
               </div>
               <Field
                 label="Adresse email"
-                name="email"
                 placeholder="ahmed.zakaria@email.com"
                 type="email"
+                error={errors.email?.message}
+                {...register("email")}
               />
               <div>
                 <label className="text-sm font-medium text-foreground">
@@ -290,7 +305,7 @@ export function ContactClient() {
                     <button
                       key={s}
                       type="button"
-                      onClick={() => setSubject(s)}
+                      onClick={() => setValue("subject", s, { shouldValidate: true })}
                       className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
                         subject === s
                           ? "border-navy bg-navy text-white"
@@ -301,14 +316,15 @@ export function ContactClient() {
                     </button>
                   ))}
                 </div>
+                <FieldError message={errors.subject?.message} />
               </div>
               <div>
                 <label className="text-sm font-medium text-foreground">Votre message</label>
                 <textarea
-                  name="message"
                   rows={5}
                   className="mt-2 w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15"
                   placeholder="Décrivez votre demande avec le plus de détails possible..."
+                  {...register("message")}
                 />
               </div>
               <button
@@ -330,32 +346,34 @@ export function ContactClient() {
   );
 }
 
-function Field({
-  label,
-  name,
-  placeholder,
-  required,
-  type = "text",
-}: {
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return <p className="mt-1.5 text-xs font-medium text-destructive">{message}</p>;
+}
+
+interface FieldProps extends Omit<React.ComponentPropsWithoutRef<"input">, "type"> {
   label: string;
-  name: string;
-  placeholder?: string;
-  required?: boolean;
   type?: string;
-}) {
+  error?: string;
+}
+
+const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
+  { label, placeholder, type = "text", error, ...rest },
+  ref,
+) {
   return (
     <div>
-      <label htmlFor={name} className="text-sm font-medium text-foreground">
-        {label}
-      </label>
+      <label className="text-sm font-medium text-foreground">{label}</label>
       <input
-        id={name}
-        name={name}
+        ref={ref}
         type={type}
-        required={required}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15"
+        className={`mt-2 w-full rounded-2xl border bg-white px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15 ${
+          error ? "border-destructive/50" : "border-border"
+        }`}
+        {...rest}
       />
+      <FieldError message={error} />
     </div>
   );
-}
+});

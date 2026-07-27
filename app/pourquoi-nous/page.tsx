@@ -1,14 +1,14 @@
 import { PourquoiClient } from "./PourquoiClient";
 
 export const metadata = {
-  title: "Pourquoi Nous Choisir — Conseil Personnalisé à Marrakech",
+  title: "Assurance tous risques au Maroc | Protection complète",
   description:
-    "Conseil personnalisé, gestion simplifiée des sinistres, accompagnement complet et proximité : découvrez les engagements de Meta Assurances et Conseils à Marrakech.",
+    "Découvrez les avantages de Metassur : expertise, accompagnement personnalisé et solutions d'assurance adaptées aux particuliers et entreprises au Maroc.",
   alternates: { canonical: "/pourquoi-nous" },
   openGraph: {
-    title: "Pourquoi Nous Choisir — Conseil Personnalisé à Marrakech",
+    title: "Assurance tous risques au Maroc | Protection complète",
     description:
-      "Conseil personnalisé, gestion simplifiée des sinistres et accompagnement complet à Marrakech.",
+      "Découvrez les avantages de Metassur : expertise, accompagnement personnalisé et solutions d'assurance adaptées aux particuliers et entreprises au Maroc.",
     url: "/pourquoi-nous",
     images: [
       {
@@ -21,9 +21,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pourquoi Nous Choisir — Conseil Personnalisé à Marrakech",
+    title: "Assurance tous risques au Maroc | Protection complète",
     description:
-      "Conseil personnalisé, gestion simplifiée des sinistres et accompagnement complet à Marrakech.",
+      "Découvrez les avantages de Metassur : expertise, accompagnement personnalisé et solutions d'assurance adaptées aux particuliers et entreprises au Maroc.",
     images: ["/hero-pourquoi.webp"],
   },
 };

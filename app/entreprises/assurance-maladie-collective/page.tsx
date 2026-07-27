@@ -108,12 +108,17 @@ const jsonLd = {
 };
 
 export const metadata = {
-  title: "Assurance maladie collective au Maroc | Metassur",
+  title: "Assurance maladie collective au Maroc",
   description:
     "Proposez à vos salariés une assurance maladie collective adaptée aux besoins et au budget de votre entreprise au Maroc.",
+  keywords: [
+    "assurance complémentaire",
+    "assurance complémentaire santé",
+    "complémentaire santé entreprise Maroc",
+  ],
   alternates: { canonical: "/entreprises/assurance-maladie-collective" },
   openGraph: {
-    title: "Assurance maladie collective au Maroc | Metassur",
+    title: "Assurance maladie collective au Maroc",
     description:
       "Proposez à vos salariés une assurance maladie collective adaptée aux besoins et au budget de votre entreprise au Maroc.",
     url: "/entreprises/assurance-maladie-collective",
@@ -128,7 +133,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance maladie collective au Maroc | Metassur",
+    title: "Assurance maladie collective au Maroc",
     description:
       "Proposez à vos salariés une assurance maladie collective adaptée aux besoins et au budget de votre entreprise au Maroc.",
     images: ["/hero-maladie-collective.webp"],

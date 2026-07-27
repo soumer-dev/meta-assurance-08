@@ -1,73 +1,178 @@
 "use client";
 
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import type { FieldErrors, UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
+import { useForm, type FieldErrors, type UseFormRegister } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SiteLayout } from "../../components/layout/SiteLayout";
 import { useRecaptcha } from "../../lib/useRecaptcha";
-import { Car, Home, ShieldCheck } from "lucide-react";
+import { devisSchema, type DevisFormValues } from "../../lib/schemas/devis";
+import {
+  Car,
+  Home,
+  HardHat,
+  Building2,
+  HeartPulse,
+  Scale,
+  Briefcase,
+  User,
+  ShieldCheck,
+} from "lucide-react";
 import { ArrowRight, ArrowLeft, Check, Lock, Sparkles, Mail, PhoneCall } from "lucide-react";
 
-type Product = "auto" | "habitation";
+type ClientType = DevisFormValues["clientType"];
 
-interface FormState {
-  product: Product | null;
-  name: string;
-  phone: string;
-  city: string;
-  callback: boolean;
-  email: string;
+const STEPS = ["Type d'assurance", "Vos informations"];
+
+const STEP_FIELDS: Record<number, (keyof DevisFormValues)[]> = {
+  0: ["clientType", "garantie"],
+  1: ["name", "phone", "city", "email"],
+};
+
+const CLIENT_TYPES: { id: ClientType; label: string; icon: typeof User }[] = [
+  { id: "particulier", label: "Particulier", icon: User },
+  { id: "entreprise", label: "Entreprise", icon: Building2 },
+  { id: "professionnel", label: "Professionnel", icon: Briefcase },
+];
+
+const GARANTIES: Record<
+  ClientType,
+  { id: string; icon: typeof Car; title: string; sub: string }[]
+> = {
+  particulier: [
+    {
+      id: "auto",
+      icon: Car,
+      title: "Assurance Auto",
+      sub: "Voiture, moto, véhicule de collection",
+    },
+    {
+      id: "habitation",
+      icon: Home,
+      title: "Assurance Habitation",
+      sub: "Maison, appartement, résidence",
+    },
+  ],
+  entreprise: [
+    {
+      id: "auto-entreprise",
+      icon: Car,
+      title: "Assurance Auto",
+      sub: "Flotte de véhicules professionnels",
+    },
+    {
+      id: "accidents-travail",
+      icon: HardHat,
+      title: "Accidents du travail",
+      sub: "Protégez vos salariés et votre entreprise",
+    },
+    {
+      id: "multirisque-professionnelle",
+      icon: Building2,
+      title: "Multirisque professionnelle",
+      sub: "Locaux, équipements, stocks et responsabilité",
+    },
+    {
+      id: "maladie-collective",
+      icon: HeartPulse,
+      title: "Maladie collective",
+      sub: "Couverture santé pour vos salariés",
+    },
+    {
+      id: "rc-exploitation",
+      icon: Scale,
+      title: "RC Exploitation",
+      sub: "Dommages causés à des tiers pendant l'activité",
+    },
+  ],
+  professionnel: [
+    {
+      id: "offre-globale-professions-liberales",
+      icon: Briefcase,
+      title: "Offre globale professions libérales",
+      sub: "Cabinet, véhicule et responsabilité professionnelle",
+    },
+  ],
+};
+
+function getGarantieTitle(
+  clientType: ClientType | undefined,
+  garantie: string | undefined,
+): string {
+  if (!clientType || !garantie) return "";
+  return GARANTIES[clientType].find((item) => item.id === garantie)?.title ?? "";
 }
-
-const STEPS = ["Type d'assurance", "Vos informations", "Contact"];
 
 export function DevisClient() {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<FormState>({
-    product: null,
-    name: "",
-    phone: "",
-    city: "",
-    callback: true,
-    email: "",
-  });
-
-  const update = (patch: Partial<FormState>) => setData((prev) => ({ ...prev, ...patch }));
   const { getToken } = useRecaptcha();
 
-  const canContinue =
-    (step === 0 && data.product !== null) ||
-    (step === 1 && data.name && data.phone && data.city) ||
-    (step === 2 && /^\S+@\S+\.\S+$/.test(data.email));
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    trigger,
+    watch,
+    formState: { errors },
+  } = useForm<DevisFormValues>({
+    resolver: zodResolver(devisSchema),
+    defaultValues: {
+      garantie: "",
+      garantieLabel: "",
+      name: "",
+      phone: "",
+      city: "",
+      callback: true,
+      email: "",
+    },
+  });
+
+  const clientType = watch("clientType");
+  const garantie = watch("garantie");
+  const garantieTitle = watch("garantieLabel");
+
+  const selectClientType = (value: ClientType) => {
+    setValue("clientType", value, { shouldValidate: true });
+    setValue("garantie", "", { shouldValidate: false });
+    setValue("garantieLabel", "", { shouldValidate: false });
+  };
+
+  const selectGarantie = (id: string) => {
+    setValue("garantie", id, { shouldValidate: true });
+    setValue("garantieLabel", getGarantieTitle(clientType, id), { shouldValidate: true });
+  };
+
+  const onSubmit = async (values: DevisFormValues) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const recaptchaToken = await getToken("devis_form");
+      const response = await fetch("/api/devis", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, recaptchaToken }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Erreur lors de l'envoi");
+      router.push("/confirmation-demande");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erreur lors de l'envoi");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const next = async () => {
-    if (step < 2) {
-      setStep((current) => current + 1);
+    if (step < STEPS.length - 1) {
+      const valid = await trigger(STEP_FIELDS[step]);
+      if (valid) setStep((current) => current + 1);
     } else {
-      setLoading(true);
-      setError(null);
-      try {
-        const recaptchaToken = await getToken("devis_form");
-        const response = await fetch("/api/devis", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...data, recaptchaToken }),
-        });
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error || "Erreur lors de l'envoi");
-        router.push("/confirmation-demande");
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Erreur lors de l'envoi");
-      } finally {
-        setLoading(false);
-      }
+      await handleSubmit(onSubmit)();
     }
   };
 
@@ -112,10 +217,17 @@ export function DevisClient() {
                 transition={{ duration: 0.25 }}
               >
                 {step === 0 && (
-                  <Step1 product={data.product} onSelect={(product) => update({ product })} />
+                  <Step1
+                    clientType={clientType}
+                    garantie={garantie}
+                    errors={errors}
+                    onSelectType={selectClientType}
+                    onSelectGarantie={selectGarantie}
+                  />
                 )}
-                {step === 1 && <Step2 data={data} update={update} />}
-                {step === 2 && <Step3 data={data} update={update} />}
+                {step === 1 && (
+                  <Step2 garantieTitle={garantieTitle} register={register} errors={errors} />
+                )}
               </motion.div>
             </div>
 
@@ -142,13 +254,14 @@ export function DevisClient() {
                 </Link>
               )}
               <button
+                type="button"
                 onClick={next}
-                disabled={!canContinue || loading}
+                disabled={loading}
                 className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-7 py-3 text-sm font-semibold text-cta-foreground transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0"
               >
                 {loading
                   ? "Envoi en cours..."
-                  : step === 2
+                  : step === STEPS.length - 1
                     ? "Recevoir mon devis gratuit"
                     : "Continuer"}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -223,186 +336,183 @@ function Progress({ step }: { step: number }) {
   );
 }
 
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return <p className="mt-1.5 text-xs font-medium text-destructive">{message}</p>;
+}
+
 function Step1({
-  product,
-  onSelect,
+  clientType,
+  garantie,
+  errors,
+  onSelectType,
+  onSelectGarantie,
 }: {
-  product: Product | null;
-  onSelect: (product: Product) => void;
+  clientType: ClientType | undefined;
+  garantie: string | undefined;
+  errors: FieldErrors<DevisFormValues>;
+  onSelectType: (clientType: ClientType) => void;
+  onSelectGarantie: (garantie: string) => void;
 }) {
-  const opts: { id: Product; icon: typeof Car; title: string; sub: string }[] = [
-    {
-      id: "auto",
-      icon: Car,
-      title: "Assurance Auto",
-      sub: "Voiture, moto, véhicule de collection",
-    },
-    {
-      id: "habitation",
-      icon: Home,
-      title: "Assurance Habitation",
-      sub: "Maison, appartement, résidence",
-    },
-  ];
+  const garanties = clientType ? GARANTIES[clientType] : [];
 
   return (
     <div>
-      {/* H2 → "Quel type d'assurance souhaitez-vous ?" (Step1 — shown by default, step === 0, present in initial DOM) */}
+      {/* H2 → "Quel type de client êtes-vous ?" (Step1 — shown by default, step === 0, present in initial DOM) */}
       <h2 className="font-display text-2xl font-semibold text-foreground">
-        Quel type d'assurance souhaitez-vous ?
+        Quel type de client êtes-vous ?
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Sélectionnez le produit qui vous intéresse.
+        Sélectionnez votre profil pour afficher les garanties correspondantes.
       </p>
-      <div className="mt-7 grid gap-4 sm:grid-cols-2">
-        {opts.map((item) => {
-          const active = product === item.id;
+
+      <div className="mt-6 grid grid-cols-3 gap-3">
+        {CLIENT_TYPES.map((item) => {
+          const active = clientType === item.id;
           return (
             <button
               key={item.id}
               type="button"
-              onClick={() => onSelect(item.id)}
-              className={`group relative flex flex-col items-start gap-4 overflow-hidden rounded-2xl border-2 p-6 text-left transition-all ${
+              onClick={() => onSelectType(item.id)}
+              className={`flex min-w-0 flex-col items-center gap-2 rounded-2xl border-2 px-2 py-4 text-center transition-all sm:px-3 ${
                 active
                   ? "border-navy bg-navy text-white shadow-elevated"
                   : "border-border bg-white hover:border-sky hover:-translate-y-0.5 hover:shadow-card"
               }`}
             >
               <div
-                className={`inline-flex size-12 items-center justify-center rounded-xl ${active ? "bg-sky text-navy" : "bg-sky/15 text-sky"}`}
+                className={`inline-flex size-10 shrink-0 items-center justify-center rounded-xl ${active ? "bg-sky text-navy" : "bg-sky/15 text-sky"}`}
               >
-                <item.icon className="size-6" />
+                <item.icon className="size-5" />
               </div>
-              <div>
-                <div
-                  className={`text-lg font-semibold ${active ? "text-white" : "text-foreground"}`}
-                >
-                  {item.title}
-                </div>
-                <div
-                  className={`mt-1 text-sm ${active ? "text-white/75" : "text-muted-foreground"}`}
-                >
-                  {item.sub}
-                </div>
-              </div>
-              {active && (
-                <span className="absolute right-4 top-4 inline-flex size-7 items-center justify-center rounded-full bg-sky text-navy">
-                  <Check className="size-4" />
-                </span>
-              )}
+              <span
+                className={`w-full wrap-break-word text-xs font-semibold leading-tight sm:text-sm ${active ? "text-white" : "text-foreground"}`}
+              >
+                {item.label}
+              </span>
             </button>
           );
         })}
       </div>
+      <FieldError message={errors.clientType?.message} />
+
+      {clientType && (
+        <div className="mt-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Garanties disponibles
+          </p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {garanties.map((item) => {
+              const active = garantie === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => onSelectGarantie(item.id)}
+                  className={`flex items-center gap-3 rounded-2xl border-2 px-5 py-4 text-left transition-all ${
+                    active
+                      ? "border-navy bg-navy text-white shadow-elevated"
+                      : "border-border bg-white hover:border-sky hover:-translate-y-0.5 hover:shadow-card"
+                  }`}
+                >
+                  <div
+                    className={`inline-flex size-10 shrink-0 items-center justify-center rounded-xl ${active ? "bg-sky text-navy" : "bg-sky/15 text-sky"}`}
+                  >
+                    <item.icon className="size-5" />
+                  </div>
+                  <span
+                    className={`text-sm font-semibold ${active ? "text-white" : "text-foreground"}`}
+                  >
+                    {item.title}
+                  </span>
+                  {active && <Check className="ml-auto size-4 shrink-0" />}
+                </button>
+              );
+            })}
+          </div>
+          <FieldError message={errors.garantie?.message} />
+        </div>
+      )}
     </div>
   );
 }
 
-function Step2({ data, update }: { data: FormState; update: (patch: Partial<FormState>) => void }) {
+function Step2({
+  garantieTitle,
+  register,
+  errors,
+}: {
+  garantieTitle: string;
+  register: UseFormRegister<DevisFormValues>;
+  errors: FieldErrors<DevisFormValues>;
+}) {
   return (
     <div>
       {/* H2 → "Vos informations" (Step2 — only rendered once step === 1, not in initial DOM) */}
       <h2 className="font-display text-2xl font-semibold text-foreground">Vos informations</h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Pour {data.product === "auto" ? "Assurance Auto" : "Assurance Habitation"} — restons en
-        contact.
+        Pour <strong className="font-semibold text-foreground">{garantieTitle}</strong> — renseignez
+        vos informations pour recevoir votre proposition.
       </p>
       <div className="mt-7 grid gap-5">
         <Input
           label="Nom complet *"
-          value={data.name}
-          onChange={(v) => update({ name: v })}
           placeholder="Sara Idrissi"
+          error={errors.name?.message}
+          {...register("name")}
         />
         <div className="grid gap-5 sm:grid-cols-2">
           <Input
             label="Téléphone *"
-            type="tel"
-            value={data.phone}
-            onChange={(v) => update({ phone: v })}
+            type="text"
             placeholder="06 12 34 56 78"
+            error={errors.phone?.message}
+            {...register("phone")}
           />
           <Input
             label="Ville *"
-            value={data.city}
-            onChange={(v) => update({ city: v })}
             placeholder="Marrakech"
+            error={errors.city?.message}
+            {...register("city")}
           />
         </div>
-        <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-sky">
-          <input
-            type="checkbox"
-            checked={data.callback}
-            onChange={(e) => update({ callback: e.target.checked })}
-            className="mt-0.5 size-5 accent-navy"
-          />
-          <div>
-            <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <PhoneCall className="size-4 text-sky" />
-              Être rappelé(e) dans les 10 minutes
-            </div>
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              Un conseiller dédié vous contacte rapidement, du lundi au vendredi 9h–18h.
-            </p>
-          </div>
-        </label>
-      </div>
-    </div>
-  );
-}
-
-function Step3({ data, update }: { data: FormState; update: (patch: Partial<FormState>) => void }) {
-  return (
-    <div>
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky">
-        Presque terminé !
-      </p>
-      {/* H2 → "Renseignez votre email pour recevoir votre devis." (Step3 — only rendered once step === 2, not in initial DOM) */}
-      <h2 className="mt-2 font-display text-2xl font-semibold text-foreground">
-        Renseignez votre email pour recevoir votre devis.
-      </h2>
-      <div className="mt-7 rounded-2xl border border-border bg-surface p-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-          Devis pour
-        </p>
-        <p className="mt-1 font-semibold text-foreground">
-          {data.product === "auto" ? "Assurance Auto" : "Assurance Habitation"} — {data.name}
-        </p>
-      </div>
-      <div className="mt-6">
         <Input
           label="Adresse email *"
           type="email"
           icon={Mail}
-          value={data.email}
-          onChange={(v) => update({ email: v })}
           placeholder="sara.idrissi@email.com"
+          error={errors.email?.message}
+          {...register("email")}
         />
-        <p className="mt-2 text-xs text-muted-foreground">
-          Votre devis sera envoyé à cette adresse.
-        </p>
+        {/* <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-sky">
+          <input type="checkbox" {...register("callback")} className="mt-0.5 size-5 accent-navy" />
+          <div>
+            <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+              <PhoneCall className="size-4 text-sky" />
+              Échanger avec un conseiller dans la journée
+            </div>
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              Un conseiller dédié prend contact avec vous dans la journée pour répondre à vos
+              questions et vous proposer une solution adaptée.
+            </p>
+          </div>
+        </label> */}
       </div>
     </div>
   );
 }
 
-function Input({
-  label,
-  value,
-  onChange,
-  placeholder,
-  type = "text",
-  icon: Icon,
-}: {
+interface InputProps extends Omit<React.ComponentPropsWithoutRef<"input">, "type"> {
   label: string;
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
   type?: string;
   icon?: typeof Mail;
-  registration: UseFormRegisterReturn;
   error?: string;
-}) {
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  { label, placeholder, type = "text", icon: Icon, error, ...rest },
+  ref,
+) {
   return (
     <div>
       <label className="text-sm font-medium text-foreground">{label}</label>
@@ -411,13 +521,16 @@ function Input({
           <Icon className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         )}
         <input
+          ref={ref}
           type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className={`w-full rounded-2xl border border-border bg-white px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 transition-colors focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15 ${Icon ? "pl-11" : ""}`}
+          className={`w-full rounded-2xl border bg-white px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 transition-colors focus:border-sky focus:outline-none focus:ring-4 focus:ring-sky/15 ${
+            error ? "border-destructive/50" : "border-border"
+          } ${Icon ? "pl-11" : ""}`}
+          {...rest}
         />
       </div>
+      <FieldError message={error} />
     </div>
   );
-}
+});

@@ -1,14 +1,14 @@
 import { ContactClient } from "./ContactClient";
 
 export const metadata = {
-  title: "Nous Contacter — Assurance & Sinistres Marrakech",
+  title: "Assurance Maroc : accompagnement complet",
   description:
-    "Contactez Meta Assurances et Conseils à Marrakech. Rappel en moins de 10 minutes, assistance urgence 24h/7j. Formulaire en ligne ou par téléphone.",
+    "Contactez Metassur pour obtenir des conseils, un accompagnement personnalisé ou un devis d'assurance adapté à vos besoins au Maroc.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Nous Contacter — Assurance & Sinistres Marrakech",
+    title: "Assurance Maroc : accompagnement complet",
     description:
-      "Contactez Meta Assurances et Conseils à Marrakech. Rappel en moins de 10 minutes, assistance urgence 24h/7j.",
+      "Contactez Metassur pour obtenir des conseils, un accompagnement personnalisé ou un devis d'assurance adapté à vos besoins au Maroc.",
     url: "/contact",
     images: [
       {
@@ -21,9 +21,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nous Contacter — Assurance & Sinistres Marrakech",
+    title: "Assurance Maroc : accompagnement complet",
     description:
-      "Contactez Meta Assurances et Conseils à Marrakech. Rappel en moins de 10 minutes, assistance urgence 24h/7j.",
+      "Contactez Metassur pour obtenir des conseils, un accompagnement personnalisé ou un devis d'assurance adapté à vos besoins au Maroc.",
     images: ["/hero-contact.webp"],
   },
 };

@@ -108,12 +108,12 @@ const jsonLd = {
 };
 
 export const metadata = {
-  title: "Assurance multirisque professionnelle au Maroc | Metassur",
+  title: "Assurance multirisque professionnelle au Maroc",
   description:
     "Protégez vos locaux, équipements, stocks et votre activité avec une assurance multirisque professionnelle adaptée au Maroc.",
   alternates: { canonical: "/entreprises/assurance-multirisque-professionnelle" },
   openGraph: {
-    title: "Assurance multirisque professionnelle au Maroc | Metassur",
+    title: "Assurance multirisque professionnelle au Maroc",
     description:
       "Protégez vos locaux, équipements, stocks et votre activité avec une assurance multirisque professionnelle adaptée au Maroc.",
     url: "/entreprises/assurance-multirisque-professionnelle",
@@ -128,7 +128,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance multirisque professionnelle au Maroc | Metassur",
+    title: "Assurance multirisque professionnelle au Maroc",
     description:
       "Protégez vos locaux, équipements, stocks et votre activité avec une assurance multirisque professionnelle adaptée au Maroc.",
     images: ["/hero-multirisque-professionnelle.webp"],

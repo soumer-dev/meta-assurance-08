@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { devisSchema } from "../../../lib/schemas/devis";
 
 async function verifyRecaptcha(token: string | null): Promise<boolean> {
   if (process.env.NODE_ENV === "development") return true;
@@ -24,15 +25,25 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
     const body = await request.json();
-    const { product, name, phone, city, callback, email, recaptchaToken } = body;
 
-    // Validate required fields
-    if (!product || !name || !phone || !city || !email) {
+    const parsed = devisSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
         { error: "Tous les champs obligatoires doivent être remplis" },
         { status: 400 },
       );
     }
+    const {
+      clientType,
+      garantie,
+      garantieLabel,
+      name,
+      phone,
+      city,
+      callback,
+      email,
+      recaptchaToken,
+    } = parsed.data;
 
     // reCAPTCHA verification
     const isHuman = await verifyRecaptcha(recaptchaToken ?? null);
@@ -40,7 +51,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Vérification anti-spam échouée." }, { status: 400 });
     }
 
-    const productName = product === "auto" ? "Assurance Auto" : "Assurance Habitation";
+    const clientTypeLabels: Record<string, string> = {
+      particulier: "Particulier",
+      entreprise: "Entreprise",
+      professionnel: "Professionnel",
+    };
+    const clientTypeLabel = clientTypeLabels[clientType] || clientType;
 
     const recipients = (process.env.RECIPIENT_EMAIL || "admin@metassur.com")
       .split(",")
@@ -50,7 +66,7 @@ export async function POST(request: NextRequest) {
     const adminEmail = await resend.emails.send({
       from: "Meta Assurances <noreply@metassur.com>",
       to: recipients,
-      subject: `Nouvelle demande de devis ${productName} - ${name}`,
+      subject: `Nouvelle demande de devis ${garantieLabel} - ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1e293b; border-bottom: 2px solid #f59e0b; padding-bottom: 10px;">
@@ -58,18 +74,19 @@ export async function POST(request: NextRequest) {
           </h2>
           <div style="background-color: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
             <h3 style="color: #92400e; margin-top: 0;">Détails du prospect</h3>
-            <p><strong>Produit :</strong> ${productName}</p>
+            <p><strong>Type de client :</strong> ${clientTypeLabel}</p>
+            <p><strong>Garantie :</strong> ${garantieLabel}</p>
             <p><strong>Nom :</strong> ${name}</p>
             <p><strong>Téléphone :</strong> ${phone}</p>
             <p><strong>Email :</strong> ${email}</p>
             <p><strong>Ville :</strong> ${city}</p>
-            <p><strong>Rappel demandé :</strong> ${callback ? "✅ Oui, dans les 10 minutes" : "❌ Non"}</p>
+            <p><strong>Échange souhaité :</strong> ${callback ? "✅ Oui, dans la journée" : "❌ Non"}</p>
           </div>
           ${
             callback
               ? `<div style="background-color: #fee2e2; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ef4444;">
               <p style="color: #991b1b; margin: 0; font-weight: bold;">
-                ⚡ RAPPEL URGENT DEMANDÉ - Contacter dans les 10 minutes
+                ⚡ ÉCHANGE DEMANDÉ - Contacter dans la journée
               </p>
             </div>`
               : ""

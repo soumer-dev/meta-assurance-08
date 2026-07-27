@@ -133,12 +133,12 @@ const jsonLd = {
 };
 
 export const metadata = {
-  title: "Assurance accidents du travail au Maroc | Metassur",
+  title: "Assurance accidents du travail au Maroc",
   description:
     "Protégez vos salariés contre les conséquences des accidents du travail grâce à une couverture adaptée à votre entreprise au Maroc.",
   alternates: { canonical: "/entreprises/assurance-accidents-du-travail" },
   openGraph: {
-    title: "Assurance accidents du travail au Maroc | Metassur",
+    title: "Assurance accidents du travail au Maroc",
     description:
       "Protégez vos salariés contre les conséquences des accidents du travail grâce à une couverture adaptée à votre entreprise au Maroc.",
     url: "/entreprises/assurance-accidents-du-travail",
@@ -153,7 +153,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance accidents du travail au Maroc | Metassur",
+    title: "Assurance accidents du travail au Maroc",
     description:
       "Protégez vos salariés contre les conséquences des accidents du travail grâce à une couverture adaptée à votre entreprise au Maroc.",
     images: ["/hero-accidents-travail.webp"],

@@ -1,15 +1,15 @@
 import { DevisClient } from "./DevisClient";
 
 export const metadata = {
-  title: "Devis Assurance Gratuit sans frais",
+  title: "Devis assurance auto gratuit au Maroc",
   description:
-    "Obtenez votre devis assurance auto ou habitation gratuit et sans engagement. Meta Assurances et Conseils à Marrakech, réponse rapide garantie.",
+    "Demandez votre devis assurance auto gratuit au Maroc et obtenez une offre adaptée à votre véhicule avec l'accompagnement de Metassur.",
   alternates: { canonical: "/devis" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Devis Assurance Gratuit sans frais",
+    title: "Devis assurance auto gratuit au Maroc",
     description:
-      "Devis assurance auto ou habitation gratuit, sans engagement. Réponse rapide garantie à Marrakech.",
+      "Demandez votre devis assurance auto gratuit au Maroc et obtenez une offre adaptée à votre véhicule avec l'accompagnement de Metassur.",
     url: "/devis",
     images: [
       {
@@ -22,9 +22,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Devis Assurance Gratuit sans frais",
+    title: "Devis assurance auto gratuit au Maroc",
     description:
-      "Devis assurance auto ou habitation gratuit, sans engagement. Réponse rapide garantie.",
+      "Demandez votre devis assurance auto gratuit au Maroc et obtenez une offre adaptée à votre véhicule avec l'accompagnement de Metassur.",
     images: ["/hero-home.webp"],
   },
 };

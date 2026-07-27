@@ -152,7 +152,7 @@ const jsonLd = {
   "@type": "Service",
   name: "Assurance Habitation à Marrakech",
   description:
-    "Assurance habitation pour propriétaires et locataires à Marrakech. Couverture incendie, dégâts des eaux, vol et catastrophes naturelles.",
+    "Sécurisez votre maison ou votre appartement avec une assurance habitation adaptée au Maroc couvrant les principaux risques liés à votre logement.",
   provider: {
     "@type": "InsuranceAgency",
     name: "Meta Assurances et Conseils",
@@ -163,20 +163,27 @@ const jsonLd = {
   url: "https://metassur.com/particuliers/assurance-habitation",
   offers: {
     "@type": "Offer",
-    description: "Devis gratuit et sans engagement.",
+    description:
+      "Sécurisez votre maison ou votre appartement avec une assurance habitation adaptée au Maroc couvrant les principaux risques liés à votre logement.",
     priceCurrency: "MAD",
   },
 };
 
 export const metadata = {
-  title: "Assurance Habitation à Marrakech — Devis Gratuit",
+  title: "Assurance habitation Maroc : Protégez votre foyer",
   description:
-    "Assurance habitation pour propriétaires et locataires à Marrakech. Couverture incendie, dégâts des eaux, vol, catastrophes naturelles. Devis gratuit et sans engagement.",
+    "Sécurisez votre maison ou votre appartement avec une assurance habitation adaptée au Maroc couvrant les principaux risques liés à votre logement.",
+  keywords: [
+    "assurance habitation Maroc",
+    "assurance maison",
+    "protection logement Maroc",
+    "multirisque habitation",
+  ],
   alternates: { canonical: "/particuliers/assurance-habitation" },
   openGraph: {
-    title: "Assurance Habitation à Marrakech — Devis Gratuit",
+    title: "Assurance habitation Maroc : Protégez votre foyer",
     description:
-      "Protection complète de votre logement à Marrakech. Couverture incendie, dégâts des eaux, vol. Devis gratuit et sans engagement.",
+      "Sécurisez votre maison ou votre appartement avec une assurance habitation adaptée au Maroc couvrant les principaux risques liés à votre logement.",
     url: "/particuliers/assurance-habitation",
     images: [
       {
@@ -189,9 +196,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance Habitation à Marrakech — Devis Gratuit",
+    title: "Assurance Habitation Maroc : Protégez votre foyer",
     description:
-      "Protection complète de votre logement à Marrakech. Couverture incendie, dégâts des eaux, vol. Devis gratuit et sans engagement.",
+      "Sécurisez votre maison ou votre appartement avec une assurance habitation adaptée au Maroc couvrant les principaux risques liés à votre logement.",
     images: ["/hero-habitation.webp"],
   },
 };

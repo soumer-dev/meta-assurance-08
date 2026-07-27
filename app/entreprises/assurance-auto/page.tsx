@@ -119,9 +119,9 @@ const STEPS = [
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Assurance Auto Flotte d'Entreprise à Marrakech",
+  name: "Assurance Auto Entreprise Maroc : Flotte auto",
   description:
-    "Assurance auto professionnelle pour flottes et véhicules d'entreprise à Marrakech. Devis gratuit et sans engagement.",
+    "Protégez les véhicules de votre entreprise avec une assurance auto professionnelle adaptée aux besoins de votre flotte au Maroc.",
   provider: {
     "@type": "InsuranceAgency",
     name: "Meta Assurances et Conseils",
@@ -138,14 +138,14 @@ const jsonLd = {
 };
 
 export const metadata = {
-  title: "Assurance Auto Entreprises à Marrakech — Devis Gratuit",
+  title: "Assurance Auto Entreprise Maroc : Flotte auto",
   description:
-    "Assurance auto professionnelle pour flottes et véhicules d'entreprise à Marrakech. Meta Assurances et Conseils. Devis gratuit et sans engagement.",
+    "Protégez les véhicules de votre entreprise avec une assurance auto professionnelle adaptée aux besoins de votre flotte au Maroc.",
   alternates: { canonical: "/entreprises/assurance-auto" },
   openGraph: {
-    title: "Assurance Auto Entreprises à Marrakech — Devis Gratuit",
+    title: "Assurance Auto Entreprise Maroc : Flotte auto",
     description:
-      "Assurance auto professionnelle pour flottes et véhicules d'entreprise à Marrakech. Devis gratuit et sans engagement.",
+      "Protégez les véhicules de votre entreprise avec une assurance auto professionnelle adaptée aux besoins de votre flotte au Maroc.",
     url: "/entreprises/assurance-auto",
     images: [
       {
@@ -158,9 +158,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance Auto Entreprises à Marrakech — Devis Gratuit",
+    title: "Assurance Auto Entreprise Maroc : Flotte auto",
     description:
-      "Assurance auto professionnelle pour flottes et véhicules d'entreprise à Marrakech. Devis gratuit et sans engagement.",
+      "Protégez les véhicules de votre entreprise avec une assurance auto professionnelle adaptée aux besoins de votre flotte au Maroc.",
     images: ["/hero-auto.webp"],
   },
 };

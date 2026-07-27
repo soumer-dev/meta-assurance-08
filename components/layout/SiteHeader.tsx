@@ -13,6 +13,7 @@ import {
   HardHat,
   Building2,
   HeartPulse,
+  Scale,
 } from "lucide-react";
 import { Logo } from "../ui/Logo";
 
@@ -79,8 +80,15 @@ const NAV: NavItem[] = [
         desc: "Couverture santé pour vos salariés.",
         icon: HeartPulse,
       },
+      {
+        to: "/entreprises/assurance-responsabilite-civile-exploitation",
+        label: "RC Exploitation",
+        desc: "Dommages causés à des tiers pendant l'activité.",
+        icon: Scale,
+      },
     ],
   },
+  { kind: "link", to: "/assurance-pour-professionnels", label: "Professionnels" },
   { kind: "link", to: "/pourquoi-nous", label: "Pourquoi nous" },
   { kind: "link", to: "/contact", label: "Contact" },
 ];

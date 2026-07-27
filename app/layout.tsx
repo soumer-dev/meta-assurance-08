@@ -30,16 +30,16 @@ const siteUrl = process.env.APP_URL || "https://metassur.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",
-    template: "%s | Meta Assurances et Conseils",
+    default: "Assurance Marrakech pour particuliers et entreprises | Metassur",
+    template: "%s | Metassur",
   },
   description:
-    "Meta Assurances et Conseils à Marrakech. Assurance auto et habitation sur mesure, conseil personnalisé et assistance 24h/7j. Devis gratuit sans engagement.",
+    "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",
+    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
     description:
-      "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
+      "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     url: siteUrl,
     siteName: "Meta Assurances et Conseils",
     type: "website",
@@ -55,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",
+    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
     description:
-      "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
+      "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     images: ["/hero-home.webp"],
   },
   robots: {
@@ -152,7 +152,7 @@ const structuredData = {
     ],
   },
   description:
-    "Meta Assurances et Conseils à Marrakech, spécialisée en assurance auto et habitation avec assistance 24h/7j.",
+    "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
 };
 
 // ─── Root layout ──────────────────────────────────────────────────────────────

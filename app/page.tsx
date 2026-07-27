@@ -2,12 +2,12 @@ import { HomeClient } from "./HomeClient";
 
 export const metadata = {
   description:
-    "Meta Assurances et Conseils à Marrakech. Assurance auto tous risques, assurance habitation sur mesure, devis gratuit sans engagement. Conseiller dédié, assistance 24h/7j.",
+    "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Assurance Auto & Habitation à Marrakech — Meta Assurances et Conseils",
+    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
     description:
-      "Meta Assurances et Conseils à Marrakech. Assurance auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
+      "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     url: "/",
     images: [
       {
@@ -20,9 +20,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Meta Assurances et Conseils — Assurance Auto & Habitation à Marrakech",
+    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
     description:
-      "La tranquillité d'esprit, assurée au quotidien. Auto et habitation sur mesure, conseiller dédié, assistance 24h/7j.",
+      "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     images: ["/hero-home.webp"],
   },
 };

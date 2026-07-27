@@ -111,7 +111,7 @@ export default function ConfirmationDemandePage() {
           <div className="mt-8 rounded-[28px] border border-border bg-white p-8 shadow-card sm:p-10">
             {/* H2 → "Pourquoi choisir Metassur ?" */}
             <h2 className="font-display text-2xl font-semibold text-foreground">
-              Pourquoi choisir Metassur ?
+              Pourquoi choisir Meta Assurances et Conseils ?
             </h2>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {REASONS.map((reason) => (
