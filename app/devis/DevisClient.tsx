@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import type { FieldErrors, UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { SiteLayout } from "../../components/layout/SiteLayout";
 import { useRecaptcha } from "../../lib/useRecaptcha";
 import { Car, Home, ShieldCheck } from "lucide-react";
@@ -397,6 +400,8 @@ function Input({
   placeholder?: string;
   type?: string;
   icon?: typeof Mail;
+  registration: UseFormRegisterReturn;
+  error?: string;
 }) {
   return (
     <div>

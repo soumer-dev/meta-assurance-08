@@ -1,86 +1,32 @@
-import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import { z } from "zod";
 
-async function verifyRecaptcha(token: string | null): Promise<boolean> {
-  if (process.env.NODE_ENV === "development") return true;
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret || !token) return true; // skip if not configured
-  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `secret=${secret}&response=${token}`,
-  });
-  const data = await res.json();
-  return data.success === true && (data.score ?? 1) >= 0.5;
-}
+// Accepts digits, letters, spaces and usual phone punctuation — letters are
+// intentionally allowed (vanity numbers, extensions), not just digits.
+const PHONE_REGEX = /^[0-9A-Za-zÀ-ÖØ-öø-ÿ+().\-\s]+$/;
 
-export async function POST(request: NextRequest) {
-  try {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error("Missing RESEND_API_KEY environment variable");
-      return NextResponse.json({ error: "Configuration email manquante" }, { status: 500 });
-    }
+export const contactFormSchema = z.object({
+  name: z.string().trim().min(2, "Merci d'indiquer votre nom complet"),
+  phone: z
+    .string()
+    .trim()
+    .min(6, "Numéro de téléphone trop court")
+    .max(30, "Numéro de téléphone trop long")
+    .regex(PHONE_REGEX, "Numéro de téléphone invalide"),
+  email: z
+    .string()
+    .trim()
+    .optional()
+    .refine((value) => !value || /^\S+@\S+\.\S+$/.test(value), {
+      message: "Adresse email invalide",
+    }),
+  subject: z.string().min(1, "Sélectionnez un objet"),
+  message: z.string().optional(),
+});
 
-    const resend = new Resend(apiKey);
-    const body = await request.json();
-    const { name, phone, email, subject, message, recaptchaToken } = body;
+export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-    // Validate required fields
-    if (!name || !phone || !subject) {
-      return NextResponse.json({ error: "Nom, téléphone et objet sont requis" }, { status: 400 });
-    }
+export const contactPayloadSchema = contactFormSchema.extend({
+  recaptchaToken: z.string().optional(),
+});
 
-    // reCAPTCHA verification
-    const isHuman = await verifyRecaptcha(recaptchaToken ?? null);
-    if (!isHuman) {
-      return NextResponse.json({ error: "Vérification anti-spam échouée." }, { status: 400 });
-    }
-
-    const recipients = (process.env.RECIPIENT_EMAIL || "admin@metassur.com")
-      .split(",")
-      .map((e) => e.trim())
-      .filter(Boolean);
-
-    const { data, error } = await resend.emails.send({
-      from: "Meta Assurances <noreply@metassur.com>",
-      to: recipients,
-      subject: `Nouveau message de contact - ${subject}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1e293b; border-bottom: 2px solid #0ea5e9; padding-bottom: 10px;">
-            Nouveau message de contact
-          </h2>
-          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #334155; margin-top: 0;">Informations du contact</h3>
-            <p><strong>Nom :</strong> ${name}</p>
-            <p><strong>Téléphone :</strong> ${phone}</p>
-            ${email ? `<p><strong>Email :</strong> ${email}</p>` : ""}
-            <p><strong>Objet :</strong> ${subject}</p>
-          </div>
-          ${
-            message
-              ? `<div style="background-color: #ffffff; padding: 20px; border-left: 4px solid #0ea5e9; margin: 20px 0;">
-              <h3 style="color: #334155; margin-top: 0;">Message</h3>
-              <p style="white-space: pre-wrap;">${message}</p>
-            </div>`
-              : ""
-          }
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
-            <p>Ce message a été envoyé depuis le formulaire de contact du site Meta Assurances.</p>
-          </div>
-        </div>
-      `,
-    });
-
-    if (error) {
-      console.error("Resend error:", error);
-      return NextResponse.json({ error: "Erreur lors de l'envoi de l'email" }, { status: 500 });
-    }
-
-    return NextResponse.json({ success: true, messageId: data?.id });
-  } catch (error) {
-    console.error("Contact form error:", error);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
-  }
-}
+export type ContactPayload = z.infer<typeof contactPayloadSchema>;
