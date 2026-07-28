@@ -96,7 +96,10 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
-              <a href="/entreprises/assurance-multirisque-professionnelle" className="hover:text-white">
+              <a
+                href="/entreprises/assurance-multirisque-professionnelle"
+                className="hover:text-white"
+              >
                 Multirisque professionnelle
               </a>
             </li>
@@ -106,7 +109,10 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
-              <a href="/entreprises/assurance-responsabilite-civile-exploitation" className="hover:text-white">
+              <a
+                href="/entreprises/assurance-responsabilite-civile-exploitation"
+                className="hover:text-white"
+              >
                 RC Exploitation
               </a>
             </li>
