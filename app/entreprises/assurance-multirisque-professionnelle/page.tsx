@@ -233,6 +233,10 @@ export default function Page() {
                 </div>
               ))}
             </div>
+            <div className="mt-12 flex flex-wrap justify-center gap-3">
+              <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>
+              <PhoneButton>Demander une consultation</PhoneButton>
+            </div>
           </div>
         </section>
 
