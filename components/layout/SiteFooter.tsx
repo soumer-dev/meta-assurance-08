@@ -72,8 +72,8 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link href="/devis" className="hover:text-white">
-                Obtenir un devis
+              <Link href="/assurance-pour-professionnels" className="hover:text-white">
+                Professionnels
               </Link>
             </li>
           </ul>
@@ -82,22 +82,32 @@ export function SiteFooter() {
         <div className="lg:col-span-2">
           {/* H3 → "Liens utiles" — appears on every page (SiteLayout → SiteFooter), after all page content, with no wrapping H2. */}
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-            Liens utiles
+            Nos offres Pro
           </h3>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
-              <Link href="/pourquoi-nous" className="hover:text-white">
-                Pourquoi nous choisir
+              <Link href="/entreprise/assurance-auto" className="hover:text-white">
+                Assurance Auto
               </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Mentions légales
+              <a href="/entreprises/assurance-accidents-du-travail" className="hover:text-white">
+                Accidents du travail
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Politique de confidentialité
+              <a href="/entreprises/assurance-multirisque-professionnelle" className="hover:text-white">
+                Multirisque professionnelle
+              </a>
+            </li>
+            <li>
+              <a href="/entreprises/assurance-maladie-collective" className="hover:text-white">
+                Maladie collective
+              </a>
+            </li>
+            <li>
+              <a href="/entreprises/assurance-responsabilite-civile-exploitation" className="hover:text-white">
+                RC Exploitation
               </a>
             </li>
           </ul>
@@ -154,7 +164,6 @@ export function SiteFooter() {
             </a>{" "}
             · Agence digitale · Web, Mobile et IA · Marrakech, Maroc · Doha, Qatar.
           </p>
-          <p className="italic">Conçu pour votre tranquillité d'esprit.</p>
         </div>
       </div>
     </footer>

@@ -82,7 +82,7 @@ const NAV: NavItem[] = [
       },
       {
         to: "/entreprises/assurance-responsabilite-civile-exploitation",
-        label: "RC Exploitation",
+        label: "Responsabilité Civile Exploitation",
         desc: "Dommages causés à des tiers pendant l'activité.",
         icon: Scale,
       },
@@ -245,7 +245,7 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {NAV.map((item) => {
             if (item.kind === "link") {
               const isActive = pathname === item.to;
@@ -267,7 +267,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Link
             href="/devis"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-semibold text-[#021737] transition-transform hover:-translate-y-0.5"
@@ -282,7 +282,7 @@ export function SiteHeader() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex size-10 items-center justify-center rounded-full bg-white/10 text-white lg:hidden"
+          className="inline-flex size-10 items-center justify-center rounded-full bg-white/10 text-white xl:hidden"
           aria-label="Menu"
           aria-expanded={open}
         >
@@ -292,7 +292,7 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-white/10 bg-navy lg:hidden">
+        <div className="border-t border-white/10 bg-navy xl:hidden">
           <div className="flex flex-col gap-1 px-5 py-4">
             {NAV.map((item) => {
               if (item.kind === "link") {

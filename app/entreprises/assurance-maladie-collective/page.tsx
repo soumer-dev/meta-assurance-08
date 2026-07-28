@@ -241,7 +241,7 @@ export default function Page() {
             </div>
             <div className="mt-12 flex flex-wrap justify-center gap-3">
               <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>
-              <PhoneButton>Demander un conseil</PhoneButton>
+              <PhoneButton>Demander une consultation</PhoneButton>
             </div>
           </div>
         </section>
@@ -349,7 +349,7 @@ export default function Page() {
               </div>
               <div className="mt-10 flex flex-wrap gap-3">
                 <CtaButton to="/devis">Demander mon devis</CtaButton>
-                <PhoneButton>Demander un conseil</PhoneButton>
+                <PhoneButton>Demander une consultation</PhoneButton>
               </div>
             </div>
           </div>
@@ -360,7 +360,7 @@ export default function Page() {
           title="Demandez votre devis personnalisé"
           subtitle="Un conseiller Meta Assurances et Conseils analyse vos besoins et vous accompagne dans le choix d'une couverture adaptée à votre activité."
           primary={{ label: "Demander mon devis", to: "/devis" }}
-          secondary={{ label: "Rappel immédiat" }}
+          secondary={{ label: "Demander une consultation" }}
         />
       </SiteLayout>
     </>

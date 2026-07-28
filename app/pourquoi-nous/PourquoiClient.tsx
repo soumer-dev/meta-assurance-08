@@ -155,7 +155,7 @@ export function PourquoiClient() {
         title="Commencez votre protection aujourd'hui"
         subtitle="Rejoignez les 25 000 clients qui nous font confiance. Devis gratuit et sans engagement."
         primary={{ label: "Obtenir mon devis gratuit", to: "/devis" }}
-        secondary={{ label: "Rappel immédiat" }}
+        secondary={{ label: "Demander une consultation" }}
       />
     </SiteLayout>
   );

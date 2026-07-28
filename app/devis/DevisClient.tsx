@@ -83,7 +83,7 @@ const GARANTIES: Record<
     {
       id: "rc-exploitation",
       icon: Scale,
-      title: "RC Exploitation",
+      title: "Responsabilité civile Exploitation",
       sub: "Dommages causés à des tiers pendant l'activité",
     },
   ],

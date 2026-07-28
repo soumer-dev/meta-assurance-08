@@ -238,7 +238,7 @@ export default function Page() {
               </div>
               <div className="mt-10 flex flex-wrap gap-3">
                 <CtaButton to="/devis">Protéger mon véhicule</CtaButton>
-                <PhoneButton>Demander un conseil</PhoneButton>
+                <PhoneButton>Demander une consultation</PhoneButton>
               </div>
             </div>
           </div>
@@ -268,7 +268,7 @@ export default function Page() {
             </div>
             <div className="mt-12 flex flex-wrap justify-center gap-3">
               <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>
-              <PhoneButton>Demander un conseil</PhoneButton>
+              <PhoneButton>Demander une consultation</PhoneButton>
             </div>
           </div>
         </section>
@@ -315,7 +315,7 @@ export default function Page() {
           title="Anticipez les imprévus sur la route"
           subtitle="Un devis gratuit et sans engagement en quelques clics."
           primary={{ label: "Démarrer mon devis", to: "/devis" }}
-          secondary={{ label: "Rappel immédiat" }}
+          secondary={{ label: "Demander une consultation" }}
         />
       </SiteLayout>
     </>

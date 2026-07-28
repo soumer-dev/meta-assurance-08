@@ -1,10 +1,13 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   Car,
   Home,
+  Briefcase,
   UserCheck,
   Heart,
   TrendingUp,
@@ -13,9 +16,17 @@ import {
   Tag,
   EyeOff,
   Headphones,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Building2,
+  HardHat,
+  HeartPulse,
+  Scale,
+  type LucideIcon,
 } from "lucide-react";
 import { SiteLayout } from "../components/layout/SiteLayout";
-import { CtaButton, Eyebrow, FinalCta, GlassCard, SectionHeading } from "../components/ui/ui-bits";
+import { CtaButton, Eyebrow, FinalCta, SectionHeading } from "../components/ui/ui-bits";
 import { StatCounter } from "../components/ui/StatCounter";
 
 const STATS = [
@@ -25,20 +36,88 @@ const STATS = [
   { target: 24, suffix: "h/7j", label: "D'assistance" },
 ];
 
-const OFFERS = [
+type Offer = {
+  icon: LucideIcon;
+  segment: "Particuliers" | "Entreprises" | "Professions libérales";
+  title: string;
+  desc: string;
+  points: string[];
+  image: string;
+  to: string;
+};
+
+const OFFERS: Offer[] = [
   {
     icon: Car,
+    segment: "Particuliers",
     title: "Assurance Auto",
-    desc: "Une protection adaptée à chaque conducteur pour vous trouver la formule parfaite pour votre usage.",
+    desc: "Une protection adaptée à chaque conducteur, pour rouler l'esprit tranquille.",
     points: ["Responsabilité civile", "Assistance automobile", "Véhicule de remplacement"],
+    image: "/assurance-auto-particuliers.webp",
     to: "/particuliers/assurance-auto",
   },
   {
     icon: Home,
+    segment: "Particuliers",
     title: "Assurance Habitation",
-    desc: "Protégez votre patrimoine avec une couverture adaptée à votre logement et à vos besoins réels.",
-    points: ["Responsabilité civile", "Suivi de sinistre dédié", "Remboursement  des dommages "],
+    desc: "Protégez votre patrimoine avec une couverture pensée pour votre logement.",
+    points: ["Responsabilité civile", "Suivi de sinistre dédié", "Remboursement des dommages"],
+    image: "/assurance-habitation-particuliers.webp",
     to: "/particuliers/assurance-habitation",
+  },
+  {
+    icon: Car,
+    segment: "Entreprises",
+    title: "Assurance Auto Pro",
+    desc: "La couverture de votre flotte et de vos véhicules professionnels, sans zone d'ombre.",
+    points: ["Flotte & véhicules pro", "Gestion des sinistres", "Assistance 24h/7j"],
+    image: "/assurance-auto-entreprises.webp",
+    to: "/entreprises/assurance-auto",
+  },
+  {
+    icon: HardHat,
+    segment: "Entreprises",
+    title: "Accidents du travail",
+    desc: "Protégez vos salariés et votre entreprise face aux conséquences d'un accident.",
+    points: ["Couverture des salariés", "Prise en charge rapide", "Conformité légale"],
+    image: "/assurance-accidents-du-travail.webp",
+    to: "/entreprises/assurance-accidents-du-travail",
+  },
+  {
+    icon: HeartPulse,
+    segment: "Entreprises",
+    title: "Maladie collective",
+    desc: "Une couverture santé qui renforce l'attractivité et la fidélisation de vos équipes.",
+    points: ["Consultations & médicaments", "Hospitalisation & chirurgie", "Dentaire & optique"],
+    image: "/assurance-maladie-collective-entreprise.webp",
+    to: "/entreprises/assurance-maladie-collective",
+  },
+  {
+    icon: Building2,
+    segment: "Entreprises",
+    title: "Multirisque professionnelle",
+    desc: "Locaux, équipements, marchandises : protégez la continuité de votre activité.",
+    points: ["Locaux & équipements", "Pertes d'exploitation", "Responsabilité civile"],
+    image: "/assurance-multirisque-professionnelle.webp",
+    to: "/entreprises/assurance-multirisque-professionnelle",
+  },
+  {
+    icon: Scale,
+    segment: "Entreprises",
+    title: "Responsabilité Civile Exploitation",
+    desc: "Protégez votre entreprise quand son activité cause un dommage à un tiers.",
+    points: ["Dommages aux tiers", "Défense & recours", "Couverture sur mesure"],
+    image: "/assurance-responsabilite-civile-exploitation.webp",
+    to: "/entreprises/assurance-responsabilite-civile-exploitation",
+  },
+  {
+    icon: Briefcase,
+    segment: "Professions libérales",
+    title: "Offre Professions Libérales",
+    desc: "Une offre globale pour votre cabinet : véhicule, locaux et responsabilité professionnelle réunis.",
+    points: ["Auto professionnelle", "Multirisque cabinet", "Responsabilité civile d'exploitation"],
+    image: "/assurance-professions-liberales.webp",
+    to: "/assurance-pour-professionnels",
   },
 ];
 
@@ -92,6 +171,43 @@ const TESTIMONIALS = [
 ];
 
 export function HomeClient() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+  const progress = useMotionValue(0);
+  const progressSpring = useSpring(progress, { stiffness: 220, damping: 32, mass: 0.6 });
+  const progressWidth = useTransform(progressSpring, (v) => `${v}%`);
+
+  const updateScrollState = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    const pct = max > 0 ? (el.scrollLeft / max) * 100 : 0;
+    progress.set(pct);
+    setCanPrev(el.scrollLeft > 8);
+    setCanNext(el.scrollLeft < max - 8);
+  }, [progress]);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [updateScrollState]);
+
+  const scrollByCards = (direction: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-offer-card]");
+    const step = card ? card.getBoundingClientRect().width + 24 : el.clientWidth * 0.8;
+    el.scrollBy({ left: step * direction, behavior: "smooth" });
+  };
+
   return (
     <SiteLayout>
       <section className="relative isolate overflow-hidden bg-navy text-white">
@@ -109,7 +225,7 @@ export function HomeClient() {
           <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/20" />
           <div className="absolute inset-0 bg-grid-pattern opacity-30" />
         </div>
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-24 lg:grid-cols-12 lg:px-8 lg:py-36">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:py-24 lg:grid-cols-12 lg:px-8 lg:py-36">
           <div className="lg:col-span-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/85 backdrop-blur">
               <span className="size-1.5 rounded-full bg-sky" />
@@ -151,7 +267,8 @@ export function HomeClient() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden py-24 sm:py-28">
+      {/* H2 → "Une protection complète pour ce qui compte" */}
+      <section className="relative isolate overflow-hidden py-16 sm:py-24 lg:py-28">
         <div
           className="absolute left-0 top-0 -z-10 h-1/2 w-1/2 opacity-10"
           style={{
@@ -162,45 +279,139 @@ export function HomeClient() {
           }}
         />
         <div className="absolute -right-20 bottom-20 -z-10 size-72 rounded-full bg-cta/10 blur-3xl" />
+
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          {/* H2 → "Une protection complète pour ce qui compte" */}
-          <SectionHeading
-            eyebrow="Nos offres"
-            title="Une protection complète pour ce qui compte"
-            subtitle="Auto ou habitation, nous construisons votre couverture avec soin, sur mesure, au meilleur rapport qualité-prix."
-          />
-          <div className="mt-14 grid gap-7 lg:grid-cols-2">
-            {/* H3 → repeats per offer: "Assurance Auto", "Assurance Habitation" (2 items) */}
-            {OFFERS.map((offer) => (
-              <GlassCard key={offer.title} className="flex flex-col">
-                <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-sky/15 text-sky">
-                  <offer.icon className="size-7" />
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <Eyebrow>Nos offres</Eyebrow>
+              <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-foreground text-balance sm:text-4xl lg:text-5xl">
+                Une protection complète pour ce qui compte
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg text-pretty">
+                Auto ou habitation, particulier, entreprise ou profession libérale&nbsp;: nous
+                construisons votre couverture avec soin, sur mesure, au meilleur rapport
+                qualité-prix.
+              </p>
+            </div>
+
+            {/* Desktop scroll controls */}
+            <div className="hidden shrink-0 items-center gap-4 lg:flex">
+              <div className="h-1 w-40 overflow-hidden rounded-full bg-border">
+                <motion.div
+                  className="h-full rounded-full bg-gradient-cta"
+                  style={{ width: progressWidth }}
+                />
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  aria-label="Offre précédente"
+                  onClick={() => scrollByCards(-1)}
+                  disabled={!canPrev}
+                  className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-white text-foreground transition-all hover:-translate-y-0.5 hover:bg-muted disabled:pointer-events-none disabled:opacity-30"
+                >
+                  <ArrowLeft className="size-4" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Offre suivante"
+                  onClick={() => scrollByCards(1)}
+                  disabled={!canNext}
+                  className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-navy text-white transition-all hover:-translate-y-0.5 hover:bg-navy/90 disabled:pointer-events-none disabled:opacity-30"
+                >
+                  <ArrowRight className="size-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Horizontal scroll-snap gallery */}
+          <div
+            ref={trackRef}
+            className="offers-track mt-14 -mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-5 pb-6 lg:-mx-8 lg:px-8"
+          >
+            {/* H3 → repeats per offer (8 items) */}
+            {OFFERS.map((offer, i) => (
+              <motion.div
+                key={offer.title}
+                data-offer-card
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: "easeOut" }}
+                className="group relative flex min-h-[440px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl shadow-card sm:min-h-[480px] sm:w-[380px] lg:min-h-[500px] lg:w-[400px]"
+              >
+                <div className="absolute inset-0">
+                  <Image
+                    src={offer.image}
+                    alt={offer.title}
+                    fill
+                    sizes="(max-width: 640px) 82vw, 400px"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/55 to-navy/10 transition-opacity duration-500 group-hover:from-navy/95" />
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold text-foreground">{offer.title}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{offer.desc}</p>
-                <ul className="mt-6 space-y-3">
-                  {offer.points.map((p) => (
-                    <li key={p} className="flex items-center gap-3 text-sm text-foreground">
-                      <span className="size-4 text-sky">✓</span> {p}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <Link
-                    href={offer.to}
-                    aria-label={`En savoir plus sur ${offer.title}`}
-                    className="group inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5"
-                  >
-                    En savoir plus
-                  </Link>
+
+                <div className="relative flex grow flex-col justify-between p-5 sm:p-7">
+                  <div className="flex items-start justify-between">
+                    <span className="inline-flex size-10 items-center justify-center rounded-2xl border border-white/25 bg-white/10 text-white backdrop-blur-sm sm:size-12">
+                      <offer.icon className="size-5 sm:size-6" />
+                    </span>
+                    <span className="rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/90 backdrop-blur-sm sm:px-3 sm:text-[11px] sm:tracking-[0.14em]">
+                      {offer.segment}
+                    </span>
+                  </div>
+
+                  <div className="mt-6">
+                    <span className="text-xs font-semibold tracking-[0.2em] text-white/60">
+                      {String(i + 1).padStart(2, "0")} / {String(OFFERS.length).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-2 text-xl font-semibold text-white sm:text-2xl lg:text-[1.65rem]">
+                      {offer.title}
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-white/80 sm:line-clamp-2">
+                      {offer.desc}
+                    </p>
+
+                    <ul className="mt-3 flex flex-wrap gap-2 sm:mt-4">
+                      {offer.points.map((p) => (
+                        <li
+                          key={p}
+                          className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium text-white/85"
+                        >
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link
+                      href={offer.to}
+                      aria-label={`En savoir plus sur ${offer.title}`}
+                      className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-navy shadow-soft transition-transform duration-300 group-hover:-translate-y-0.5 sm:mt-6 sm:px-5 sm:py-2.5"
+                    >
+                      En savoir plus
+                      <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
+                  </div>
                 </div>
-              </GlassCard>
+              </motion.div>
             ))}
+
+            {/* trailing spacer so the last card can reach the edge on desktop */}
+            <div aria-hidden className="w-px shrink-0 lg:w-2" />
+          </div>
+
+          {/* Mobile progress bar */}
+          <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-border lg:hidden">
+            <motion.div
+              className="h-full rounded-full bg-gradient-cta"
+              style={{ width: progressWidth }}
+            />
           </div>
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-28">
+      <section className="relative isolate overflow-hidden bg-navy py-16 text-white sm:py-24 lg:py-28">
         <div className="absolute inset-0 bg-grid-pattern opacity-30" />
         <div className="absolute -left-40 top-1/3 size-[420px] rounded-full bg-sky/15 blur-3xl" />
         <div className="absolute bottom-0 left-0 z-0 h-1/2 w-1/2 opacity-10">
@@ -251,7 +462,7 @@ export function HomeClient() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-28">
+      <section className="py-16 sm:py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           {/* H2 → "Votre sérénité est notre engagement" */}
           <SectionHeading eyebrow="Confiance" title="Votre sérénité est notre engagement" />
@@ -271,7 +482,7 @@ export function HomeClient() {
         </div>
       </section>
 
-      <section className="bg-surface py-24 sm:py-28">
+      <section className="bg-surface py-16 sm:py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           {/* H2 → "Ce que disent nos clients" */}
           <SectionHeading eyebrow="Témoignages" title="Ce que disent nos clients" />
@@ -279,7 +490,7 @@ export function HomeClient() {
             {TESTIMONIALS.map((testimonial) => (
               <div
                 key={testimonial.name}
-                className="rounded-3xl border border-border bg-white p-8 shadow-card"
+                className="rounded-3xl border border-border bg-white p-6 shadow-card sm:p-8"
               >
                 <p className="text-foreground">"{testimonial.quote}"</p>
                 <p className="mt-6 font-semibold text-foreground">{testimonial.name}</p>
@@ -295,7 +506,7 @@ export function HomeClient() {
         title="Prêt à être mieux protégé ?"
         subtitle="Obtenez votre devis personnalisé en quelques clics. Simple, clair, efficace."
         primary={{ label: "Demander mon devis", to: "/devis" }}
-        secondary={{ label: "Demander un conseil" }}
+        secondary={{ label: "Demander une consultation" }}
       />
     </SiteLayout>
   );

@@ -269,7 +269,7 @@ export default function Page() {
             </div>
             <div className="mt-12 flex flex-wrap justify-center gap-3">
               <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>
-              <PhoneButton>Demander un conseil</PhoneButton>
+              <PhoneButton>Demander une consultation</PhoneButton>
             </div>
           </div>
         </section>
@@ -351,7 +351,7 @@ export default function Page() {
           title="Garantissez la sécurité de votre domicile"
           subtitle="Un devis gratuit et sans engagement en quelques clics."
           primary={{ label: "Démarrer mon devis", to: "/devis" }}
-          secondary={{ label: "Rappel immédiat" }}
+          secondary={{ label: "Demander une consultation" }}
         />
       </SiteLayout>
     </>

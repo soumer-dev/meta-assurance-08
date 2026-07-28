@@ -196,3 +196,12 @@
     linear-gradient(to bottom, oklch(0.78 0.12 225 / 0.07) 1px, transparent 1px);
   background-size: 48px 48px;
 }
+
+.offers-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.offers-track::-webkit-scrollbar {
+  display: none;
+}
