@@ -57,14 +57,18 @@ export function StatCounter({
     return () => observer.disconnect();
   }, []);
 
+  // Pad to the target's final digit count throughout the animation so the
+  // rendered width never changes frame to frame (a mid-animation digit-count
+  // increase, e.g. "9 999" -> "10 000", otherwise reflows the centered text
+  // and triggers a browser scroll-anchoring adjustment during initial load).
   const formatted =
     target >= 1000
-      ? `${Math.floor(count / 1000)}\u00a0${String(count % 1000).padStart(3, "0")}${suffix}`
-      : `${count}${suffix}`;
+      ? `${String(Math.floor(count / 1000)).padStart(String(Math.floor(target / 1000)).length, "0")}\u00a0${String(count % 1000).padStart(3, "0")}${suffix}`
+      : `${String(count).padStart(String(target).length, "0")}${suffix}`;
 
   return (
     <div ref={ref} className={className}>
-      <div className={valueClassName}>{formatted}</div>
+      <div className={`tabular-nums ${valueClassName ?? ""}`}>{formatted}</div>
       <div className={labelClassName}>{label}</div>
     </div>
   );

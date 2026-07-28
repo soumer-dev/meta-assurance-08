@@ -9,14 +9,22 @@ import { GoogleTagManager } from "../components/analytics/GoogleTagManager";
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
+  // See the note on `fraunces` below: any font swap that reflows text can
+  // trip scroll-anchoring and silently break LCP measurement, so body text
+  // gets the same "optional" treatment rather than "swap".
+  display: "optional",
   variable: "--font-inter",
   preload: true,
 });
 
 const fraunces = Fraunces({
   subsets: ["latin"],
-  display: "swap",
+  // "optional" (not "swap"): this is a display/heading font whose metrics
+  // don't perfectly match the fallback, so swapping it in mid-load reflows
+  // every heading (including the H1) and shifts everything below it — that
+  // shift trips the browser's scroll-anchoring, which fires a real scroll
+  // event and permanently freezes LCP measurement before it can be recorded.
+  display: "optional",
   variable: "--font-fraunces",
   weight: "variable",
   style: ["normal", "italic"],

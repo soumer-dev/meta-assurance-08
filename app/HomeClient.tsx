@@ -338,7 +338,7 @@ export function HomeClient() {
           {/* Horizontal scroll-snap gallery */}
           <div
             ref={trackRef}
-            className="offers-track mt-14 -mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-5 pb-6 lg:-mx-8 lg:px-8"
+            className="offers-track mt-14 -mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-5 pb-6 scroll-pl-5 lg:-mx-8 lg:px-8 lg:scroll-pl-8"
           >
             {/* H3 → repeats per offer (8 items) */}
             {OFFERS.map((offer, i) => (
