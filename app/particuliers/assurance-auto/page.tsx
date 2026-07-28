@@ -179,6 +179,8 @@ export default function Page() {
           italicWords="enfin optimisée."
           subtitle="Un accompagnement clair et personnalisé pour conduire l'esprit tranquille."
           image="/hero-auto.webp"
+          imageAlt="Conducteur serein au volant, protégé par une assurance auto sur mesure à Marrakech"
+          imageTitle="Assurance auto Marrakech - devis gratuit"
           cta={{ label: "Protégez mon véhicule", to: "/devis" }}
         />
 

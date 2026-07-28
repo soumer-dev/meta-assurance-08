@@ -155,6 +155,8 @@ export default function Page() {
           italicWords="collective"
           subtitle="Offrez à vos salariés une couverture santé adaptée et renforcez la protection sociale, l'attractivité et la fidélisation au sein de votre entreprise."
           image="/hero-maladie-collective.webp"
+          imageAlt="Équipe de salariés souriants couverts par une assurance maladie collective d'entreprise"
+          imageTitle="Assurance maladie collective Maroc"
           cta={{ label: "Demander mon devis", to: "/devis" }}
         />
 
@@ -166,7 +168,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/couverture-sante-entreprise.webp"
-                    alt="Couverture santé pensée pour l'entreprise"
+                    alt="Salariés consultant un médecin, couverts par l'assurance maladie collective de leur entreprise"
+                    title="Assurance maladie collective Maroc"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
@@ -277,7 +280,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/assurance-maladie-couverture.webp"
-                    alt="Ce que couvre l'assurance maladie collective"
+                    alt="Consultation médicale prise en charge par une assurance maladie collective d'entreprise"
+                    title="Ce que couvre l'assurance maladie collective"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"

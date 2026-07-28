@@ -43,6 +43,7 @@ type Offer = {
   desc: string;
   points: string[];
   image: string;
+  imageAlt: string;
   to: string;
 };
 
@@ -54,6 +55,7 @@ const OFFERS: Offer[] = [
     desc: "Une protection adaptée à chaque conducteur, pour rouler l'esprit tranquille.",
     points: ["Responsabilité civile", "Assistance automobile", "Véhicule de remplacement"],
     image: "/assurance-auto-particuliers.webp",
+    imageAlt: "Conducteur au volant de sa voiture, assuré par une couverture auto à Marrakech",
     to: "/particuliers/assurance-auto",
   },
   {
@@ -63,6 +65,7 @@ const OFFERS: Offer[] = [
     desc: "Protégez votre patrimoine avec une couverture pensée pour votre logement.",
     points: ["Responsabilité civile", "Suivi de sinistre dédié", "Remboursement des dommages"],
     image: "/assurance-habitation-particuliers.webp",
+    imageAlt: "Maison familiale protégée par une assurance habitation adaptée à Marrakech",
     to: "/particuliers/assurance-habitation",
   },
   {
@@ -72,6 +75,7 @@ const OFFERS: Offer[] = [
     desc: "La couverture de votre flotte et de vos véhicules professionnels, sans zone d'ombre.",
     points: ["Flotte & véhicules pro", "Gestion des sinistres", "Assistance 24h/7j"],
     image: "/assurance-auto-entreprises.webp",
+    imageAlt: "Flotte de véhicules d'entreprise couverte par une assurance auto professionnelle",
     to: "/entreprises/assurance-auto",
   },
   {
@@ -81,6 +85,7 @@ const OFFERS: Offer[] = [
     desc: "Protégez vos salariés et votre entreprise face aux conséquences d'un accident.",
     points: ["Couverture des salariés", "Prise en charge rapide", "Conformité légale"],
     image: "/assurance-accidents-du-travail.webp",
+    imageAlt: "Salarié sur un chantier protégé par une assurance accidents du travail au Maroc",
     to: "/entreprises/assurance-accidents-du-travail",
   },
   {
@@ -90,6 +95,7 @@ const OFFERS: Offer[] = [
     desc: "Une couverture santé qui renforce l'attractivité et la fidélisation de vos équipes.",
     points: ["Consultations & médicaments", "Hospitalisation & chirurgie", "Dentaire & optique"],
     image: "/assurance-maladie-collective-entreprise.webp",
+    imageAlt: "Salariés d'entreprise bénéficiant d'une assurance maladie collective au Maroc",
     to: "/entreprises/assurance-maladie-collective",
   },
   {
@@ -99,6 +105,7 @@ const OFFERS: Offer[] = [
     desc: "Locaux, équipements, marchandises : protégez la continuité de votre activité.",
     points: ["Locaux & équipements", "Pertes d'exploitation", "Responsabilité civile"],
     image: "/assurance-multirisque-professionnelle.webp",
+    imageAlt: "Local professionnel protégé par une assurance multirisque au Maroc",
     to: "/entreprises/assurance-multirisque-professionnelle",
   },
   {
@@ -108,6 +115,7 @@ const OFFERS: Offer[] = [
     desc: "Protégez votre entreprise quand son activité cause un dommage à un tiers.",
     points: ["Dommages aux tiers", "Défense & recours", "Couverture sur mesure"],
     image: "/assurance-responsabilite-civile-exploitation.webp",
+    imageAlt: "Activité professionnelle couverte par une responsabilité civile d'exploitation",
     to: "/entreprises/assurance-responsabilite-civile-exploitation",
   },
   {
@@ -117,6 +125,7 @@ const OFFERS: Offer[] = [
     desc: "Une offre globale pour votre cabinet : véhicule, locaux et responsabilité professionnelle réunis.",
     points: ["Auto professionnelle", "Multirisque cabinet", "Responsabilité civile d'exploitation"],
     image: "/assurance-professions-liberales.webp",
+    imageAlt: "Cabinet de profession libérale protégé par une offre d'assurance globale au Maroc",
     to: "/assurance-pour-professionnels",
   },
 ];
@@ -216,7 +225,8 @@ export function HomeClient() {
             <Image
               priority
               src="/hero-home.webp"
-              alt="Famille marchant ensemble au coucher du soleil"
+              alt="Famille marchant au coucher du soleil, symbole de la sérénité offerte par Meta Assurances"
+              title="Assurance auto et habitation à Marrakech"
               fill
               sizes="100vw"
               className="object-cover object-center opacity-65"
@@ -344,7 +354,8 @@ export function HomeClient() {
                 <div className="absolute inset-0">
                   <Image
                     src={offer.image}
-                    alt={offer.title}
+                    alt={offer.imageAlt}
+                    title={offer.title}
                     fill
                     sizes="(max-width: 640px) 82vw, 400px"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"

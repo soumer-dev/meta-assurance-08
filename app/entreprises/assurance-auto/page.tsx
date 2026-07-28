@@ -180,6 +180,8 @@ export default function Page() {
           italicWords="enfin optimisée."
           subtitle="Un accompagnement clair et personnalisé pour conduire l'esprit tranquille."
           image="/hero-auto.webp"
+          imageAlt="Véhicules d'entreprise stationnés, couverts par une assurance auto flotte professionnelle"
+          imageTitle="Assurance auto flotte d'entreprise au Maroc"
           cta={{ label: "Protégez mon véhicule", to: "/devis" }}
         />
 

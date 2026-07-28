@@ -150,6 +150,8 @@ export function PageHero({
   italicWords,
   subtitle,
   image,
+  imageAlt,
+  imageTitle,
   cta,
   badge,
 }: {
@@ -158,6 +160,8 @@ export function PageHero({
   italicWords?: string;
   subtitle: string;
   image: string;
+  imageAlt: string;
+  imageTitle?: string;
   cta: { label: string; to?: string; href?: string };
   badge?: string;
 }) {
@@ -180,7 +184,8 @@ export function PageHero({
         <div className="relative h-full w-full">
           <Image
             src={image}
-            alt=""
+            alt={imageAlt}
+            title={imageTitle}
             fill
             priority
             sizes="100vw"

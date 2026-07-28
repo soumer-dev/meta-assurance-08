@@ -218,6 +218,8 @@ export default function Page() {
           italicWords="protégez votre vie."
           subtitle="Votre logement est votre patrimoine. Nous construisons une couverture complète pour protéger chaque aspect de votre foyer."
           image="/hero-habitation.webp"
+          imageAlt="Façade d'une maison marocaine protégée par une assurance habitation sur mesure"
+          imageTitle="Assurance habitation Maroc - protection du foyer"
           cta={{ label: "Protégez votre logement", to: "/devis" }}
         />
 

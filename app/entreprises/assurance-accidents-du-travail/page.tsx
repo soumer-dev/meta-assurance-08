@@ -175,6 +175,8 @@ export default function Page() {
           italicWords="au Maroc"
           subtitle="Protégez vos salariés et votre entreprise contre les conséquences humaines et financières d'un accident survenu dans le cadre de l'activité professionnelle."
           image="/hero-accidents-travail.webp"
+          imageAlt="Ouvrier sur un chantier, protégé par une assurance accidents du travail au Maroc"
+          imageTitle="Assurance accidents du travail Maroc"
           cta={{ label: "Demander mon devis", to: "/devis" }}
         />
 
@@ -194,7 +196,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/protection-employeur-salaries.webp"
-                    alt="Une protection essentielle pour l'employeur et ses salariés"
+                    alt="Employeur échangeant avec un salarié sur les risques liés aux accidents du travail"
+                    title="Assurance accidents du travail Maroc"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"

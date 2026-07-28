@@ -69,6 +69,8 @@ export function PourquoiClient() {
         italicWords="Meta"
         subtitle="Parce que votre protection mérite plus qu'une offre standard, nous créons avec vous une couverture sur mesure, pensée pour vous."
         image="/hero-pourquoi.webp"
+        imageAlt="Conseiller Meta Assurances échangeant avec un client à propos de sa protection"
+        imageTitle="Pourquoi choisir Meta Assurances et Conseils"
         cta={{ label: "Obtenir mon devis", to: "/devis" }}
       />
 

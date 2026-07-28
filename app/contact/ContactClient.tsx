@@ -146,6 +146,8 @@ export function ContactClient() {
         italicWords="votre protection"
         subtitle="Une question, un sinistre, une demande de devis ? Notre équipe de conseillers est disponible et vous répond rapidement."
         image="/hero-contact.webp"
+        imageAlt="Conseillère Meta Assurances disponible pour répondre à une demande à Marrakech"
+        imageTitle="Contactez Meta Assurances et Conseils à Marrakech"
         cta={{ label: "Demander une consultation", href: "#contact-form" }}
       />
 

@@ -150,6 +150,8 @@ export default function Page() {
           italicWords="professionnelle"
           subtitle="Protégez vos locaux, vos équipements, vos marchandises, votre responsabilité et la continuité de votre activité face aux principaux risques professionnels."
           image="/hero-multirisque-professionnelle.webp"
+          imageAlt="Locaux professionnels protégés par une assurance multirisque adaptée à l'activité"
+          imageTitle="Assurance multirisque professionnelle Maroc"
           cta={{ label: "Demander mon devis", to: "/devis" }}
         />
 
@@ -161,7 +163,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/couverture-globale-activite.webp"
-                    alt="Une couverture globale pour votre activité"
+                    alt="Entrepôt professionnel couvert par une assurance multirisque adaptée à l'activité"
+                    title="Assurance multirisque professionnelle Maroc"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
@@ -265,7 +268,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/responsabilite-civile-professionnelle.webp"
-                    alt="Responsabilité civile professionnelle"
+                    alt="Rencontre professionnelle illustrant la responsabilité civile de l'entreprise envers un tiers"
+                    title="Responsabilité civile professionnelle"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
@@ -284,7 +288,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/pertes-exploitation-continuite.webp"
-                    alt="Pertes d'exploitation et continuité d'activité"
+                    alt="Activité professionnelle protégée contre les pertes d'exploitation et interruptions"
+                    title="Pertes d'exploitation et continuité d'activité"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"

@@ -174,6 +174,8 @@ export default function Page() {
           italicWords="professions libérales"
           subtitle="Une protection complète pour votre activité, votre cabinet, votre véhicule et votre responsabilité professionnelle."
           image="/assurance-professions-liberales-hero.webp"
+          imageAlt="Professionnel libéral dans son cabinet, couvert par une offre d'assurance globale"
+          imageTitle="Assurance professions libérales Maroc"
           cta={{ label: "Demander mon devis", to: "/devis" }}
         />
 
@@ -185,7 +187,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/cabinet-professionnel-expertise.webp"
-                    alt="Une offre pensée pour les exigences de votre métier"
+                    alt="Professionnel libéral au travail dans son cabinet couvert par une assurance sur mesure"
+                    title="Assurance professions libérales Maroc"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
@@ -283,7 +286,8 @@ export default function Page() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
                     src="/rc-exploitation-cabinet-liberal.webp"
-                    alt="La responsabilité civile d'exploitation en complément"
+                    alt="Visiteur accueilli dans un cabinet libéral couvert par la responsabilité civile d'exploitation"
+                    title="Responsabilité civile d'exploitation Maroc"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
