@@ -205,3 +205,31 @@
 .offers-track::-webkit-scrollbar {
   display: none;
 }
+
+/*
+ * The reCAPTCHA badge must stay visible (never display:none/visibility:hidden) per
+ * Google's terms — it's tucked mostly off the bottom-right edge instead, leaving a
+ * ~16px sliver as a hover/focus target, and reveals fully on hover, keyboard focus
+ * (via :focus-within on the badge's iframe), or any touch/coarse-pointer device.
+ */
+.grecaptcha-badge {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(calc(100% - 16px));
+}
+
+.grecaptcha-badge:hover,
+.grecaptcha-badge:focus-within {
+  transform: translateX(0);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .grecaptcha-badge {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grecaptcha-badge {
+    transition: none;
+  }
+}
