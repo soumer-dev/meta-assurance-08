@@ -86,7 +86,7 @@ export function SiteFooter() {
           </h3>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
-              <Link href="/entreprise/assurance-auto" className="hover:text-white">
+              <Link href="/entreprises/assurance-auto" className="hover:text-white">
                 Assurance Auto
               </Link>
             </li>

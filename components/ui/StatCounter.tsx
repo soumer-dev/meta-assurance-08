@@ -9,18 +9,23 @@ export interface StatConfig {
 }
 
 function useCountUp(target: number, duration = 1800, active = false) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   useEffect(() => {
     if (!active) return;
+    setCount(0);
     let start: number | null = null;
+    let animationFrame: number;
     const step = (ts: number) => {
-      if (!start) start = ts;
+      if (start === null) start = ts;
       const progress = Math.min((ts - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      }
     };
-    requestAnimationFrame(step);
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
   }, [active, target, duration]);
   return count;
 }

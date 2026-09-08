@@ -33,7 +33,7 @@ const fraunces = Fraunces({
 
 // ─── Site metadata ────────────────────────────────────────────────────────────
 
-const siteUrl = process.env.APP_URL || "https://metassur.com";
+const siteUrl = process.env.APP_URL || "https://www.metassur.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

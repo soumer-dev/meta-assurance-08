@@ -156,11 +156,11 @@ const jsonLd = {
   provider: {
     "@type": "InsuranceAgency",
     name: "Meta Assurances et Conseils",
-    url: "https://metassur.com",
+    url: "https://www.metassur.com",
   },
   areaServed: { "@type": "City", name: "Marrakech" },
   serviceType: "Assurance Habitation",
-  url: "https://metassur.com/particuliers/assurance-habitation",
+  url: "https://www.metassur.com/particuliers/assurance-habitation",
   offers: {
     "@type": "Offer",
     description:
