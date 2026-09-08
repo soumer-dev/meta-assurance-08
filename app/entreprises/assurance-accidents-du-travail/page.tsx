@@ -172,7 +172,7 @@ export default function Page() {
         <PageHero
           badge="Assurance AT"
           title="Assurance accidents du travail au Maroc"
-          italicWords="au Maroc"
+          italicWords="accidents du travail"
           subtitle="Protégez vos salariés et votre entreprise contre les conséquences humaines et financières d'un accident survenu dans le cadre de l'activité professionnelle."
           image="/hero-accidents-travail.webp"
           imageAlt="Ouvrier sur un chantier, protégé par une assurance accidents du travail au Maroc"

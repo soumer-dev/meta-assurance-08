@@ -151,8 +151,8 @@ export default function Page() {
         {/* H1 */}
         <PageHero
           badge="Assurance Maladie Collective"
-          title="Assurance maladie collective"
-          italicWords="collective"
+          title="Assurance maladie collective pour entreprises au Maroc"
+          italicWords="maladie collective"
           subtitle="Offrez à vos salariés une couverture santé adaptée et renforcez la protection sociale, l'attractivité et la fidélisation au sein de votre entreprise."
           image="/hero-maladie-collective.webp"
           imageAlt="Équipe de salariés souriants couverts par une assurance maladie collective d'entreprise"

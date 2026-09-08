@@ -197,7 +197,7 @@ export function DevisClient() {
             </span>
             {/* H1 → "Votre devis personnalisé sans frais" (hand-rolled hero, does not use PageHero) */}
             <h1 className="mt-5 font-display text-3xl font-semibold leading-[1.1] text-balance sm:text-4xl lg:text-5xl">
-              Votre devis personnalisé <span className="italic text-sky">sans frais</span>
+              Demandez votre devis d’assurance <span className="italic text-sky">gratuit</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
               Répondez à quelques questions. Un expert vous contacte rapidement pour affiner votre

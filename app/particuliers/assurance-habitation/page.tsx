@@ -214,8 +214,8 @@ export default function Page() {
         {/* H1 → "Protégez votre logement, protégez votre vie." */}
         <PageHero
           badge="Assurance Habitation"
-          title="Protégez votre logement, protégez votre vie."
-          italicWords="protégez votre vie."
+          title="Assurance habitation au Maroc"
+          italicWords="habitation"
           subtitle="Votre logement est votre patrimoine. Nous construisons une couverture complète pour protéger chaque aspect de votre foyer."
           image="/hero-habitation.webp"
           imageAlt="Façade d'une maison marocaine protégée par une assurance habitation sur mesure"

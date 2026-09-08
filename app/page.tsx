@@ -5,7 +5,7 @@ export const metadata = {
     "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
+    title: "Assurance Marrakech pour particuliers et entreprises",
     description:
       "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     url: "/",
@@ -20,7 +20,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
+    title: "Assurance Marrakech pour particuliers et entreprises",
     description:
       "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     images: ["/hero-home.webp"],

@@ -38,14 +38,14 @@ const siteUrl = process.env.APP_URL || "https://www.metassur.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Assurance Marrakech pour particuliers et entreprises | Metassur",
+    default: "Assurance Marrakech pour particuliers et entreprises",
     template: "%s | Metassur",
   },
   description:
     "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
+    title: "Assurance Marrakech pour particuliers et entreprises",
     description:
       "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     url: siteUrl,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Assurance Marrakech pour particuliers et entreprises | Metassur",
+    title: "Assurance Marrakech pour particuliers et entreprises",
     description:
       "Découvrez les solutions d’assurance Marrakech pour protéger vos biens, votre santé, votre véhicule et votre entreprise avec un accompagnement adapté.",
     images: ["/hero-home.webp"],
@@ -171,7 +171,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preload" as="image" href="/hero-home.webp" fetchPriority="high" />
       </head>
       <body>
         <GoogleTagManager />

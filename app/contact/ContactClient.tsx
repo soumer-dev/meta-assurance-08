@@ -142,8 +142,8 @@ export function ContactClient() {
       {/* H1 → "Parlons de votre protection" */}
       <PageHero
         badge="Nous sommes là pour vous accompagner"
-        title="Parlons de votre protection"
-        italicWords="votre protection"
+        title="Contactez Metassur pour votre assurance au Maroc"
+        italicWords="Metassur"
         subtitle="Une question, un sinistre, une demande de devis ? Notre équipe de conseillers est disponible et vous répond rapidement."
         image="/hero-contact.webp"
         imageAlt="Conseillère Meta Assurances disponible pour répondre à une demande à Marrakech"

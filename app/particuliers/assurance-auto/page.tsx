@@ -175,8 +175,8 @@ export default function Page() {
         {/* H1 → "Votre assurance auto, enfin optimisée." */}
         <PageHero
           badge="Assurance Auto"
-          title="Votre assurance auto, enfin optimisée."
-          italicWords="enfin optimisée."
+          title="Assurance auto au Maroc"
+          italicWords="auto"
           subtitle="Un accompagnement clair et personnalisé pour conduire l'esprit tranquille."
           image="/hero-auto.webp"
           imageAlt="Conducteur serein au volant, protégé par une assurance auto sur mesure à Marrakech"

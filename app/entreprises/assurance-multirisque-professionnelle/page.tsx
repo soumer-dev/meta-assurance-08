@@ -146,8 +146,8 @@ export default function Page() {
         {/* H1 */}
         <PageHero
           badge="Assurance Multirisque Pro"
-          title="Assurance multirisque professionnelle"
-          italicWords="professionnelle"
+          title="Assurance multirisque professionnelle au Maroc"
+          italicWords="multirisque professionnelle"
           subtitle="Protégez vos locaux, vos équipements, vos marchandises, votre responsabilité et la continuité de votre activité face aux principaux risques professionnels."
           image="/hero-multirisque-professionnelle.webp"
           imageAlt="Locaux professionnels protégés par une assurance multirisque adaptée à l'activité"

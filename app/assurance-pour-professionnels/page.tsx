@@ -170,8 +170,8 @@ export default function Page() {
         {/* H1 */}
         <PageHero
           badge="Offre Professions Libérales"
-          title="Offre globale pour les professions libérales"
-          italicWords="professions libérales"
+          title="Assurance pour professionnels au Maroc"
+          italicWords="professionnels"
           subtitle="Une protection complète pour votre activité, votre cabinet, votre véhicule et votre responsabilité professionnelle."
           image="/assurance-professions-liberales-hero.webp"
           imageAlt="Professionnel libéral dans son cabinet, couvert par une offre d'assurance globale"

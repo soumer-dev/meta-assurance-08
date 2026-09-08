@@ -28,64 +28,76 @@ import {
 } from "lucide-react";
 
 const PAINS = [
-  { icon: TrendingUp, text: "Votre prime augmente chaque année sans explication claire" },
-  { icon: AlertTriangle, text: "Vous payez des garanties inutiles qui gonflent votre facture" },
-  { icon: UserX, text: "En cas de sinistre, vous naviguez seul dans les démarches" },
-  { icon: Clock, text: "Votre agent actuel ne répond pas dans les délais" },
+  {
+    icon: TrendingUp,
+    text: "Vos coûts d’assurance augmentent avec l’évolution de votre parc",
+  },
+  {
+    icon: AlertTriangle,
+    text: "Vos véhicules n’ont pas toujours des garanties adaptées à leurs usages",
+  },
+  {
+    icon: UserX,
+    text: "La gestion de plusieurs véhicules multiplie les démarches",
+  },
+  {
+    icon: Clock,
+    text: "Un véhicule immobilisé peut rapidement perturber votre activité",
+  },
 ];
 
 const SOLUTION = [
-  "Analyse complète de votre profil et de vos besoins",
-  "Expert en assurance dédié à votre écoute",
-  "Garanties adaptées à votre usage réel",
-  "Gestion complète de vos sinistres",
+  "Analyse de vos véhicules et de leurs usages",
+  "Garanties adaptées à votre activité",
+  "Conseiller dédié à votre entreprise",
+  "Accompagnement en cas de sinistre",
 ];
 
 const GUARANTEES = [
   {
     icon: ShieldCheck,
     title: "Responsabilité civile",
-    desc: "Couverture obligatoire des dommages causés aux tiers : corporels, matériels et immatériels.",
+    desc: "Couverture des dommages causés aux tiers par les véhicules assurés.",
   },
   {
     icon: User,
     title: "Protection du conducteur",
-    desc: "Prise en charge des dommages corporels subis par le conducteur en cas d'accident.",
+    desc: "Protection des conducteurs de vos véhicules professionnels selon les garanties souscrites.",
   },
   {
     icon: Users,
-    title: "Protection des personnes transportées",
-    desc: "Indemnisation des passagers en cas de dommages corporels lors d'un sinistre.",
+    title: "Protection des passagers",
+    desc: "Couverture des passagers transportés dans les véhicules de l’entreprise.",
   },
   {
     icon: Flame,
     title: "Incendie & vol",
-    desc: "Protection de votre véhicule contre les risques d'incendie, de vol et de tentative de vol.",
+    desc: "Protection contre l’incendie, le vol et la tentative de vol.",
   },
   {
     icon: Hammer,
     title: "Bris de glace",
-    desc: "Remplacement rapide de votre pare-brise sans impact sur votre bonus-malus.",
+    desc: "Prise en charge des vitrages couverts selon votre contrat.",
   },
   {
     icon: TrafficCone,
-    title: "Panne & accident",
-    desc: "Prise en charge rapide des dommages matériels suite à une panne ou un accident.",
+    title: "Dommages au véhicule",
+    desc: "Protection contre certains dommages matériels selon la formule choisie.",
   },
   {
     icon: Scale,
     title: "Protection juridique",
-    desc: "Assistance et prise en charge des frais juridiques en cas de litige lié à votre véhicule.",
+    desc: "Assistance en cas de litige lié à vos véhicules professionnels.",
   },
   {
     icon: PhoneCall,
-    title: "Assistance en cas de sinistre",
-    desc: "Assistance rapide et accompagnement en cas de sinistre couvert par votre contrat.",
+    title: "Assistance & dépannage",
+    desc: "Accompagnement en cas de panne ou de sinistre couvert.",
   },
   {
     icon: Repeat,
     title: "Véhicule de remplacement",
-    desc: "Mise à disposition d'un véhicule temporaire en cas d'immobilisation du vôtre.",
+    desc: "Une solution temporaire peut être prévue en cas d’immobilisation.",
   },
 ];
 
@@ -93,33 +105,33 @@ const STEPS = [
   {
     n: "01",
     icon: Search,
-    title: "Comprendre votre profil",
-    desc: "Votre agent examine votre situation et vos habitudes de conduite pour identifier les garanties essentielles.",
+    title: "Analyser votre parc",
+    desc: "Nous étudions vos véhicules, leurs usages et vos besoins.",
   },
   {
     n: "02",
     icon: ListChecks,
     title: "Comparer les options",
-    desc: "Nous sélectionnons les offres les plus adaptées sur le marché pour votre véhicule et votre budget.",
+    desc: "Nous recherchons les garanties adaptées à votre entreprise.",
   },
   {
     n: "03",
     icon: FileCheck,
-    title: "Garanties sur mesure",
-    desc: "Vous recevez une recommandation claire, sans jargon, avec un rapport qualité-prix transparent.",
+    title: "Adapter la couverture",
+    desc: "Vous recevez une solution claire et adaptée à votre parc.",
   },
   {
     n: "04",
     icon: HeartHandshake,
-    title: "Accompagnement et suivi",
-    desc: "Nous vous guidons du début à la fin pour une protection auto complète, claire et efficace.",
+    title: "Vous accompagner",
+    desc: "Nous suivons vos contrats, vos véhicules et vos sinistres.",
   },
 ];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Assurance Auto Entreprise Maroc : Flotte auto",
+  name: "Assurance auto pour entreprises au Maroc",
   description:
     "Protégez les véhicules de votre entreprise avec une assurance auto professionnelle adaptée aux besoins de votre flotte au Maroc.",
   provider: {
@@ -127,8 +139,11 @@ const jsonLd = {
     name: "Meta Assurances et Conseils",
     url: "https://www.metassur.com",
   },
-  areaServed: { "@type": "City", name: "Marrakech" },
-  serviceType: "Assurance Auto Professionnelle",
+  areaServed: {
+    "@type": "City",
+    name: "Marrakech",
+  },
+  serviceType: "Assurance Auto Entreprise",
   url: "https://www.metassur.com/entreprises/assurance-auto",
   offers: {
     "@type": "Offer",
@@ -141,7 +156,9 @@ export const metadata = {
   title: "Assurance Auto Entreprise Maroc : Flotte auto",
   description:
     "Protégez les véhicules de votre entreprise avec une assurance auto professionnelle adaptée aux besoins de votre flotte au Maroc.",
-  alternates: { canonical: "/entreprises/assurance-auto" },
+  alternates: {
+    canonical: "/entreprises/assurance-auto",
+  },
   openGraph: {
     title: "Assurance Auto Entreprise Maroc : Flotte auto",
     description:
@@ -152,7 +169,7 @@ export const metadata = {
         url: "/hero-auto.webp",
         width: 1200,
         height: 630,
-        alt: "Assurance auto entreprise Marrakech",
+        alt: "Assurance auto pour véhicules d’entreprise",
       },
     ],
   },
@@ -160,7 +177,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Assurance Auto Entreprise Maroc : Flotte auto",
     description:
-      "Protégez les véhicules de votre entreprise avec une assurance auto professionnelle adaptée aux besoins de votre flotte au Maroc.",
+      "Une assurance adaptée aux véhicules de votre entreprise et à leurs usages professionnels.",
     images: ["/hero-auto.webp"],
   },
 };
@@ -172,27 +189,30 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
       <SiteLayout>
-        {/* H1 → "Votre assurance auto, enfin optimisée." */}
         <PageHero
-          badge="Assurance Auto"
-          title="Votre assurance auto, enfin optimisée."
-          italicWords="enfin optimisée."
-          subtitle="Un accompagnement clair et personnalisé pour conduire l'esprit tranquille."
+          badge="Assurance Auto Entreprise"
+          title="Assurance auto pour entreprises au Maroc "
+          italicWords="auto pour entreprises"
+          subtitle="Protégez vos véhicules professionnels avec des garanties adaptées à votre activité."
           image="/hero-auto.webp"
-          imageAlt="Véhicules d'entreprise stationnés, couverts par une assurance auto flotte professionnelle"
-          imageTitle="Assurance auto flotte d'entreprise au Maroc"
-          cta={{ label: "Protégez mon véhicule", to: "/devis" }}
+          imageAlt="Véhicules d’entreprise couverts par une assurance auto professionnelle"
+          imageTitle="Assurance auto pour entreprises au Maroc"
+          cta={{
+            label: "Assurer mes véhicules",
+            to: "/devis",
+          }}
         />
 
         <section className="py-24 sm:py-28">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
-            {/* H2 → "Reconnaissez-vous ces situations ?" */}
             <SectionHeading
               eyebrow="Le constat"
               title="Reconnaissez-vous ces situations ?"
-              subtitle="Trop d'assurés paient trop cher pour une couverture inadaptée. Il est temps d'y remédier."
+              subtitle="Gérer plusieurs véhicules demande une couverture claire, adaptée et facile à suivre."
             />
+
             <div className="mt-14 grid gap-5 sm:grid-cols-2">
               {PAINS.map((pain) => (
                 <div
@@ -202,7 +222,10 @@ export default function Page() {
                   <div className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-destructive/10 text-destructive">
                     <pain.icon className="size-5" />
                   </div>
-                  <p className="pt-1.5 text-foreground">{pain.text}</p>
+
+                  <p className="pt-1.5 text-foreground">
+                    {pain.text}
+                  </p>
                 </div>
               ))}
             </div>
@@ -214,17 +237,20 @@ export default function Page() {
             <div className="overflow-hidden rounded-3xl bg-navy p-10 text-white shadow-elevated lg:p-14">
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
-                  <Eyebrow tone="onDark">Notre solution</Eyebrow>
-                  {/* H3 → "Une couverture optimisée, un prix juste" */}
-                  {/* ⚠️ HEADING ISSUE: renders directly after the page's <h1> with no <h2> in between — level skip (H1 → H3). */}
-                  <h3 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
-                    Une couverture optimisée, un prix juste
-                  </h3>
+                  <Eyebrow tone="onDark">
+                    Notre solution
+                  </Eyebrow>
+
+                  <h2 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
+                    Une couverture adaptée à votre parc
+                  </h2>
+
                   <p className="mt-4 leading-relaxed text-white/75">
-                    Nos agents d'assurance vous accompagnent à chaque étape pour protéger votre
-                    véhicule, sans compromis entre qualité et budget.
+                    Nous vous accompagnons pour assurer vos véhicules
+                    professionnels avec des garanties adaptées à vos besoins.
                   </p>
                 </div>
+
                 <ul className="space-y-4 lg:col-span-7">
                   {SOLUTION.map((item) => (
                     <li
@@ -234,14 +260,23 @@ export default function Page() {
                       <div className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-sky text-navy">
                         <ShieldCheck className="size-4" />
                       </div>
-                      <span className="text-white/90">{item}</span>
+
+                      <span className="text-white/90">
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
+
               <div className="mt-10 flex flex-wrap gap-3">
-                <CtaButton to="/devis">Protéger mon véhicule</CtaButton>
-                <PhoneButton>Demander une consultation</PhoneButton>
+                <CtaButton to="/devis">
+                  Assurer mes véhicules
+                </CtaButton>
+
+                <PhoneButton>
+                  Demander une consultation
+                </PhoneButton>
               </div>
             </div>
           </div>
@@ -249,13 +284,13 @@ export default function Page() {
 
         <section className="py-24 sm:py-28">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
-            {/* H2 → "Une protection complète à chaque kilomètre" */}
             <SectionHeading
               eyebrow="Garanties"
-              title="Une protection complète à chaque kilomètre"
+              title="Une protection adaptée à vos véhicules"
+              subtitle="Choisissez les garanties adaptées à vos usages professionnels."
             />
+
             <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {/* H3 → repeats per guarantee: "Responsabilité civile", "Protection du conducteur", "Protection des personnes transportées", "Incendie & vol", "Bris de glace", "Panne & accident", "Protection juridique", "Assistance en cas de sinistre", "Véhicule de remplacement" (9 items) */}
               {GUARANTEES.map((item) => (
                 <div
                   key={item.title}
@@ -264,14 +299,26 @@ export default function Page() {
                   <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-sky/15 text-sky">
                     <item.icon className="size-6" />
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold text-foreground">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+
+                  <h3 className="mt-5 text-lg font-semibold text-foreground">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {item.desc}
+                  </p>
                 </div>
               ))}
             </div>
+
             <div className="mt-12 flex flex-wrap justify-center gap-3">
-              <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>
-              <PhoneButton>Demander une consultation</PhoneButton>
+              <CtaButton to="/devis">
+                Obtenir mon devis gratuit
+              </CtaButton>
+
+              <PhoneButton>
+                Demander une consultation
+              </PhoneButton>
             </div>
           </div>
         </section>
@@ -286,39 +333,55 @@ export default function Page() {
               backgroundSize: "auto",
             }}
           />
+
           <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
             <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-              <Eyebrow tone="onDark">Notre méthode</Eyebrow>
+              <Eyebrow tone="onDark">
+                Notre méthode
+              </Eyebrow>
             </p>
-            {/* H2 → "Votre assurance en 4 étapes simples" */}
+
             <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
               Votre assurance en 4 étapes simples
             </h2>
-            {/* H3 → repeats per step: "Comprendre votre profil", "Comparer les options", "Garanties sur mesure", "Accompagnement et suivi" (4 items) */}
+
             <ol className="mt-14 grid gap-6 lg:grid-cols-4">
               {STEPS.map((step) => (
                 <li
                   key={step.n}
                   className="relative rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur"
                 >
-                  <span className="font-display text-4xl font-semibold text-sky/90">{step.n}</span>
+                  <span className="font-display text-4xl font-semibold text-sky/90">
+                    {step.n}
+                  </span>
+
                   <div className="mt-4 inline-flex size-10 items-center justify-center rounded-xl bg-sky/15 text-sky">
                     <step.icon className="size-5" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">{step.desc}</p>
+
+                  <h3 className="mt-4 text-lg font-semibold">
+                    {step.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">
+                    {step.desc}
+                  </p>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        {/* H2 → "Anticipez les imprévus sur la route" */}
         <FinalCta
-          title="Anticipez les imprévus sur la route"
-          subtitle="Un devis gratuit et sans engagement en quelques clics."
-          primary={{ label: "Démarrer mon devis", to: "/devis" }}
-          secondary={{ label: "Demander une consultation" }}
+          title="Protégez les véhicules de votre entreprise"
+          subtitle="Un devis gratuit et sans engagement adapté à vos besoins."
+          primary={{
+            label: "Démarrer mon devis",
+            to: "/devis",
+          }}
+          secondary={{
+            label: "Demander une consultation",
+          }}
         />
       </SiteLayout>
     </>

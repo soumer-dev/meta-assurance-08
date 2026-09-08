@@ -243,8 +243,8 @@ export function HomeClient() {
             </span>
             {/* H1 → "La tranquillité d'esprit, assurée au quotidien." */}
             <h1 className="mt-5 text-4xl font-semibold leading-[1.02] text-balance sm:text-5xl lg:text-7xl">
-              La tranquillité d'esprit,{" "}
-              <span className="font-display italic text-sky">assurée au quotidien.</span>
+              Assurance à Marrakech pour{" "}
+              <span className="font-display italic text-sky">particuliers et entreprises</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg text-pretty">
               Avec votre agent d’assurance à Marrakech, bénéficiez d’un accompagnement dédié et de
