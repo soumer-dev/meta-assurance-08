@@ -223,9 +223,7 @@ export default function Page() {
                     <pain.icon className="size-5" />
                   </div>
 
-                  <p className="pt-1.5 text-foreground">
-                    {pain.text}
-                  </p>
+                  <p className="pt-1.5 text-foreground">{pain.text}</p>
                 </div>
               ))}
             </div>
@@ -237,17 +235,15 @@ export default function Page() {
             <div className="overflow-hidden rounded-3xl bg-navy p-10 text-white shadow-elevated lg:p-14">
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
-                  <Eyebrow tone="onDark">
-                    Notre solution
-                  </Eyebrow>
+                  <Eyebrow tone="onDark">Notre solution</Eyebrow>
 
                   <h2 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
                     Une couverture adaptée à votre parc
                   </h2>
 
                   <p className="mt-4 leading-relaxed text-white/75">
-                    Nous vous accompagnons pour assurer vos véhicules
-                    professionnels avec des garanties adaptées à vos besoins.
+                    Nous vous accompagnons pour assurer vos véhicules professionnels avec des
+                    garanties adaptées à vos besoins.
                   </p>
                 </div>
 
@@ -261,22 +257,16 @@ export default function Page() {
                         <ShieldCheck className="size-4" />
                       </div>
 
-                      <span className="text-white/90">
-                        {item}
-                      </span>
+                      <span className="text-white/90">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                <CtaButton to="/devis">
-                  Assurer mes véhicules
-                </CtaButton>
+                <CtaButton to="/devis">Assurer mes véhicules</CtaButton>
 
-                <PhoneButton>
-                  Demander une consultation
-                </PhoneButton>
+                <PhoneButton>Demander une consultation</PhoneButton>
               </div>
             </div>
           </div>
@@ -300,25 +290,17 @@ export default function Page() {
                     <item.icon className="size-6" />
                   </div>
 
-                  <h3 className="mt-5 text-lg font-semibold text-foreground">
-                    {item.title}
-                  </h3>
+                  <h3 className="mt-5 text-lg font-semibold text-foreground">{item.title}</h3>
 
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {item.desc}
-                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
               ))}
             </div>
 
             <div className="mt-12 flex flex-wrap justify-center gap-3">
-              <CtaButton to="/devis">
-                Obtenir mon devis gratuit
-              </CtaButton>
+              <CtaButton to="/devis">Obtenir mon devis gratuit</CtaButton>
 
-              <PhoneButton>
-                Demander une consultation
-              </PhoneButton>
+              <PhoneButton>Demander une consultation</PhoneButton>
             </div>
           </div>
         </section>
@@ -336,9 +318,7 @@ export default function Page() {
 
           <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
             <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky">
-              <Eyebrow tone="onDark">
-                Notre méthode
-              </Eyebrow>
+              <Eyebrow tone="onDark">Notre méthode</Eyebrow>
             </p>
 
             <h2 className="mx-auto mt-4 max-w-3xl text-center font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
@@ -351,21 +331,15 @@ export default function Page() {
                   key={step.n}
                   className="relative rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur"
                 >
-                  <span className="font-display text-4xl font-semibold text-sky/90">
-                    {step.n}
-                  </span>
+                  <span className="font-display text-4xl font-semibold text-sky/90">{step.n}</span>
 
                   <div className="mt-4 inline-flex size-10 items-center justify-center rounded-xl bg-sky/15 text-sky">
                     <step.icon className="size-5" />
                   </div>
 
-                  <h3 className="mt-4 text-lg font-semibold">
-                    {step.title}
-                  </h3>
+                  <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
 
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">
-                    {step.desc}
-                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">{step.desc}</p>
                 </li>
               ))}
             </ol>
