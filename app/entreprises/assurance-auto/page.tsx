@@ -140,8 +140,8 @@ const jsonLd = {
     url: "https://www.metassur.com",
   },
   areaServed: {
-    "@type": "City",
-    name: "Marrakech",
+    "@type": "Country",
+    name: "Maroc",
   },
   serviceType: "Assurance Auto Entreprise",
   url: "https://www.metassur.com/entreprises/assurance-auto",

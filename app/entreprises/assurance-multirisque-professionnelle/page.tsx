@@ -97,7 +97,7 @@ const jsonLd = {
     name: "Meta Assurances et Conseils",
     url: "https://www.metassur.com",
   },
-  areaServed: { "@type": "City", name: "Marrakech" },
+  areaServed: { "@type": "Country", name: "Maroc" },
   serviceType: "Assurance multirisque professionnelle",
   url: "https://www.metassur.com/entreprises/assurance-multirisque-professionnelle",
   offers: {

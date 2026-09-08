@@ -127,7 +127,7 @@ const jsonLd = {
     name: "Meta Assurances et Conseils",
     url: "https://www.metassur.com",
   },
-  areaServed: { "@type": "City", name: "Marrakech" },
+  areaServed: { "@type": "Country", name: "Maroc" },
   serviceType: "Assurance Auto",
   url: "https://www.metassur.com/particuliers/assurance-auto",
   offers: {
@@ -214,11 +214,10 @@ export default function Page() {
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                   <Eyebrow tone="onDark">Notre solution</Eyebrow>
-                  {/* H3 → "Une couverture optimisée, un prix juste" */}
-                  {/* ⚠️ HEADING ISSUE: renders directly after the page's <h1> with no <h2> in between — level skip (H1 → H3). */}
-                  <h3 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
+                  {/* H2 → "Une couverture optimisée, un prix juste" */}
+                  <h2 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
                     Une couverture optimisée, un prix juste
-                  </h3>
+                  </h2>
                   <p className="mt-4 leading-relaxed text-white/75">
                     Nos agents d'assurance vous accompagnent à chaque étape pour protéger votre
                     véhicule, sans compromis entre qualité et budget.

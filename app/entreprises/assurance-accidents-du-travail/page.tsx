@@ -122,7 +122,7 @@ const jsonLd = {
     name: "Meta Assurances et Conseils",
     url: "https://www.metassur.com",
   },
-  areaServed: { "@type": "City", name: "Marrakech" },
+  areaServed: { "@type": "Country", name: "Maroc" },
   serviceType: "Assurance accidents du travail",
   url: "https://www.metassur.com/entreprises/assurance-accidents-du-travail",
   offers: {
@@ -349,11 +349,10 @@ export default function Page() {
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                   <Eyebrow tone="onDark">Notre accompagnement</Eyebrow>
-                  {/* H3 → "Pourquoi choisir Meta Assurances et Conseils ?" */}
-                  {/* ⚠️ HEADING ISSUE: this section has no <h2> of its own (only the Eyebrow span "Notre accompagnement") — the whole block relies on an <h3> with no parent heading landmark. */}
-                  <h3 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
+                  {/* H2 → "Pourquoi choisir Meta Assurances et Conseils ?" */}
+                  <h2 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">
                     Pourquoi choisir Meta Assurances et Conseils ?
-                  </h3>
+                  </h2>
                 </div>
                 <ul className="space-y-4 lg:col-span-7">
                   {POURQUOI.map((item) => (

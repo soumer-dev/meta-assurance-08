@@ -107,9 +107,9 @@ const structuredData = {
   currenciesAccepted: "MAD",
   paymentAccepted: "Cash, Chèque, Virement",
   areaServed: {
-    "@type": "City",
-    name: "Marrakech",
-    sameAs: "https://www.wikidata.org/wiki/Q101625",
+    "@type": "Country",
+    name: "Maroc",
+    sameAs: "https://www.wikidata.org/wiki/Q1028",
   },
   address: {
     "@type": "PostalAddress",
@@ -127,9 +127,15 @@ const structuredData = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "09:00",
       closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "09:00",
+      closes: "14:00",
     },
   ],
   sameAs: [

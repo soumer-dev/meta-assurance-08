@@ -153,8 +153,14 @@ export function ContactClient() {
 
       <section className="py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          {/* H2 → "Plusieurs façons de nous joindre" */}
+          <SectionHeading
+            eyebrow="Nous contacter"
+            title="Plusieurs façons de nous joindre"
+            subtitle="Choisissez le mode de contact qui vous convient le mieux."
+          />
           {/* H3 → repeats per option: "Vous débutez votre vie pro ?", "Rappel immédiat", "Formulaire de contact" (3 items) */}
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {OPTIONS.map((option) => (
               <div
                 key={option.title}
